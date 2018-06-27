@@ -1,8 +1,8 @@
 import * as actionTypes from "./actionTypes";
 
-export const initSearch = ( input ) => {
+export const changeSearchInput = ( input ) => {
   return {
-    type: actionTypes.INIT_SEARCH,
+    type: actionTypes.CHANGE_SEARCH_INPUT,
     input: input
   }
 }
@@ -17,3 +17,9 @@ export const updateSearchResultsFailed = () => {
     type: actionTypes.FETCH_RESULTS_FAILED
   };
 };
+export const selectGame = ( game ) => {
+  return {
+    type: actionTypes.SELECT_GAME,
+    game: game
+  }
+}

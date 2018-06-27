@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import AddGame from '../../components/AddGame/AddGame';
 
 const ADD_GAME_MODAL = 'addGameModal';

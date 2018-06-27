@@ -1,5 +1,6 @@
 export {
-  initSearch,
+  changeSearchInput,
   updateSearchResults,
-  updateSearchResultsFailed
+  updateSearchResultsFailed,
+  selectGame
 } from './addGame';

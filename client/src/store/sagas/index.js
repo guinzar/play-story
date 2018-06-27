@@ -5,5 +5,5 @@ import {
 } from "./addGame";
 
 export function* watchSearchGames() {
-  yield takeLatest(actionTypes.INIT_SEARCH, searchGamesSaga);
+  yield takeLatest(actionTypes.CHANGE_SEARCH_INPUT, searchGamesSaga);
 }

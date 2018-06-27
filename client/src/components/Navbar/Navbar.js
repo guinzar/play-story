@@ -6,8 +6,8 @@ const navbar = props => {
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
       <NavLink 
-        className='navbar-brand'
-        to='/'>PlayStory</NavLink>
+        className="navbar-brand"
+        to="/">PlayStory</NavLink>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
@@ -15,31 +15,31 @@ const navbar = props => {
         <ul className="navbar-nav">
           <li className="nav-item">
             <NavLink 
-              className = 'nav-link'
-              to='/'
+              className="nav-link"
+              to="/"
               exact
-              activeClassName='active'>Home</NavLink>
+              activeClassName="active">Home</NavLink>
           </li>
           <li className="nav-item">
             <NavLink
-              className = 'nav-link'
-              to='/me'
+              className = "nav-link"
+              to="/me"
               exact
-              activeClassName='active'>My Feed</NavLink>
+              activeClassName="active">My Feed</NavLink>
           </li>
           <li className="nav-item">
             <NavLink 
-              className = 'nav-link'
-              to='/mygames'
+              className = "nav-link"
+              to="/mygames"
               exact
-              activeClassName='active'>My Games</NavLink>
+              activeClassName="active">My Games</NavLink>
           </li>
           <li className="nav-item">
             <NavLink 
-              className = 'nav-link'
-              to='/timeline'
+              className = "nav-link"
+              to="/timeline"
               exact
-              activeClassName='active'>My Timeline</NavLink>
+              activeClassName="active">My Timeline</NavLink>
           </li>
         </ul>
       </div>
