@@ -23,3 +23,9 @@ export const selectGame = ( game ) => {
     game: game
   }
 }
+export const removeSelectedGame = ( name ) => {
+  return {
+    type: actionTypes.REMOVE_SELECTED_GAME,
+    input: name
+  }
+}

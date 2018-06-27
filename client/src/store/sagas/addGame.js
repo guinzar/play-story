@@ -9,6 +9,7 @@ const delay = (ms) => new Promise(res => setTimeout(res, ms))
 export function* searchGamesSaga(action) {
   try {
     yield call(delay, 500);
+    console.log('searching for: ' + action.input);
     if (action.input.length) {
       const response = yield axios.get("https://cors-anywhere.herokuapp.com/https://api-2445582011268.apicast.io/games/",
         {

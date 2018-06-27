@@ -3,7 +3,7 @@ const fakeResults = [{"id":18063,"name":"Atlas Reactor","summary":"Atlas Reactor
 const initialState = {
   selectedGame: null,
   searchInput: '',
-  searchResults: fakeResults,
+  searchResults: [],
   playedInfo: []
 }
 const changeSearchInput = ( state, action) => {
@@ -26,11 +26,18 @@ const selectGame = ( state, action ) => {
     searchResults: []
   }
 }
+const removeSelectedGame = ( state, action ) => {
+  return {
+    ...state,
+    selectedGame: null
+  }
+}
 const reducer = ( state = initialState, action ) => {
   switch ( action.type ) {
     case actionTypes.CHANGE_SEARCH_INPUT: return changeSearchInput( state, action );
     case actionTypes.UPDATE_SEARCH_RESULTS: return updateSearchResults( state, action );
     case actionTypes.SELECT_GAME: return selectGame( state, action );
+    case actionTypes.REMOVE_SELECTED_GAME: return removeSelectedGame( state, action );
     default: return state;
   }
 };

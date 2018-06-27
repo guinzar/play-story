@@ -2,5 +2,6 @@ export {
   changeSearchInput,
   updateSearchResults,
   updateSearchResultsFailed,
-  selectGame
+  selectGame,
+  removeSelectedGame
 } from './addGame';

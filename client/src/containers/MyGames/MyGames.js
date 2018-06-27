@@ -19,7 +19,7 @@ class MyGames extends Component {
         </div>
         <div className="row">
         </div>
-        <AddGame id={ADD_GAME_MODAL} />
+        <AddGame modalId={ADD_GAME_MODAL} />
       </React.Fragment>
     );
   }
