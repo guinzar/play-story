@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './AddGame.css'
 import GameSelect from './GameSelect/GameSelect';
-import PlayedYears from './PlayedYears/PlayedYears';
+import DetailsForm from './DetailsForm/DetailsForm';
 
-const addGame = ({ modalId, addGame }) => {
+const addGame = ({ modalId, selectedGame }) => {
   return (
     <div className="modal fade" id={modalId} tabIndex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
       <div className="modal-dialog" role="document">
@@ -18,8 +18,10 @@ const addGame = ({ modalId, addGame }) => {
             </button>
           </div>
           <div className="modal-body">
-            <GameSelect />
-            <PlayedYears />
+            <div className="container-fluid px-0">
+              <GameSelect />
+              {selectedGame ? <DetailsForm /> : null}
+            </div>
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -29,23 +31,23 @@ const addGame = ({ modalId, addGame }) => {
       </div>
     </div>
   );
-}
+};
 
 const mapStateToProps = state => {
   return {
-    addGame: state.addGame
+    selectedGame: state.addGame.selectedGame
   };
-}
+};
 
 const mapDispatchToProps = dispatch => {
   return {
     
-  }
-}
+  };
+};
 
 addGame.propTypes = {
   modalId: PropTypes.string.isRequired,
-  addGame: PropTypes.object.isRequired
-}
+  selectedGame: PropTypes.object
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(addGame);

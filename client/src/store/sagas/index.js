@@ -7,4 +7,4 @@ import {
 export function* watchSearchGames() {
   yield takeLatest(actionTypes.CHANGE_SEARCH_INPUT, searchGamesSaga);
   yield takeEvery(actionTypes.REMOVE_SELECTED_GAME, searchGamesSaga);
-}
+};

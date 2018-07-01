@@ -1,0 +1,7 @@
+.detail-form select {
+  font-size: 80%;
+  font-weight: 400;
+}
+.detail-form button:focus {
+  box-shadow: none !important;
+}

@@ -11,16 +11,16 @@ const searchDropdown = ({searchResults}) => {
         <SelectGameButton key={i} game={game} />
       )}
     </div>) : null;
-}
+};
 
 const mapStateToProps = state => {
   return {
     searchResults: state.addGame.searchResults
   };
-}
+};
 
 searchDropdown.propTypes = {
   searchResults: PropTypes.array
-}
+};
 
 export default connect(mapStateToProps)(searchDropdown);

@@ -45,6 +45,6 @@ const navbar = props => {
       </div>
     </nav>
   );
-}
+};
 
 export default withRouter(navbar);

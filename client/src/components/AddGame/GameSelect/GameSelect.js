@@ -6,7 +6,7 @@ import './GameSelect.css'
 import SearchDropdown from './SearchDropdown/SearchDropdown';
 
 const gameSelect = ({ searchInput, selectedGame, onSearchInputChange, onSelectedGameClick }) => {
-  return selectedGame ?
+  const content =  selectedGame ?
     <button onClick={() => onSelectedGameClick(searchInput)} className="btn btn-success btn-block selected-game-btn">
       <div className="media">
         <img src={selectedGame.cover ? selectedGame.cover.url : 'https://images.igdb.com/igdb/image/upload/t_micro/nocover_qhhlj6.jpg'}
@@ -23,27 +23,34 @@ const gameSelect = ({ searchInput, selectedGame, onSearchInputChange, onSelected
       <input autoFocus value={searchInput} onChange={e => onSearchInputChange(e.target.value)} type="text" className="form-control" placeholder="Search for a game..." />
       <SearchDropdown />
     </div>;
-}
+  return (
+    <div className="row">
+      <div className="col">
+        {content}
+      </div>
+    </div>
+  )
+};
 
 const mapStateToProps = state => {
   return {
     searchInput: state.addGame.searchInput,
     selectedGame: state.addGame.selectedGame
   };
-}
+};
 
 const mapDispatchToProps = dispatch => {
   return {
     onSearchInputChange: (input) => dispatch(actions.changeSearchInput(input)),
     onSelectedGameClick: (name) => dispatch(actions.removeSelectedGame(name))
-  }
-}
+  };
+};
 
 gameSelect.propTypes = {
   searchInput: PropTypes.string.isRequired,
   selectedGame: PropTypes.object, 
   onSearchInputChange: PropTypes.func.isRequired,
   onSelectedGameClick: PropTypes.func.isRequired
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(gameSelect);

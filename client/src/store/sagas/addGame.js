@@ -2,9 +2,9 @@ import { put, call } from 'redux-saga/effects';
 
 import axios from 'axios';
 import * as actions from "../actions";
-import IGDB_API_KEY from '../../config';
+import { IGDB_API_KEY } from '../../config';
 
-const delay = (ms) => new Promise(res => setTimeout(res, ms))
+const delay = (ms) => new Promise(res => setTimeout(res, ms));
 
 export function* searchGamesSaga(action) {
   try {
@@ -30,4 +30,4 @@ export function* searchGamesSaga(action) {
   } catch (error) {
     yield put(actions.updateSearchResultsFailed());
   }
-}
+};

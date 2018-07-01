@@ -17,16 +17,16 @@ const selectGameButton = ({game, onSelectGame}) => {
       </div>
     </button>
   )
-}
+};
 
 const mapDispatchToProps = dispatch => {
   return {
     onSelectGame: (game) => dispatch(actions.selectGame(game))
-  }
-}
+  };
+};
 
 selectGameButton.propTypes = {
   game: PropTypes.object
-}
+};
 
 export default connect(null, mapDispatchToProps)(selectGameButton);
