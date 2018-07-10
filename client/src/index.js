@@ -13,6 +13,7 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import addGameReducer from "./store/reducers/addGame";
+import signUpReducer from "./store/reducers/signUp";
 import { watchSearchGames } from "./store/sagas";
 
 const composeEnhancers =
@@ -20,7 +21,8 @@ const composeEnhancers =
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     : null || compose;
 const rootReducer = combineReducers({
-  addGame: addGameReducer
+  addGame: addGameReducer,
+  signUp: signUpReducer
 });
 
 const sagaMiddleware = createSagaMiddleware();

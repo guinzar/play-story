@@ -41,6 +41,20 @@ const navbar = props => {
               exact
               activeClassName="active">My Timeline</NavLink>
           </li>
+          <li className="nav-item">
+            <NavLink 
+              className = "nav-link"
+              to="/login"
+              exact
+              activeClassName="active">Log In</NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink 
+              className = "nav-link"
+              to="/signup"
+              exact
+              activeClassName="active">Sign Up</NavLink>
+          </li>
         </ul>
       </div>
     </nav>

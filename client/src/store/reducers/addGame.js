@@ -116,7 +116,7 @@ const reducer = ( state = initialState, action ) => {
     case actionTypes.CHANGE_PLAYED_YEAR_YEAR: return changePlayedYearYear( state, action );
     case actionTypes.CHANGE_PLAYED_YEAR_AMOUNT: return changePlayedYearAmount( state, action );
     default: return state;
-  };
+  }
 };
 
 export default reducer;

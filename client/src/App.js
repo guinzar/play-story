@@ -6,12 +6,16 @@ import './App.css';
 
 import Navbar from './components/Navbar/Navbar';
 import Home from './containers/Home/Home';
+import SignUp from './containers/SignUp/SignUp';
+import LogIn from './containers/LogIn/LogIn';
 import MyGames from './containers/MyGames/MyGames';
 
 class App extends Component {
   render() {
     const routes = (
       <Switch>
+        {/* <Route path="/login" component={LogIn} /> */}
+        <Route path="/signup" component={SignUp} />
         <Route path="/mygames" component={MyGames} />
         <Route path="/" exact component={Home} />
         <Redirect to="/" />

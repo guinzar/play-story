@@ -1,12 +1,12 @@
 import { put, call } from 'redux-saga/effects';
 
 import axios from 'axios';
-import * as actions from "../actions";
+import * as actions from "../actions/addGame";
 import { IGDB_API_KEY } from '../../config';
 
 const delay = (ms) => new Promise(res => setTimeout(res, ms));
 
-export function* searchGamesSaga(action) {
+export default function* (action) {
   try {
     yield call(delay, 500);
     console.log('searching for: ' + action.input);

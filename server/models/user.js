@@ -9,10 +9,18 @@ const userSchema = new Schema({
     lowercase: true,
     required: true
   },
+  username: {
+    type: String,
+    unique: true,
+    lowercase: true,
+    required: true
+  },
   password: {
     type: String,
     required: true
-  }
+  },
+  birthday: String,
+  games: Array
 });
 
 userSchema.pre('save', function(next) {
