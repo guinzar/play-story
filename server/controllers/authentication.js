@@ -34,7 +34,7 @@ exports.signUp = (req, res, next) => {
       username: username,
       password: password,
       birthday: birthday,
-      games: []
+      stories: []
     });
     user.save(err => {
       if (err) return next(err);

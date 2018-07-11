@@ -1,7 +1,49 @@
 const mongoose = require('mongoose');
+// mongoose.connect('mongodb://localhost:27017/playstory');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
-
+const playData = new Schema({
+  year: {
+    type: Number,
+    min: 1900,
+    required: true
+  },
+  amount: {
+    type: Number,
+    required: true
+  }
+});
+const gameInfoSchema = new Schema({
+  platform: {
+    type: Number,
+    required: true
+  },
+  enjoyment: {
+    type: Number,
+    min: 0,
+    max: 10
+  },
+  comment: String,
+  playData: [playData]
+});
+const storySchema = new Schema({
+  type: { // game, story, 
+    type: Number,
+    required: true
+  },
+  date: {
+    type: Date,
+    default: Date.now
+  },
+  gameId: {
+    type: Number,
+    required: true,
+  },
+  gameInfo: gameInfoSchema,
+  storyInfo: {
+    comment: String,
+  }
+});
 const userSchema = new Schema({
   email: {
     type: String,
@@ -20,7 +62,7 @@ const userSchema = new Schema({
     required: true
   },
   birthday: String,
-  games: Array
+  stories: [storySchema]
 });
 
 userSchema.pre('save', function(next) {
@@ -42,5 +84,29 @@ userSchema.methods.comparePassword = function(candidatePassword, callback) {
 };
 
 const ModelClass = mongoose.model('user', userSchema);
-
+// const user = new ModelClass({
+//   email: 'asdf@asdf.com',
+//   username: 'asdf',
+//   password: 'asdf',
+//   birthday: '',
+//   stories: [
+//     {
+//       type: 0,
+//       gameId: 14,
+//       gameInfo: {
+//         platform: 1,
+//         enjoyment: 10,
+//         comment: 'asdf',
+//         playData: [{
+//           year: 1900,
+//           amount: 0
+//         }]
+//       }
+//     }
+//   ]
+// });
+// user.save(err => {
+//   if (err) console.log(err);
+// });
+// console.log('done');
 module.exports = ModelClass;
