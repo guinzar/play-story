@@ -12,8 +12,10 @@ import createSagaMiddleware from "redux-saga";
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import addGameReducer from "./store/reducers/addGame";
-import signUpReducer from "./store/reducers/signUp";
+import authReducer from './store/reducers/auth';
+import logInReducer from './store/reducers/logIn';
+import signUpReducer from './store/reducers/signUp';
+import addGameReducer from './store/reducers/addGame';
 import { watchSearchGames } from "./store/sagas";
 
 const composeEnhancers =
@@ -21,8 +23,10 @@ const composeEnhancers =
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     : null || compose;
 const rootReducer = combineReducers({
+  auth: authReducer,
+  logIn: logInReducer,
+  signUp: signUpReducer,
   addGame: addGameReducer,
-  signUp: signUpReducer
 });
 
 const sagaMiddleware = createSagaMiddleware();

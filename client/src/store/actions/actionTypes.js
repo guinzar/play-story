@@ -15,10 +15,22 @@ export const REMOVE_PLAYED_YEAR = 'REMOVE_PLAYED_YEAR';
 export const CHANGE_PLAYED_YEAR_YEAR = 'CHANGE_PLAYED_YEAR_YEAR';
 export const CHANGE_PLAYED_YEAR_AMOUNT = 'CHANGE_PLAYED_YEAR_AMOUNT';
 
-// Form general actions
-export const CHANGE_INPUT = 'CHANGE_INPUT';
-export const DESELECT_INPUT = 'DESELECT_INPUT';
+// Auth actions
+export const AUTH_SUCCESS = 'AUTH_SUCCESS';
+export const LOGOUT = 'LOGOUT';
 
-// SignUp actions
-export const SUBMIT_SIGNUP = 'SUBMIT_SIGNUP';
-export const SUBMIT_SIGNUP_FAILED = 'SUBMIT_SIGNUP_FAILED';
+// Log In actions
+export const LOGIN_CHANGE_INPUT = 'LOGIN_CHANGE_INPUT';
+export const LOGIN_DESELECT_INPUT = 'LOGIN_DESELECT_INPUT';
+export const LOGIN_SUBMIT = 'LOGIN_SUBMIT';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAILED = 'LOGIN_FAILED';
+
+// Sign Up actions
+export const SIGNUP_CHANGE_INPUT = 'SIGNUP_CHANGE_INPUT';
+export const SIGNUP_DESELECT_INPUT = 'SIGNUP_DESELECT_INPUT';
+export const SIGNUP_SUBMIT = 'SIGNUP_SUBMIT';
+export const SIGNUP_FAILED = 'SIGNUP_FAILED';
+
+// Home actions
+export const GET_HOME_PAGE = 'GET_HOME_PAGE';

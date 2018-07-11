@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
-class Home extends Component {
+class UserPage extends Component {
   componentDidMount() {
     // console.log(this.props.token);
     // if (this.props.token) {
@@ -24,7 +24,7 @@ class Home extends Component {
     return (
       <React.Fragment>
         <div className="row">
-          Home
+          UserPage
         </div>
       </React.Fragment>
     );
@@ -47,4 +47,4 @@ const mapDispatchToProps = dispatch => {
 //   selectedGame: PropTypes.object
 // };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(UserPage);

@@ -1,19 +1,16 @@
 import { put } from 'redux-saga/effects';
 
 import axios from 'axios';
-import { logInSuccess } from "../actions/logIn";
-import { signUpFailed } from "../actions/signUp";
+import { logInSuccess, logInFailed } from "../actions/logIn";
 
 export default function* (action) {
   try {
     console.log('submitting form: ', action.formValid);
     if (action.formValid) {
-      const response = yield axios.post("http://localhost:3090/signup",
+      const response = yield axios.post("http://localhost:3090/login",
         {
-          'email': action.fields.email,
           'username': action.fields.username,
           'password': action.fields.password,
-          'birthday': action.fields.birthday,
         }
       );
       console.log(response.data);
@@ -23,10 +20,6 @@ export default function* (action) {
       
     }
   } catch (error) {
-    if (error.response.data.field) {
-      yield put(signUpFailed(error.response.data.field, error.response.data.error));
-    } else {
-      // yield put(signUpFailed());
-    }
+    yield put(logInFailed());
   }
 };

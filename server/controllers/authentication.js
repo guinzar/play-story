@@ -8,7 +8,7 @@ const tokenForUser = user => {
 const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const alphaNumericRegex = /^[0-9a-zA-Z]{2,}$/;
 const dateRegex = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/;
-exports.signin = (req, res, next) => {
+exports.login = (req, res, next) => {
   res.send({ token: tokenForUser(req.user) });
 };
 
@@ -25,7 +25,10 @@ exports.signUp = (req, res, next) => {
   
   User.findOne({ username: username }, (err, existingUser) => {
     if (err) return next(err);
-    if (existingUser) return res.status(422).send({ error: 'Username is in use', errorCode: 1 });
+    if (existingUser) {
+      console.log('existing user');
+      return res.status(422).send({ error: 'Username is taken', field: 'username' });
+    }
     const user = new User({
       email: email,
       username: username,

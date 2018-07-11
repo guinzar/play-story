@@ -3,7 +3,7 @@ import AddGame from '../../components/AddGame/AddGame';
 
 const ADD_GAME_MODAL = 'addGameModal';
 
-class MyGames extends Component {
+class Games extends Component {
   render() {
     return (
       <React.Fragment>
@@ -25,4 +25,4 @@ class MyGames extends Component {
   }
 }
 
-export default MyGames;
+export default Games;

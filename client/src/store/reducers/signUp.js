@@ -93,14 +93,14 @@ const changeInput = ( state, action ) => {
     ...state,
     fields: newFields,
     formValid: newFields.every(field => field.required ? field.valid : true)
-  }
+  };
 };
 const deselectInput = ( state, action ) => {
   return {
     ...state,
     fields: state.fields.map((field, i) => i === action.fieldIndex ?
       { ...state.fields[i], touched: true } : field)
-  }
+  };
 };
 const submitSignUp = ( state, action ) => {
   return {
@@ -113,11 +113,24 @@ const submitSignUp = ( state, action ) => {
     })
   }
 };
+const signUpFailed = ( state, action ) => {
+  return {
+    ...state,
+    fields: state.fields.map((field, i) => field.id === action.field ?
+      {
+        ...field,
+        valid: false,
+        validityMsg: action.error
+      } : field
+    )
+  }
+};
 const reducer = ( state = initialState, action ) => {
   switch ( action.type ) {
-    case actionTypes.CHANGE_INPUT: return changeInput( state, action );
-    case actionTypes.DESELECT_INPUT: return deselectInput( state, action );
-    case actionTypes.SUBMIT_SIGNUP: return submitSignUp( state, action );
+    case actionTypes.SIGNUP_CHANGE_INPUT: return changeInput( state, action );
+    case actionTypes.SIGNUP_DESELECT_INPUT: return deselectInput( state, action );
+    case actionTypes.SIGNUP_SUBMIT: return submitSignUp( state, action );
+    case actionTypes.SIGNUP_FAILED: return signUpFailed( state, action );
     default: return state;
   }
 };

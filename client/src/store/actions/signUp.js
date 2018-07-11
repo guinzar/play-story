@@ -1,28 +1,30 @@
 import * as actionTypes from "./actionTypes";
 
-export const changeInput = ( fieldIndex, input ) => {
+export const signUpChangeInput = ( fieldIndex, input ) => {
   return {
-    type: actionTypes.CHANGE_INPUT,
+    type: actionTypes.SIGNUP_CHANGE_INPUT,
     fieldIndex: fieldIndex,
     input: input
   };
 };
-export const deselectInput = ( fieldIndex, input ) => {
+export const signUpDeselectInput = ( fieldIndex, input ) => {
   return {
-    type: actionTypes.DESELECT_INPUT,
+    type: actionTypes.SIGNUP_DESELECT_INPUT,
     fieldIndex: fieldIndex,
     input: input
   };
 };
-export const submitSignup = ( fields, formValid) => {
+export const signUpSubmit = ( fields, formValid ) => {
   return {
-    type: actionTypes.SUBMIT_SIGNUP,
+    type: actionTypes.SIGNUP_SUBMIT,
     fields: fields,
     formValid: formValid
   };
 };
-export const submitSignupFailed = () => {
+export const signUpFailed = ( field, error ) => {
   return {
-    type: actionTypes.SUBMIT_SIGNUP_FAILED
+    type: actionTypes.SIGNUP_FAILED,
+    field: field,
+    error: error
   };
 };

@@ -8,17 +8,21 @@ import Navbar from './components/Navbar/Navbar';
 import Home from './containers/Home/Home';
 import SignUp from './containers/SignUp/SignUp';
 import LogIn from './containers/LogIn/LogIn';
-import MyGames from './containers/MyGames/MyGames';
+import UserPage from './containers/UserPage/UserPage';
+import Games from './containers/MyGames/MyGames';
+import Timeline from './containers/Timeline/Timeline';
 
 class App extends Component {
   render() {
     const routes = (
       <Switch>
-        {/* <Route path="/login" component={LogIn} /> */}
-        <Route path="/signup" component={SignUp} />
-        <Route path="/mygames" component={MyGames} />
+        <Route path="/login" exact component={LogIn} />
+        <Route path="/signup" exact component={SignUp} />
         <Route path="/" exact component={Home} />
-        <Redirect to="/" />
+        <Route path="/*/games" component={Games} />
+        <Route path="/*/timeline" component={Timeline} />
+        <Route path="/" component={UserPage} />
+        {/* <Redirect to="/" /> */}
       </Switch>
     );
     return (
