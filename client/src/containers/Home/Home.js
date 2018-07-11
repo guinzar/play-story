@@ -1,30 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { Redirect } from 'react-router-dom';
-// import * as actions from '../../store/actions/signUp';
+import * as actions from '../../store/actions/auth';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 
 class Home extends Component {
   componentDidMount() {
-    // console.log(this.props.token);
-    // if (this.props.token) {
-    //   axios.get('http://localhost:3090/home', {
-    //     headers: {
-    //       authorization: this.props.token
-    //     }
-    //   }).then(res => {
-    //     console.log(res.data);
-    //   }).catch(err => {
-    //     console.log(err);
-    //   });
-    // }
+    this.props.getHome(this.props.token, 'home');
   }
   render() {
     return (
       <React.Fragment>
         <div className="row">
-          Home
+          <h1>Home</h1>
+          {this.props.stories.map((story, i) => <div key={i}>{story}</div>)}
         </div>
       </React.Fragment>
     );
@@ -32,13 +20,14 @@ class Home extends Component {
 }
 const mapStateToProps = state => {
   return {
-    token: state.auth.token
+    token: state.auth.token,
+    stories: state.home.stories
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    
+    getHome: (token, page) => dispatch(actions.getUserContent(token, page))
   };
 };
 

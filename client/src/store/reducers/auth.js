@@ -1,8 +1,8 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-  username: null,
-  token: localStorage.getItem('token')
+  token: localStorage.getItem('token'),
+  username: null
 };
 const tokenAuthSuccess = ( state, action ) => {
   return {
@@ -21,12 +21,13 @@ const logOut = ( state, action ) => {
   localStorage.removeItem('token');
   return {
     ...state,
-    token: null
+    token: null,
+    username: null
   }
 };
 const reducer = ( state = initialState, action ) => {
   switch ( action.type ) {
-    case actionTypes.AUTH_SUCCESS: return tokenAuthSuccess( state, action );
+    case actionTypes.TOKEN_AUTH_SUCCESS: return tokenAuthSuccess( state, action );
     case actionTypes.LOGIN_SUCCESS: return logInSuccess( state, action );
     case actionTypes.LOGOUT: return logOut( state, action );
     default: return state;

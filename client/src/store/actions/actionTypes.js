@@ -16,7 +16,7 @@ export const CHANGE_PLAYED_YEAR_YEAR = 'CHANGE_PLAYED_YEAR_YEAR';
 export const CHANGE_PLAYED_YEAR_AMOUNT = 'CHANGE_PLAYED_YEAR_AMOUNT';
 
 // Auth actions
-export const AUTH_SUCCESS = 'AUTH_SUCCESS';
+export const TOKEN_AUTH_SUCCESS = 'AUTH_SUCCESS';
 export const LOGOUT = 'LOGOUT';
 
 // Log In actions
@@ -32,5 +32,8 @@ export const SIGNUP_DESELECT_INPUT = 'SIGNUP_DESELECT_INPUT';
 export const SIGNUP_SUBMIT = 'SIGNUP_SUBMIT';
 export const SIGNUP_FAILED = 'SIGNUP_FAILED';
 
+// General user content
+export const GET_USER_CONTENT = 'GET_USER_CONTENT';
+
 // Home actions
-export const GET_HOME_PAGE = 'GET_HOME_PAGE';
+export const SHOW_HOME_STORIES = 'SHOW_HOME_STORIES';
