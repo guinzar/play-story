@@ -4,33 +4,37 @@ import { NavLink, Redirect } from 'react-router-dom';
 import * as actions from '../../store/actions/auth';
 import PropTypes from 'prop-types';
 
-const navbar = ({ token, logOut }) => {
+const navbar = ({ username, leavePage, logOut }) => {
   // console.log(props.location.pathname);
-  const loggedInItems = (
+  const navItems = username ? (
     <React.Fragment>
       <li className="nav-item">
         <NavLink
+          onClick={leavePage}
           className = "nav-link"
-          to="/me"
+          to={`/${username}`}
           exact
           activeClassName="active">My Stories</NavLink>
       </li>
       <li className="nav-item">
-        <NavLink 
+        <NavLink
+          onClick={leavePage}
           className = "nav-link"
-          to="/mygames"
+          to={`/${username}/games`}
           exact
           activeClassName="active">My Games</NavLink>
       </li>
       <li className="nav-item">
-        <NavLink 
+        <NavLink
+          onClick={leavePage}
           className = "nav-link"
-          to="/timeline"
+          to={`/${username}/timeline`}
           exact
           activeClassName="active">My Timeline</NavLink>
       </li>
       <li className="nav-item">
-        <NavLink 
+        <NavLink
+          onClick={leavePage}
           onClick={() => logOut()}
           className = "nav-link"
           to="/logout"
@@ -38,18 +42,19 @@ const navbar = ({ token, logOut }) => {
           activeClassName="active">Log Out</NavLink>
       </li>
     </React.Fragment>
-  );
-  const loggedOutItems = (
+  ) : (
     <React.Fragment>
       <li className="nav-item">
-        <NavLink 
+        <NavLink
+          onClick={leavePage}
           className = "nav-link"
           to="/login"
           exact
           activeClassName="active">Log In</NavLink>
       </li>
       <li className="nav-item">
-        <NavLink 
+        <NavLink
+          onClick={leavePage}
           className = "nav-link"
           to="/signup"
           exact
@@ -59,7 +64,8 @@ const navbar = ({ token, logOut }) => {
   );
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-      <NavLink 
+      <NavLink
+        onClick={leavePage}
         className="navbar-brand"
         to="/">PlayStory</NavLink>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,7 +80,7 @@ const navbar = ({ token, logOut }) => {
               exact
               activeClassName="active">Home</NavLink>
           </li>
-          {token ? loggedInItems : loggedOutItems}
+          {navItems}
         </ul>
       </div>
     </nav>
@@ -82,12 +88,13 @@ const navbar = ({ token, logOut }) => {
 };
 const mapStateToProps = state => {
   return {
-    token: state.auth.token,
+    username: state.auth.username,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
+    leavePage: () => dispatch(actions.leavePage()),
     logOut: () => dispatch(actions.logOut())
   };
 };

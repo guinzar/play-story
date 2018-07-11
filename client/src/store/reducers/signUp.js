@@ -125,12 +125,16 @@ const signUpFailed = ( state, action ) => {
     )
   }
 };
+const resetForm = ( state, action ) => {
+  return initialState;
+};
 const reducer = ( state = initialState, action ) => {
   switch ( action.type ) {
     case actionTypes.SIGNUP_CHANGE_INPUT: return changeInput( state, action );
     case actionTypes.SIGNUP_DESELECT_INPUT: return deselectInput( state, action );
     case actionTypes.SIGNUP_SUBMIT: return submitSignUp( state, action );
     case actionTypes.SIGNUP_FAILED: return signUpFailed( state, action );
+    case actionTypes.LEAVE_PAGE: return resetForm( state, action );
     default: return state;
   }
 };

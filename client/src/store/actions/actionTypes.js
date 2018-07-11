@@ -17,6 +17,7 @@ export const CHANGE_PLAYED_YEAR_AMOUNT = 'CHANGE_PLAYED_YEAR_AMOUNT';
 
 // Auth actions
 export const TOKEN_AUTH_SUCCESS = 'AUTH_SUCCESS';
+export const LEAVE_PAGE = 'LEAVE_PAGE';
 export const LOGOUT = 'LOGOUT';
 
 // Log In actions

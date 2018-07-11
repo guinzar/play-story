@@ -11,7 +11,6 @@ const tokenAuthSuccess = ( state, action ) => {
   };
 };
 const logInSuccess = ( state, action ) => {
-  console.log('login success');
   return {
     ...state,
     token: action.token,

@@ -9,7 +9,7 @@ import Home from './containers/Home/Home';
 import SignUp from './containers/SignUp/SignUp';
 import LogIn from './containers/LogIn/LogIn';
 import UserPage from './containers/UserPage/UserPage';
-import Games from './containers/MyGames/MyGames';
+import Games from './containers/Games/Games';
 import Timeline from './containers/Timeline/Timeline';
 
 class App extends Component {
@@ -17,12 +17,13 @@ class App extends Component {
     const routes = (
       <Switch>
         <Route path="/login" exact component={LogIn} />
+        <Redirect from="/logout" to="/" />
         <Route path="/signup" exact component={SignUp} />
         <Route path="/" exact component={Home} />
-        <Route path="/*/games" component={Games} />
-        <Route path="/*/timeline" component={Timeline} />
-        <Route path="/" component={UserPage} />
-        {/* <Redirect to="/" /> */}
+        <Route path="/:user/games" exact component={Games} />
+        <Route path="/:user/timeline" exact component={Timeline} />
+        <Route path="/:user" exact component={UserPage} />
+        <Redirect to="/" />
       </Switch>
     );
     return (

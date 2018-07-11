@@ -9,7 +9,7 @@ class Games extends Component {
       <React.Fragment>
         <div className="row">
           <div className="col-8 ">
-            User's Timeline
+            Games
           </div>
           <div className="col-4 text-right">
             <button data-toggle="modal" data-target={`#${ADD_GAME_MODAL}`} className="btn btn-primary" type="button">

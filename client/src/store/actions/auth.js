@@ -6,6 +6,11 @@ export const tokenAuthSuccess = (username) => {
     username: username
   };
 };
+export const leavePage = () => {
+  return {
+    type: actionTypes.LEAVE_PAGE,
+  };
+};
 export const logOut = () => {
   return {
     type: actionTypes.LOGOUT,
