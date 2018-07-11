@@ -35,6 +35,10 @@ export const SIGNUP_FAILED = 'SIGNUP_FAILED';
 
 // General user content
 export const GET_USER_CONTENT = 'GET_USER_CONTENT';
+export const SET_USER = 'SET_USER';
 
 // Home actions
 export const SHOW_HOME_STORIES = 'SHOW_HOME_STORIES';
+
+// User actions
+export const SHOW_USER_STORIES = 'SHOW_USER_STORIES';

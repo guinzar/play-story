@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 class Home extends Component {
   componentDidMount() {
-    this.props.getHome(this.props.token, 'home');
+    this.props.getHome(this.props.token);
   }
   render() {
     return (
@@ -27,7 +27,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getHome: (token, page) => dispatch(actions.getUserContent(token, page))
+    getHome: (token) => dispatch(actions.getUserContent(token, 'home'))
   };
 };
 

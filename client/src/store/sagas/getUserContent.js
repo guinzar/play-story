@@ -3,11 +3,12 @@ import { put } from 'redux-saga/effects';
 import axios from 'axios';
 import { tokenAuthSuccess, logOut } from "../actions/auth";
 import { showHomeStories } from "../actions/home";
+import { showUserStories } from "../actions/user";
 
 export default function* (action) {
   try {
     console.log('getting page content: ', action.page);
-    const response = yield axios.get("http://localhost:3090/home", {
+    const response = yield axios.get(`http://localhost:3090/${action.page}`, {
       headers: {
         'authorization': action.token
       }
@@ -17,9 +18,20 @@ export default function* (action) {
     if (username) {
       yield put(tokenAuthSuccess(username));
     } else if (action.token) {
-      yield put(logOut);
+      yield put(logOut());
     }
-    yield put(showHomeStories(response.data.stories));
+    switch (action.page) {
+      case 'home':
+        yield put(showHomeStories(response.data.stories));
+        break;
+      case 'user':
+      yield put(showUserStories(response.data.stories));
+        break;
+      case 'games':
+        break;
+      case 'timeline':
+        break;
+    }
   } catch (error) {
     // yield put(logInFailed());
   }

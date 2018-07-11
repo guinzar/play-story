@@ -1,4 +1,5 @@
 const Authentication = require('./controllers/authentication');
+const Page = require('./controllers/page');
 const passportService = require('./services/passport');
 const passport = require('passport');
 
@@ -11,16 +12,10 @@ const requireAuth = (req, res, next) => {
 const requireLogin = passport.authenticate('local', { session: false });
 
 module.exports = app => {
-  app.get('/home', requireAuth, (req, res) => {
-    console.log(req.user);
-    const stories = [
-      'story1', 'story2', 'story3'
-    ];
-    res.json({
-      username: req.user ? req.user.username : null,
-      stories: stories
-    });
-  });
+  app.get('/home', requireAuth, Page.getHome);
+  app.get('/user/:user', requireAuth, Page.getUser);
+  // app.get('/user/:user/games', requireAuth, Page.getGames);
+  // app.get('/user/:user/timeline', requireAuth, Page.getTimeline);
   app.post('/login', requireLogin, Authentication.login);
   app.post('/signup', Authentication.signUp);
 };

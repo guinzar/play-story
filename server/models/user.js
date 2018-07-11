@@ -14,6 +14,9 @@ const playData = new Schema({
   }
 });
 const gameInfoSchema = new Schema({
+  thumbnail: {
+    type: String,
+  },
   platform: {
     type: Number,
     required: true

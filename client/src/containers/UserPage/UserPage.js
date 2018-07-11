@@ -1,44 +1,41 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { Redirect } from 'react-router-dom';
-// import * as actions from '../../store/actions/signUp';
+import { withRouter } from 'react-router-dom';
+import { getUserContent } from '../../store/actions/auth';
+import { setUser } from '../../store/actions/user';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 
 class UserPage extends Component {
+  constructor(props) {
+    super(props);
+    this.props.setUser(this.props.location.pathname.substr(1));
+  }
   componentDidMount() {
-    // console.log(this.props.token);
-    // if (this.props.token) {
-    //   axios.get('http://localhost:3090/home', {
-    //     headers: {
-    //       authorization: this.props.token
-    //     }
-    //   }).then(res => {
-    //     console.log(res.data);
-    //   }).catch(err => {
-    //     console.log(err);
-    //   });
-    // }
+    // console.log(this.props.user);
+    this.props.getUserPage(this.props.token, `user/${this.props.location.pathname.substr(1)}`);
   }
   render() {
+    console.log(this.props.user)
     return (
-      <React.Fragment>
-        <div className="row">
-          UserPage
-        </div>
-      </React.Fragment>
+      <div className="row">
+        <h1>{this.props.user}</h1>
+        {this.props.stories.map((story, i) => <div key={i}>{story}</div>)}
+      </div>
     );
   }
 }
 const mapStateToProps = state => {
   return {
-    token: state.auth.token
+    token: state.auth.token,
+    user: state.user.user,
+    stories: state.user.stories
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    
+    setUser: (user) => dispatch(setUser(user)),
+    getUserPage: (token, page) => dispatch(getUserContent(token, page))
   };
 };
 
@@ -47,4 +44,4 @@ const mapDispatchToProps = dispatch => {
 //   selectedGame: PropTypes.object
 // };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserPage);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UserPage));
