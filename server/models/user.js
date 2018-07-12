@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-// mongoose.connect('mongodb://localhost:27017/playstory');
+
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
 const playData = new Schema({
@@ -13,8 +13,12 @@ const playData = new Schema({
     required: true
   }
 });
-const gameInfoSchema = new Schema({
-  thumbnail: {
+const gameSchema = new Schema({
+  gameId: {
+    type: Number,
+    required: true,
+  },
+  thumb: {
     type: String,
   },
   platform: {
@@ -38,11 +42,7 @@ const storySchema = new Schema({
     type: Date,
     default: Date.now
   },
-  gameId: {
-    type: Number,
-    required: true,
-  },
-  gameInfo: gameInfoSchema,
+  gameInfo: gameSchema,
   storyInfo: {
     comment: String,
   }
@@ -65,6 +65,7 @@ const userSchema = new Schema({
     required: true
   },
   birthday: String,
+  games: [gameSchema],
   stories: [storySchema]
 });
 

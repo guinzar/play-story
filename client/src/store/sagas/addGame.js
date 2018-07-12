@@ -30,7 +30,15 @@ export function* searchGamesSaga(action) {
 };
 export function* submitGameSaga(action) {
   try {
-    console.log('submit');
+    const response = yield axios.post(`http://localhost:3090/user/${action.username}`,
+      action.gameData,
+      {
+        headers: {
+          'authorization': action.token
+        }
+      }
+    );
+    console.log(response.data);
   } catch (error) {
     yield put(actions.updateSearchResultsFailed());
   }

@@ -4,10 +4,10 @@ import * as actions from '../../../../store/actions/addGame';
 import PropTypes from 'prop-types';
 import PlayedYear from './PlayedYear/PlayedYear';
 
-const playedYears = ({ yearsNotPlayed, playedData, onAddPlayedYear }) => {
+const playedYears = ({ yearsNotPlayed, playData, onAddPlayedYear }) => {
   const content = (
     <React.Fragment>
-      {playedData.map((yearData, i) => <PlayedYear key={yearData.year} index={i} yearData={yearData} />)}
+      {playData.map((yearData, i) => <PlayedYear key={yearData.year} index={i} yearData={yearData} />)}
       {yearsNotPlayed.length ?
         <button onClick={() => onAddPlayedYear()} type="button" className="btn btn-primary btn-sm btn-block">+ Year</button>
       : null}
@@ -19,7 +19,7 @@ const playedYears = ({ yearsNotPlayed, playedData, onAddPlayedYear }) => {
 const mapStateToProps = state => {
   return {
     yearsNotPlayed: state.addGame.yearsNotPlayed,
-    playedData: state.addGame.playedData
+    playData: state.addGame.playData
   };
 };
 const mapDispatchToProps = dispatch => {
@@ -30,7 +30,7 @@ const mapDispatchToProps = dispatch => {
 
 playedYears.propTypes = {
   yearsNotPlayed: PropTypes.array.isRequired,
-  playedData: PropTypes.array.isRequired,
+  playData: PropTypes.array.isRequired,
   onAddPlayedYear: PropTypes.func.isRequired
 };
 

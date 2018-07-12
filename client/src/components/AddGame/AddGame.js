@@ -7,7 +7,7 @@ import GameSelect from './GameSelect/GameSelect';
 import DetailsForm from './DetailsForm/DetailsForm';
 import { bindActionCreators } from '../../../node_modules/redux';
 
-const addGame = ({ modalId, addGameForm, submit }) => {
+const addGame = ({ modalId, token, username, addGameForm, submit }) => {
   return (
     <div className="modal fade" id={modalId} tabIndex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
       <div className="modal-dialog" role="document">
@@ -26,11 +26,14 @@ const addGame = ({ modalId, addGameForm, submit }) => {
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button onClick={() => submit({
+            <button onClick={() => submit(token, username, {
               gameId: addGameForm.selectedGame.id,
               name: addGameForm.selectedGame.name,
-              thumb: addGameForm.selectedGame.cover ? addGameForm.selectedGame.cover.url : null,
-              
+              thumb: addGameForm.thumb,
+              platform: addGameForm.platform,
+              enjoyment: addGameForm.enjoyment,
+              comment: addGameForm.comment,
+              playData: addGameForm.playData
             })} type="button" className="btn btn-primary" disabled={addGameForm.selectedGame === null}>Save</button>
           </div>
         </div>
@@ -48,13 +51,15 @@ const addGame = ({ modalId, addGameForm, submit }) => {
 //   playedData: []
 const mapStateToProps = state => {
   return {
+    token: state.auth.token,
+    username: state.auth.username,
     addGameForm: state.addGame
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    submit: (gameData) => dispatch(actions.addGameSubmit(gameData))
+    submit: (token, username, gameData) => dispatch(actions.addGameSubmit(token, username, gameData))
   };
 };
 

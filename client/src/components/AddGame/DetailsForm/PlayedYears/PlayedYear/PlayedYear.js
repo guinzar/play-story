@@ -25,8 +25,8 @@ const playedYear = ({ index, yearData, yearsNotPlayed, onRemovePlayedYear, onCha
         Amount:
       </div>
       <div>
-        <select value={yearData.playTime} onChange={(e) => onChangePlayedYearAmount(index, +e.target.value)} className="form-control mt-1" id="asdf">
-          {playTimeStrings.map((playTime, i) => <option key={i} value={i}>{playTime}</option>)}
+        <select value={yearData.amount} onChange={(e) => onChangePlayedYearAmount(index, +e.target.value)} className="form-control mt-1" id="asdf">
+          {playTimeStrings.map((amount, i) => <option key={i} value={i}>{amount}</option>)}
         </select>
       </div>
       <div>

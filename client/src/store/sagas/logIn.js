@@ -5,7 +5,6 @@ import { logInSuccess, logInFailed } from "../actions/logIn";
 
 export default function* (action) {
   try {
-    console.log('submitting form: ', action.formValid);
     if (action.formValid) {
       const response = yield axios.post("http://localhost:3090/login",
         {
@@ -13,7 +12,6 @@ export default function* (action) {
           'password': action.fields.password,
         }
       );
-      console.log(response.data);
       localStorage.setItem('token', response.data.token);
       yield put(logInSuccess(response.data.token));
     } else {

@@ -6,11 +6,12 @@ const initialState = {
   selectedGame: null,
   searchInput: '',
   searchResults: fakeResults,
+  thumb: null,
   platform: null,
   enjoyment: null,
   comment: '',
   yearsNotPlayed: [],
-  playedData: []
+  playData: []
 };
 const changeSearchInput = ( state, action) => {
   return {
@@ -27,11 +28,19 @@ const updateSearchResults = ( state, action ) => {
 const selectGame = ( state, action ) => {
   const releaseYear = new Date(action.game.first_release_date).getYear();
   const yearSpan = new Date().getYear() + 1 - releaseYear;
+  let thumb = null;
+  if (action.game.cover) {
+    // potential error
+    thumb = action.game.cover.url.split('/');
+    thumb = thumb[thumb.length - 1];
+    thumb = thumb.substr(0, thumb.length - 4);
+  }
   return {
     ...initialState,
     selectedGame: action.game,
     searchInput: action.game.name,
     searchResults: [],
+    thumb: thumb,
     platform: action.game.platforms[0],
     yearsNotPlayed: Array(yearSpan).fill(1900 + releaseYear).map((e, i) => e + i)
   };
@@ -66,40 +75,40 @@ const addPlayedYear = ( state, action ) => {
   return {
     ...state,
     yearsNotPlayed: yearsNotPlayedCopy,
-    playedData: [...state.playedData, {
+    playData: [...state.playData, {
       year: mostRecentYearNotPlayed,
-      playTime: 0,
+      amount: 0,
     }].sort((playedYear1, playedYear2) => playedYear2.year - playedYear1.year)
   };
 };
 const removePlayedYear = ( state, action ) => {
   return {
     ...state,
-    yearsNotPlayed: [...state.yearsNotPlayed, state.playedData[action.index].year].sort(),
-    playedData: state.playedData.filter((e, i) => i !== action.index),
+    yearsNotPlayed: [...state.yearsNotPlayed, state.playData[action.index].year].sort(),
+    playData: state.playData.filter((e, i) => i !== action.index),
   };
 };
 const changePlayedYearYear = ( state, action ) => {
-  const oldPlayedYear = state.playedData[action.index];
+  const oldPlayedYear = state.playData[action.index];
   return {
     ...state,
     yearsNotPlayed: [...state.yearsNotPlayed.filter(year => year !== action.year), oldPlayedYear.year].sort(),
-    playedData: [...state.playedData.filter(playedYear => playedYear.year !== oldPlayedYear.year),
+    playData: [...state.playData.filter(playedYear => playedYear.year !== oldPlayedYear.year),
       {
         year: action.year,
-        playTime: oldPlayedYear.playTime
+        amount: oldPlayedYear.amount
       }].sort((playedYear1, playedYear2) => playedYear2.year - playedYear1.year)
   };
 };
 const changePlayedYearAmount = ( state, action ) => {
-  const newPlayedData = [...state.playedData];
+  const newPlayedData = [...state.playData];
   newPlayedData[action.index] = {
-    year: state.playedData[action.index].year,
-    playTime: action.amount
+    year: state.playData[action.index].year,
+    amount: action.amount
   }
   return {
     ...state,
-    playedData: newPlayedData
+    playData: newPlayedData
   };
 };
 const reducer = ( state = initialState, action ) => {
