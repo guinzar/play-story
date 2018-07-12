@@ -4,6 +4,7 @@ import axios from 'axios';
 import { tokenAuthSuccess, logOut } from "../actions/auth";
 import { showHomeStories } from "../actions/home";
 import { showUserStories } from "../actions/user";
+import { showUserGames } from "../actions/games";
 
 export default function* (action) {
   try {
@@ -25,9 +26,10 @@ export default function* (action) {
         yield put(showHomeStories(response.data.stories));
         break;
       case 'user':
-      yield put(showUserStories(response.data.stories));
+        yield put(showUserStories(response.data.stories));
         break;
       case 'games':
+      yield put(showUserGames(response.data.games));
         break;
       case 'timeline':
         break;

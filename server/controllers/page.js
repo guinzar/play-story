@@ -27,3 +27,18 @@ exports.getUser = (req, res) => {
     }
   });
 };
+exports.getGames = (req, res) => {
+  const user = req.params.user;
+  User.findOne({ username: user}, (err, user) => {
+    if (err) return res.end();
+    if (user) {
+      const games = user.toObject().stories.filter(story => story.type === 0);
+      res.json({
+        username: req.user ? req.user.username : null,
+        games: games
+      });
+    } else {
+      res.end();
+    }
+  });
+};

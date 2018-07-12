@@ -17,6 +17,7 @@ import logInReducer from './store/reducers/logIn';
 import signUpReducer from './store/reducers/signUp';
 import homeReducer from './store/reducers/home';
 import userReducer from './store/reducers/user';
+import gamesReducer from './store/reducers/games';
 import addGameReducer from './store/reducers/addGame';
 import { watchSearchGames } from "./store/sagas";
 
@@ -30,6 +31,7 @@ const rootReducer = combineReducers({
   signUp: signUpReducer,
   home: homeReducer,
   user: userReducer,
+  games: gamesReducer,
   addGame: addGameReducer,
 });
 

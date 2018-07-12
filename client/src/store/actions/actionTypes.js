@@ -42,3 +42,6 @@ export const SHOW_HOME_STORIES = 'SHOW_HOME_STORIES';
 
 // User actions
 export const SHOW_USER_STORIES = 'SHOW_USER_STORIES';
+
+// Games actions
+export const SHOW_USER_GAMES = 'SHOW_USER_GAMES';

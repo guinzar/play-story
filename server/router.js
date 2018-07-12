@@ -14,7 +14,7 @@ const requireLogin = passport.authenticate('local', { session: false });
 module.exports = app => {
   app.get('/home', requireAuth, Page.getHome);
   app.get('/user/:user', requireAuth, Page.getUser);
-  // app.get('/user/:user/games', requireAuth, Page.getGames);
+  app.get('/user/:user/games', requireAuth, Page.getGames);
   // app.get('/user/:user/timeline', requireAuth, Page.getTimeline);
   app.post('/login', requireLogin, Authentication.login);
   app.post('/signup', Authentication.signUp);

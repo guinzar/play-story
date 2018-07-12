@@ -12,7 +12,7 @@ class UserPage extends Component {
   }
   componentDidMount() {
     // console.log(this.props.user);
-    this.props.getUserPage(this.props.token, `user/${this.props.location.pathname.substr(1)}`);
+    this.props.getUserPage(this.props.token, `user${this.props.location.pathname}`);
   }
   render() {
     console.log(this.props.user)
