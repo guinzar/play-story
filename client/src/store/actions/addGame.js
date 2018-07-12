@@ -72,3 +72,9 @@ export const changePlayedYearAmount = ( index, amount ) => {
     amount: amount
   };
 };
+export const addGameSubmit = ( gameData ) => {
+  return {
+    type: actionTypes.ADD_GAME_SUBMIT,
+    gameData: gameData
+  };
+};

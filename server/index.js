@@ -11,7 +11,7 @@ mongoose.connect('mongodb://localhost:27017/playstory');
 
 app.use(cors());
 app.use(morgan('combined'));
-// app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 router(app);
 
