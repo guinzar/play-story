@@ -1,7 +1,8 @@
 import { put, call } from 'redux-saga/effects';
 
 import axios from 'axios';
-import * as actions from "../actions/addGame";
+import { updateSearchResults, updateSearchResultsFailed } from "../actions/addGame";
+import { addGameSuccess } from "../actions/games";
 import { IGDB_API_KEY } from '../../config';
 
 const delay = (ms) => new Promise(res => setTimeout(res, ms));
@@ -20,12 +21,12 @@ export function* searchGamesSaga(action) {
           }
         }
       );
-      yield put(actions.updateSearchResults(response.data));
+      yield put(updateSearchResults(response.data));
     } else {
-      yield put(actions.updateSearchResults([]));
+      yield put(updateSearchResults([]));
     }
   } catch (error) {
-    yield put(actions.updateSearchResultsFailed());
+    yield put(updateSearchResultsFailed());
   }
 };
 export function* submitGameSaga(action) {
@@ -38,8 +39,14 @@ export function* submitGameSaga(action) {
         }
       }
     );
-    console.log(response.data);
+    if (response.data.game) {
+      console.log(response.data.game)
+      yield put(addGameSuccess(response.data.game));
+    } else {
+      //fail
+    }
   } catch (error) {
-    yield put(actions.updateSearchResultsFailed());
+
+    // yield put(updateSearchResultsFailed());
   }
 };

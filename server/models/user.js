@@ -14,9 +14,17 @@ const playData = new Schema({
   }
 });
 const gameSchema = new Schema({
-  gameId: {
+  id: {
     type: Number,
-    required: true,
+    required: true
+  },
+  name: {
+    type: String,
+    required: true
+  },
+  release: {
+    type: Date,
+    required: true
   },
   thumb: {
     type: String,
@@ -25,6 +33,7 @@ const gameSchema = new Schema({
     type: Number,
     required: true
   },
+  genres: [Number],
   enjoyment: {
     type: Number,
     min: 0,
@@ -42,7 +51,7 @@ const storySchema = new Schema({
     type: Date,
     default: Date.now
   },
-  gameInfo: gameSchema,
+  game: gameSchema,
   storyInfo: {
     comment: String,
   }
@@ -71,6 +80,7 @@ const userSchema = new Schema({
 
 userSchema.pre('save', function(next) {
   bcrypt.genSalt(10, (err, salt) => {
+    console.log('lolresalt');
     if (err) return next(err);
     bcrypt.hash(this.password, salt, (err, hash) => {
       if (err) return next(err);
@@ -88,29 +98,4 @@ userSchema.methods.comparePassword = function(candidatePassword, callback) {
 };
 
 const ModelClass = mongoose.model('user', userSchema);
-// const user = new ModelClass({
-//   email: 'asdf@asdf.com',
-//   username: 'asdf',
-//   password: 'asdf',
-//   birthday: '',
-//   stories: [
-//     {
-//       type: 0,
-//       gameId: 14,
-//       gameInfo: {
-//         platform: 1,
-//         enjoyment: 10,
-//         comment: 'asdf',
-//         playData: [{
-//           year: 1900,
-//           amount: 0
-//         }]
-//       }
-//     }
-//   ]
-// });
-// user.save(err => {
-//   if (err) console.log(err);
-// });
-// console.log('done');
 module.exports = ModelClass;

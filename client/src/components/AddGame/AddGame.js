@@ -27,10 +27,12 @@ const addGame = ({ modalId, token, username, addGameForm, submit }) => {
           <div className="modal-footer">
             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
             <button onClick={() => submit(token, username, {
-              gameId: addGameForm.selectedGame.id,
+              id: addGameForm.selectedGame.id,
               name: addGameForm.selectedGame.name,
+              release: addGameForm.selectedGame.first_release_date,
               thumb: addGameForm.thumb,
               platform: addGameForm.platform,
+              genres: addGameForm.selectedGame.genres,
               enjoyment: addGameForm.enjoyment,
               comment: addGameForm.comment,
               playData: addGameForm.playData
@@ -41,14 +43,7 @@ const addGame = ({ modalId, token, username, addGameForm, submit }) => {
     </div>
   );
 };
-// selectedGame: null,
-//   searchInput: '',
-//   searchResults: fakeResults,
-//   platform: null,
-//   enjoyment: null,
-//   comment: '',
-//   yearsNotPlayed: [],
-//   playedData: []
+
 const mapStateToProps = state => {
   return {
     token: state.auth.token,

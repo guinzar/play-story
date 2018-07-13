@@ -8,18 +8,19 @@ import PropTypes from 'prop-types';
 class UserPage extends Component {
   constructor(props) {
     super(props);
-    this.props.setUser(this.props.location.pathname.substr(1));
+    // this.props.setUser(this.props.location.pathname.substr(1));
   }
   componentDidMount() {
     // console.log(this.props.user);
-    this.props.getUserPage(this.props.token, `user${this.props.location.pathname}`);
+    const path = this.props.location.pathname.split('/');
+    this.props.getUserPage(this.props.token, path[1], 'user');
   }
   render() {
     console.log(this.props.user)
     return (
       <div className="row">
         <h1>{this.props.user}</h1>
-        {this.props.stories.map((story, i) => <div key={i}>{story}</div>)}
+        {this.props.stories.map((story, i) => <div key={i}></div>)}
       </div>
     );
   }
@@ -35,7 +36,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setUser: (user) => dispatch(setUser(user)),
-    getUserPage: (token, page) => dispatch(getUserContent(token, page))
+    getUserPage: (token, user, page) => dispatch(getUserContent(token, user, page))
   };
 };
 

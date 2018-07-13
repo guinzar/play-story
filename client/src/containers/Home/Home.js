@@ -27,7 +27,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getHome: (token) => dispatch(actions.getUserContent(token, 'home'))
+    getHome: (token) => dispatch(actions.getUserContent(token, null, 'home'))
   };
 };
 

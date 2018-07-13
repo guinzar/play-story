@@ -16,10 +16,11 @@ export const logOut = () => {
     type: actionTypes.LOGOUT,
   };
 };
-export const getUserContent = (token, page) => {
+export const getUserContent = (token, user, page) => {
   return {
     type: actionTypes.GET_USER_CONTENT,
     token: token,
+    user: user,
     page: page
   };
 };

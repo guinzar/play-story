@@ -32,13 +32,15 @@ exports.getGames = (req, res) => {
   User.findOne({ username: user}, (err, user) => {
     if (err) return res.end();
     if (user) {
-      const games = user.toObject().stories.filter(story => story.type === 0);
+      const games = user.games.toObject();
       res.json({
         username: req.user ? req.user.username : null,
         games: games
       });
     } else {
-      res.end();
+      res.json({
+        username: req.user ? req.user.username : null
+      });
     }
   });
 };

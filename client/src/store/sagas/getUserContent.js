@@ -8,8 +8,9 @@ import { showUserGames } from "../actions/games";
 
 export default function* (action) {
   try {
-    console.log('getting page content: ', action.page);
-    const response = yield axios.get(`http://localhost:3090/${action.page}`, {
+    const url = action.page === 'home' ? 'home' : `user/${action.user}${action.page === 'user' ? '' : `/${action.page}`}`;
+    console.log(url);
+    const response = yield axios.get(`http://localhost:3090/${url}`, {
       headers: {
         'authorization': action.token
       }
@@ -29,7 +30,9 @@ export default function* (action) {
         yield put(showUserStories(response.data.stories));
         break;
       case 'games':
-      yield put(showUserGames(response.data.games));
+        if (response.data.games) {
+          yield put(showUserGames(response.data.games));
+        }
         break;
       case 'timeline':
         break;

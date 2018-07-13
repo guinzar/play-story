@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { NavLink, Redirect } from 'react-router-dom';
+import { withRouter, NavLink, Redirect } from 'react-router-dom';
 import * as actions from '../../store/actions/auth';
 import PropTypes from 'prop-types';
 
@@ -104,4 +104,4 @@ const mapDispatchToProps = dispatch => {
 //   selectedGame: PropTypes.object
 // };
 
-export default connect(mapStateToProps, mapDispatchToProps)(navbar);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(navbar));
