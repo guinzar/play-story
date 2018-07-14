@@ -27,6 +27,7 @@ export const SHOW_HOME_STORIES = 'SHOW_HOME_STORIES';
 export const SHOW_USER_STORIES = 'SHOW_USER_STORIES';
 
 // Games actions
+export const SET_USER_AND_SORT = 'SET_USER_AND_SORT';
 export const SHOW_USER_GAMES = 'SHOW_USER_GAMES';
 export const CHANGE_SORT = 'CHANGE_SORT';
 

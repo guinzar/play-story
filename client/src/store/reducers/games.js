@@ -6,7 +6,22 @@ const initialState = {
   sortBy: 'Release',
   sortAscending: false,
 };
-const setUser = ( state, action ) => {
+const sort = (g1, g2, sortBy, sortAscending) => {
+  if (sortAscending) return g2[sortBy.toLowerCase()] < g1[sortBy.toLowerCase()];
+  return g2[sortBy.toLowerCase()] > g1[sortBy.toLowerCase()];
+};
+const setUserAndSort = ( state, action ) => {
+  if (action.sort) {
+    const sort = action.sort.split('_');
+    sort[0] = sort[0].charAt(0).toUpperCase() + sort[0].substr(1);
+    sort[1] = sort[1] === 'asc';
+    return {
+      ...state,
+      user: action.user,
+      sortBy: sort[0],
+      sortAscending: sort[1]
+    };
+  }
   return {
     ...state,
     user: action.user
@@ -15,19 +30,16 @@ const setUser = ( state, action ) => {
 const showGames = ( state, action ) => {
   return {
     ...state,
-    games: action.games
+    games: action.games.sort((g1, g2) => sort(g1, g2, state.sortBy, state.sortAscending))
   };
 };
 const changeSort = ( state, action ) => {
-  const newSortAscending = action.sortBy === state.sortBy ? !state.sortAscending : state.sortAscending;
+  const newSortAscending = action.sortBy === state.sortBy ? !state.sortAscending : false;
   return {
     ...state,
-    games: [...state.games].sort((g1, g2) => {
-      if (newSortAscending) return g2[action.sortBy.toLowerCase()] < g1[action.sortBy.toLowerCase()];
-      return g2[action.sortBy.toLowerCase()] > g1[action.sortBy.toLowerCase()];
-    }),
+    games: [...state.games].sort((g1, g2) => sort(g1, g2, action.sortBy, newSortAscending)),
     sortBy: action.sortBy,
-    sortAscending: action.sortBy === state.sortBy ? !state.sortAscending : state.sortAscending
+    sortAscending: newSortAscending
   };
 };
 const addGame = ( state, action ) => {
@@ -50,7 +62,7 @@ const removeGame = ( state, action ) => {
 };
 const reducer = ( state = initialState, action ) => {
   switch ( action.type ) {
-    case actionTypes.SET_USER: return setUser( state, action );
+    case actionTypes.SET_USER_AND_SORT: return setUserAndSort( state, action );
     case actionTypes.SHOW_USER_GAMES: return showGames( state, action );
     case actionTypes.CHANGE_SORT: return changeSort( state, action );
     case actionTypes.ADD_GAME_SUCCESS: return addGame( state, action );

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
 import { getUserContent } from '../../store/actions/auth';
-import { setUser } from '../../store/actions/user';
-import { changeSort, editGame } from '../../store/actions/games';
+import { setUserAndSort, changeSort, editGame } from '../../store/actions/games';
 import PropTypes from 'prop-types';
 
 import AddGame from '../../components/AddGame/AddGame';
@@ -15,7 +14,14 @@ class Games extends Component {
   constructor(props) {
     super(props);
     const path = this.props.location.pathname.split('/');
-    this.props.setUser(path[1]);
+    const params = this.props.location.search.substr(1).split('&').reduce((acc, param) => {
+      param = param.split('=');
+      if (param[0] && param[1]) {
+        acc[param[0]] = param[1]
+      }
+      return acc;
+    }, {});
+    this.props.setUserAndSort(path[1], params.sort);
   }
   componentDidMount() {
     const path = this.props.location.pathname.split('/');
@@ -30,6 +36,11 @@ class Games extends Component {
     ) : null;
     const headers = [['#', false], ['Name', true], ['Release', true],
       ['Genres', false], ['Enjoyment', true], ['Played', false], ['Stories', false]];
+    //   <th key={i} scope="col"
+    //   onClick={header[1] ? () => this.props.onHeaderClick(header[0]) : null}
+    //   className={`games-header${header[1] ? ' games-header-clickable': ''}`}>
+    //   {header[0]}{this.props.sortBy === header[0] ? this.props.sortAscending ? '▲' : '▼' : ''}
+    // </th>
     return (
       <React.Fragment>
         <AddGame modalId={ADD_GAME_MODAL} />
@@ -47,10 +58,15 @@ class Games extends Component {
               <thead className="thead-light">
                 <tr>
                   {headers.map((header, i) => (
-                    <th key={i} scope="col"
-                      onClick={header[1] ? () => this.props.onHeaderClick(header[0]) : null}
-                      className={`games-header${header[1] ? ' games-header-clickable': ''}`}>
-                      {header[0]}{this.props.sortBy === header[0] ? this.props.sortAscending ? '▲' : '▼' : ''}
+                    <th key={i} scope="col">
+                      {header[1] ? <NavLink
+                        onClick={header[1] ? () => this.props.onHeaderClick(header[0]) : null}
+                        className=""
+                        to={`?sort=${header[0].toLowerCase()}_${this.props.sortBy === header[0] ? this.props.sortAscending ? 'desc' : 'asc' : 'desc'}`}
+                        exact
+                        activeClassName="active">
+                        {header[0]}{this.props.sortBy === header[0] ? this.props.sortAscending ? '▲' : '▼' : ''}
+                      </NavLink> : header[0]}
                     </th>
                   ))}
                 </tr>
@@ -84,7 +100,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setUser: (user) => dispatch(setUser(user)),
+    setUserAndSort: (user, sort) => dispatch(setUserAndSort(user, sort)),
     getUserPage: (token, user, page) => dispatch(getUserContent(token, user, page)),
     onHeaderClick: (header) => dispatch(changeSort(header)),
     onGameClick: (game) => dispatch(editGame(game))
