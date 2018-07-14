@@ -1,6 +1,6 @@
 import { takeEvery, all, takeLatest } from 'redux-saga/effects';
 import * as actionTypes from '../actions/actionTypes';
-import { searchGamesSaga, submitGameSaga } from './addGame';
+import { searchGamesSaga, editGameSaga } from './addGame';
 import logInSaga from './logIn';
 import signUpSaga from './signUp';
 import getUserContentSaga from './getUserContent';
@@ -13,5 +13,5 @@ export function* watchSearchGames() {
   // AddGame
   yield takeLatest(actionTypes.CHANGE_SEARCH_INPUT, searchGamesSaga);
   yield takeEvery(actionTypes.REMOVE_SELECTED_GAME, searchGamesSaga);
-  yield takeLatest(actionTypes.ADD_GAME_SUBMIT, submitGameSaga);
+  yield takeLatest(actionTypes.EDIT_GAME_SUBMIT, editGameSaga);
 };

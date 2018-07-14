@@ -6,6 +6,12 @@ export const showUserGames = (games) => {
     games: games
   };
 };
+export const changeSort = (field) => {
+  return {
+    type: actionTypes.CHANGE_SORT,
+    sortBy: field
+  };
+};
 export const addGameSuccess = (game) => {
   return {
     type: actionTypes.ADD_GAME_SUCCESS,
@@ -23,4 +29,11 @@ export const editGameSuccess = (game) => {
     type: actionTypes.EDIT_GAME_SUCCESS,
     game: game
   }
+};
+export const removeGameSuccess = (game) => {
+  console.log('remove', game);
+  return {
+    type: actionTypes.REMOVE_GAME_SUCCESS,
+    game: game
+  };
 };

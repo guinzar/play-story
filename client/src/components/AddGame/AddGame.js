@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import './AddGame.css'
 import GameSelect from './GameSelect/GameSelect';
 import DetailsForm from './DetailsForm/DetailsForm';
-import { bindActionCreators } from '../../../node_modules/redux';
 
 const addGame = ({ modalId, token, username, addGameForm, submit }) => {
   return (
@@ -13,7 +12,7 @@ const addGame = ({ modalId, token, username, addGameForm, submit }) => {
       <div className="modal-dialog" role="document">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title" id="exampleModalLongTitle">Add Game</h5>
+            <h5 className="modal-title" id="exampleModalLongTitle">Add/Edit Game</h5>
             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -55,7 +54,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    submit: (token, username, gameData) => dispatch(actions.addGameSubmit(token, username, gameData))
+    submit: (token, username, gameData) => dispatch(actions.editGameSubmit(token, username, false, gameData))
   };
 };
 

@@ -7,7 +7,7 @@ import { platformsList, genresList } from '../../../config';
 import PlayedYears from './PlayedYears/PlayedYears';
 
 const enjoymentStrings = [
-  'Hands down the worst gaming experience I\'ve ever had in my life',
+  'This was the worst gaming experience I\'ve ever had in my life',
   'Eating poop would have been preferable to playing this game',
   'Playing this game was excrutiatingly boring or painful',
   'I had a truly awful time playing this game',
@@ -17,7 +17,7 @@ const enjoymentStrings = [
   'The amount of fun I got from this game was decent',
   'This was a pretty fun game.',
   'This game was incredibly awesome',
-  'The most fun I\'ve ever had in my life was while playing this game',
+  'The most fun I\'ve ever had was while playing this game',
   'How much fun did you have playing this game?'
 ];
 const detailsForm = ({ release, platforms, platform, genres, enjoyment, comment, onPlatformChange, onEnjoymentClick, onCommentInputChange }) => {

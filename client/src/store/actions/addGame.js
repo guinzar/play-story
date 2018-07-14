@@ -72,16 +72,23 @@ export const changePlayedYearAmount = ( index, amount ) => {
     amount: amount
   };
 };
-export const addGameSubmit = ( token, username, gameData ) => {
+export const editGameSubmit = ( token, username, remove, gameData ) => {
   return {
-    type: actionTypes.ADD_GAME_SUBMIT,
+    type: actionTypes.EDIT_GAME_SUBMIT,
     token: token,
     username: username,
+    remove: remove,
     gameData: gameData
   };
 };
 export const addGameSuccess = () => {
   return {
     type: actionTypes.ADD_GAME_SUCCESS
+  };
+};
+export const removeGame = (id) => {
+  return {
+    type: actionTypes.REMOVE_GAME,
+    id: id
   };
 };

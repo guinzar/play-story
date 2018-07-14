@@ -8,6 +8,7 @@ const initialState = {
   // selectedGame: null,
   searchInput: '',
   searchResults: fakeResults,
+  isEdit: false,
   id: null,
   name: null,
   release: null,
@@ -142,6 +143,7 @@ const editGame = ( state, action ) => {
     ...action.game,
     searchInput: action.game.name,
     searchResults: [],
+    isEdit: true,
     yearsNotPlayed: yearsNotPlayed
   }
 };
@@ -161,6 +163,7 @@ const reducer = ( state = initialState, action ) => {
     case actionTypes.ADD_GAME_SUCCESS: return resetForm( state, action );
     case actionTypes.EDIT_GAME_SUCCESS: return resetForm( state, action );
     case actionTypes.EDIT_GAME: return editGame( state, action );
+    case actionTypes.REMOVE_GAME_SUCCESS: return resetForm( state, action );
     default: return state;
   }
 };
