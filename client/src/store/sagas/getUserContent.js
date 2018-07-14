@@ -18,6 +18,7 @@ export default function* (action) {
     console.log(response.data);
     const username = response.data.username;
     if (username) {
+      localStorage.setItem('username', username);
       yield put(tokenAuthSuccess(username));
     } else if (action.token) {
       yield put(logOut());

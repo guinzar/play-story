@@ -18,6 +18,7 @@ export default function* (action) {
       );
       console.log(response.data);
       localStorage.setItem('token', response.data.token);
+      localStorage.setItem('username', action.fields.username);
       yield put(logInSuccess(response.data.token));
     } else {
       

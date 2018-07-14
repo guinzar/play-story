@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { getUserContent } from '../../store/actions/auth';
 import { setUser } from '../../store/actions/user';
-import { changeSort } from '../../store/actions/games';
+import { changeSort, editGame } from '../../store/actions/games';
 import PropTypes from 'prop-types';
 
 import AddGame from '../../components/AddGame/AddGame';
@@ -56,7 +56,12 @@ class Games extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.props.games.map((game, i) => <Game key={i} index={i + 1} game={game} />)}
+                {this.props.games.map((game, i) => <Game
+                  key={i}
+                  index={i + 1}
+                  game={game}
+                  onGameClick={this.props.username === this.props.user ? () => this.props.onGameClick(game) : null}
+                />)}
               </tbody>
             </table>
           </div>
@@ -81,7 +86,8 @@ const mapDispatchToProps = dispatch => {
   return {
     setUser: (user) => dispatch(setUser(user)),
     getUserPage: (token, user, page) => dispatch(getUserContent(token, user, page)),
-    onHeaderClick: (header) => dispatch(changeSort(header))
+    onHeaderClick: (header) => dispatch(changeSort(header)),
+    onGameClick: (game) => dispatch(editGame(game))
   };
 };
 

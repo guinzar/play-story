@@ -45,12 +45,10 @@ export function* editGameSaga(action) {
     if (response.data.game) {
       if (action.remove) {
         yield put(removeGameSuccess(response.data.game));
+      } else if (response.data.isEdit) {
+        yield put(editGameSuccess(response.data.game));
       } else {
-        if (response.data.isEdit) {
-          yield put(editGameSuccess(response.data.game));
-        } else {
-          yield put(addGameSuccess(response.data.game));
-        }
+        yield put(addGameSuccess(response.data.game));
       }
     } else {
       //fail

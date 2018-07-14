@@ -1,5 +1,11 @@
 import * as actionTypes from './actionTypes';
 
+export const clickAddGame = () => {
+  console.log('whynot change modal handling to redux')
+  return {
+    type: actionTypes.CLICK_ADD_GAME
+  };
+};
 export const changeSearchInput = ( input ) => {
   return {
     type: actionTypes.CHANGE_SEARCH_INPUT,

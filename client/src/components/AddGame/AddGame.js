@@ -6,14 +6,14 @@ import './AddGame.css'
 import GameSelect from './GameSelect/GameSelect';
 import DetailsForm from './DetailsForm/DetailsForm';
 
-const addGame = ({ modalId, token, username, addGameForm, submit }) => {
+const addGame = ({ modalId, token, username, addGameForm, onAddGameClick, submit }) => {
   return (
     <div className="modal fade" id={modalId} tabIndex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
       <div className="modal-dialog" role="document">
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title" id="exampleModalLongTitle">Add/Edit Game</h5>
-            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+            <button onClick={() => onAddGameClick()} type="button" className="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -54,6 +54,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    onAddGameClick: () => dispatch(actions.clickAddGame()),
     submit: (token, username, gameData) => dispatch(actions.editGameSubmit(token, username, false, gameData))
   };
 };

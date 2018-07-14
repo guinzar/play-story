@@ -48,7 +48,7 @@ exports.postStory = (req, res) => {
         req.user.stories.push(story);
       }
     }
-    req.user.save((err, user) => {
+    req.user.save(err => {
       if (err) {
         console.log(err);
         res.end(err);

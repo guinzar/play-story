@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 const User = require('../models/user');
 const config = require('../config');
 
@@ -36,9 +37,16 @@ exports.signUp = (req, res, next) => {
       birthday: birthday,
       stories: []
     });
-    user.save(err => {
+    bcrypt.genSalt(10, (err, salt) => {
       if (err) return next(err);
-      res.json({ token: tokenForUser(user) });
+      bcrypt.hash(user.password, salt, (err, hash) => {
+        if (err) return next(err);
+        user.password = hash;
+        user.save(err => {
+          if (err) return next(err);
+          res.json({ token: tokenForUser(user) });
+        });
+      });
     });
   });
 };

@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
   token: localStorage.getItem('token'),
-  username: null
+  username: localStorage.getItem('username')
 };
 const tokenAuthSuccess = ( state, action ) => {
   return {
@@ -18,6 +18,7 @@ const logInSuccess = ( state, action ) => {
 };
 const logOut = ( state, action ) => {
   localStorage.removeItem('token');
+  localStorage.removeItem('username');
   return {
     ...state,
     token: null,
