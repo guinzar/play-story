@@ -12,3 +12,15 @@ export const addGameSuccess = (game) => {
     game: game
   }
 };
+export const editGame = ( game ) => {
+  return {
+    type: actionTypes.EDIT_GAME,
+    game: game
+  };
+};
+export const editGameSuccess = (game) => {
+  return {
+    type: actionTypes.EDIT_GAME_SUCCESS,
+    game: game
+  }
+};

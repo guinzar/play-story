@@ -21,22 +21,23 @@ const addGame = ({ modalId, token, username, addGameForm, submit }) => {
           <div className="modal-body">
             <div className="container-fluid px-0">
               <GameSelect />
-              {addGameForm.selectedGame ? <DetailsForm /> : null}
+              {addGameForm.id ? <DetailsForm /> : null}
             </div>
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
             <button onClick={() => submit(token, username, {
-              id: addGameForm.selectedGame.id,
-              name: addGameForm.selectedGame.name,
-              release: addGameForm.selectedGame.first_release_date,
+              id: addGameForm.id,
+              name: addGameForm.name,
+              release: addGameForm.release,
               thumb: addGameForm.thumb,
+              platforms: addGameForm.platforms,
               platform: addGameForm.platform,
-              genres: addGameForm.selectedGame.genres,
+              genres: addGameForm.genres,
               enjoyment: addGameForm.enjoyment,
               comment: addGameForm.comment,
               playData: addGameForm.playData
-            })} type="button" className="btn btn-primary" disabled={addGameForm.selectedGame === null}>Save</button>
+            })} type="button" className="btn btn-primary" disabled={addGameForm.id === null}>Save</button>
           </div>
         </div>
       </div>
@@ -60,7 +61,7 @@ const mapDispatchToProps = dispatch => {
 
 addGame.propTypes = {
   modalId: PropTypes.string.isRequired,
-  selectedGame: PropTypes.object
+  // selectedGame: PropTypes.object
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(addGame);

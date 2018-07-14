@@ -5,16 +5,16 @@ import PropTypes from 'prop-types';
 import './GameSelect.css'
 import SearchDropdown from './SearchDropdown/SearchDropdown';
 
-const gameSelect = ({ searchInput, selectedGame, onSearchInputChange, onSelectedGameClick }) => {
-  const content =  selectedGame ?
+const gameSelect = ({ searchInput, id, name, thumb, onSearchInputChange, onSelectedGameClick }) => {
+  const content =  id ?
     <button onClick={() => onSelectedGameClick(searchInput)} className="btn btn-success btn-block selected-game-btn">
       <div className="media">
-        <img src={selectedGame.cover ? selectedGame.cover.url : 'https://images.igdb.com/igdb/image/upload/t_micro/nocover_qhhlj6.jpg'}
+        <img src={thumb ? `https://images.igdb.com/igdb/image/upload/t_thumb/${thumb}.jpg` : 'https://images.igdb.com/igdb/image/upload/t_micro/nocover_qhhlj6.jpg'}
           className='mr-2 my-auto' 
           alt=''
         />
         <div className="media-body my-auto">
-          <h6 className="my-auto">{selectedGame.name}</h6>
+          <h6 className="my-auto">{name}</h6>
         </div>
       </div>
     </button>
@@ -35,7 +35,9 @@ const gameSelect = ({ searchInput, selectedGame, onSearchInputChange, onSelected
 const mapStateToProps = state => {
   return {
     searchInput: state.addGame.searchInput,
-    selectedGame: state.addGame.selectedGame
+    id: state.addGame.id,
+    name: state.addGame.name,
+    thumb: state.addGame.thumb
   };
 };
 
@@ -48,7 +50,6 @@ const mapDispatchToProps = dispatch => {
 
 gameSelect.propTypes = {
   searchInput: PropTypes.string.isRequired,
-  selectedGame: PropTypes.object, 
   onSearchInputChange: PropTypes.func.isRequired,
   onSelectedGameClick: PropTypes.func.isRequired
 };

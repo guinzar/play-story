@@ -54,19 +54,7 @@ class Games extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.props.games.map((game, i) => <Game
-                  key={i}
-                  index={i}
-                  id={game.id}
-                  name={game.name}
-                  release={game.release}
-                  thumb={game.thumb}
-                  platform={game.platform}
-                  genres={game.genres}
-                  enjoyment={game.enjoyment}
-                  comment={game.comment}
-                  playData={game.playData}
-                />)}
+                {this.props.games.map((game, i) => <Game key={i} index={i} game={game} />)}
               </tbody>
             </table>
           </div>

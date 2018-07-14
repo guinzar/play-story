@@ -1,23 +1,34 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../../store/actions/games';
 import PropTypes from 'prop-types';
 import { platformsList, genresList } from '../../config'
 
-const game = ({ index, id, name, release, thumb, platform, genres, enjoyment, comment, playData }) => {
-  release = (new Date(release)).toDateString().split(' ');
+const game = ({ index, game, onClick }) => {
+  let release = (new Date(game.release)).toDateString().split(' ');
   release = `${release[1]} ${release[3]}`;
-  genres = genres.map(id => genresList[id]).join(', ');
+  const genres = game.genres.map(id => genresList[id]).join(', ');
   return (
-    <tr>
+    <tr onClick={() => onClick(game)}>
       <th scope="row">{index}</th>
-      <td>{name}</td>
+      <td>{game.name}</td>
       <td className="align-middle small">{release}</td>
-      <td className="align-middle small">{platformsList[platform]}</td>
+      <td className="align-middle small">{platformsList[game.platform]}</td>
       <td className="align-middle small">{genres}</td>
-      <td>{enjoyment}</td>
-      <td>{playData.length}</td>
+      <td>{game.enjoyment}</td>
+      <td>{game.playData.length}</td>
       <td>0</td>
     </tr>
   );
 };
+const mapStateToProps = state => {
+  return {
 
-export default game;
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    onClick: (game) => dispatch(actions.editGame(game))
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(game);

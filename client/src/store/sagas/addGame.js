@@ -2,7 +2,7 @@ import { put, call } from 'redux-saga/effects';
 
 import axios from 'axios';
 import { updateSearchResults, updateSearchResultsFailed } from "../actions/addGame";
-import { addGameSuccess } from "../actions/games";
+import { addGameSuccess, editGameSuccess } from "../actions/games";
 import { IGDB_API_KEY } from '../../config';
 
 const delay = (ms) => new Promise(res => setTimeout(res, ms));
@@ -41,7 +41,11 @@ export function* submitGameSaga(action) {
     );
     if (response.data.game) {
       console.log(response.data.game)
-      yield put(addGameSuccess(response.data.game));
+      if (response.data.isEdit) {
+        yield put(editGameSuccess(response.data.game));
+      } else {
+        yield put(addGameSuccess(response.data.game));
+      }
     } else {
       //fail
     }

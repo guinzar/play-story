@@ -20,9 +20,9 @@ const enjoymentStrings = [
   'The most fun I\'ve ever had in my life was while playing this game',
   'How much fun did you have playing this game?'
 ];
-const detailsForm = ({ selectedGame, platform, enjoyment, comment, onPlatformChange, onEnjoymentClick, onCommentInputChange }) => {
-  const genres = selectedGame.genres.map((genreId, i) => genresList[genreId]).join(', ');
-  const releaseDate = new Date(selectedGame.first_release_date).toDateString().substr(4);
+const detailsForm = ({ release, platforms, platform, genres, enjoyment, comment, onPlatformChange, onEnjoymentClick, onCommentInputChange }) => {
+  genres = genres.map((genreId, i) => genresList[genreId]).join(', ');
+  const releaseDate = new Date(release).toDateString().substr(4);
   const enjoymentButtons = [0,1,2,3,4,5,6,7,8,9,10].map(num =>
     <button key={num} type="button" onClick={()=>onEnjoymentClick(num)} className={`btn btn-secondary${num === enjoyment ? ' active' : ''}`}>{num}</button>);
   return (
@@ -37,7 +37,7 @@ const detailsForm = ({ selectedGame, platform, enjoyment, comment, onPlatformCha
         <label htmlFor="formPlatform" className="col-2 col-form-label">Platform:</label>
         <div className="col-5">
           <select value={platform} onChange={(e) => onPlatformChange(+e.target.value)} className="form-control mt-1" id="formPlatform">
-            {selectedGame.platforms.map((platformId, i) => <option key={i} value={platformId}>{platformsList[platformId]}</option>)}
+            {platforms.map((platformId, i) => <option key={i} value={platformId}>{platformsList[platformId]}</option>)}
           </select>
         </div>
       </div>
@@ -78,10 +78,13 @@ const detailsForm = ({ selectedGame, platform, enjoyment, comment, onPlatformCha
 
 const mapStateToProps = state => {
   return {
-    selectedGame: state.addGame.selectedGame,
+    release: state.addGame.release,
+    platforms: state.addGame.platforms,
     platform: state.addGame.platform,
+    genres: state.addGame.genres,
     enjoyment: state.addGame.enjoyment,
-    comment: state.addGame.comment
+    comment: state.addGame.comment,
+    playData: state.addGame.playData
   };
 };
 const mapDispatchToProps = dispatch => {
@@ -93,9 +96,9 @@ const mapDispatchToProps = dispatch => {
 };
 
 detailsForm.propTypes = {
-  selectedGame: PropTypes.object.isRequired,
-  enjoyment: PropTypes.number,
-  comment: PropTypes.string.isRequired,
+  // selectedGame: PropTypes.object.isRequired,
+  // enjoyment: PropTypes.number,
+  // comment: PropTypes.string.isRequired,
   onEnjoymentClick: PropTypes.func,
   onCommentInputChange: PropTypes.func
 };

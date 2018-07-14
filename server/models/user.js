@@ -29,6 +29,7 @@ const gameSchema = new Schema({
   thumb: {
     type: String,
   },
+  platforms: [Number],
   platform: {
     type: Number,
     required: true
