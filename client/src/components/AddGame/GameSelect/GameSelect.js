@@ -22,10 +22,12 @@ const gameSelect = ({ searchInput, token, username, isEdit, id, name, thumb, onS
       {isEdit ? <button onClick={() => onRemoveGameClick(token, username, {id: id})} className="btn btn-danger">-</button> : null }
     </div>
     :
-    <div className="input-group mb-3">
-      <input autoFocus value={searchInput} onChange={e => onSearchInputChange(e.target.value)} type="text" className="form-control" placeholder="Search for a game..." />
+    <React.Fragment>
+      <div className="input-group">
+        <input autoFocus value={searchInput} onChange={e => onSearchInputChange(e.target.value)} type="text" id="game-search-input" className="form-control" placeholder="Search for a game..." />
+      </div>
       <SearchDropdown />
-    </div>;
+    </React.Fragment>
   return (
     <div className="row">
       <div className="col">

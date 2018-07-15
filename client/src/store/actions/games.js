@@ -19,6 +19,11 @@ export const changeSort = (field) => {
     sortBy: field
   };
 };
+export const clickAddGame = () => {
+  return {
+    type: actionTypes.CLICK_ADD_GAME
+  };
+};
 export const addGameSuccess = (game) => {
   return {
     type: actionTypes.ADD_GAME_SUCCESS,
@@ -38,7 +43,6 @@ export const editGameSuccess = (game) => {
   }
 };
 export const removeGameSuccess = (game) => {
-  console.log('remove', game);
   return {
     type: actionTypes.REMOVE_GAME_SUCCESS,
     game: game

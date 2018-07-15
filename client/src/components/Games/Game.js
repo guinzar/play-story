@@ -23,7 +23,9 @@ const game = ({ index, game, onGameClick }) => {
       <td className="align-middle small">{release}</td>
       <td className="align-middle small">{genres}</td>
       <td>{game.enjoyment}</td>
-      <td>{game.playData.length}</td>
+      <td>{game.playData.map((yearData, i) => <div key={i} className="small">
+        {yearData.year} [{yearData.amount}]
+      </div>)}</td>
       <td>0</td>
     </tr>
   );

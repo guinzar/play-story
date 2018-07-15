@@ -8,10 +8,10 @@ import PropTypes from 'prop-types';
 class UserPage extends Component {
   constructor(props) {
     super(props);
-    // this.props.setUser(this.props.location.pathname.substr(1));
+    const path = this.props.location.pathname.split('/');
+    this.props.setUser(path[1]);
   }
   componentDidMount() {
-    // console.log(this.props.user);
     const path = this.props.location.pathname.split('/');
     this.props.getUserPage(this.props.token, path[1], 'user');
   }
@@ -19,7 +19,7 @@ class UserPage extends Component {
     console.log(this.props.user)
     return (
       <div className="row">
-        <h1>{this.props.user}</h1>
+        <h1>{this.props.user}'s Stories:</h1>
         {this.props.stories.map((story, i) => <div key={i}></div>)}
       </div>
     );

@@ -1,7 +1,3 @@
-.games-header {
-  user-select: none;
-}
-.games-header-clickable:hover {
-  text-decoration: underline;
-  cursor: pointer;
+.games-table {
+  margin-bottom: 0
 }

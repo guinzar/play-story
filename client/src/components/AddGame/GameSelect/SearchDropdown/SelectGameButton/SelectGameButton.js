@@ -12,7 +12,7 @@ const selectGameButton = ({game, onSelectGame}) => {
           alt=''
         />
         <div className="media-body">
-          {game.name}
+          {game.name} (<span className="small">{(new Date(game.first_release_date)).getFullYear()}</span>)
         </div>
       </div>
     </button>

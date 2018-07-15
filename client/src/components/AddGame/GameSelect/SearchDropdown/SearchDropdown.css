@@ -1,12 +1,8 @@
-.search-results {
-  position: absolute;
-  width: 100%;
-  top: 2.5rem;
-  z-index: 1;
-}
-
 .search-results button {
   padding: .25rem;
+}
+.search-results button:hover {
+  cursor: pointer
 }
 .search-results img {
   height: 40px;

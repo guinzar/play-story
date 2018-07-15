@@ -6,7 +6,7 @@ import SelectGameButton from './SelectGameButton/SelectGameButton';
 
 const searchDropdown = ({searchResults}) => {
   return searchResults.length ? 
-    (<div className="list-group search-results">
+    (<div className="list-group search-results w-100 mt-1">
       {searchResults.map((game, i) =>
         <SelectGameButton key={i} game={game} />
       )}
