@@ -1,9 +1,9 @@
 import * as actionTypes from "./actionTypes";
 
-export const tokenAuthSuccess = (username) => {
+export const tokenAuthSuccess = (user) => {
   return {
     type: actionTypes.TOKEN_AUTH_SUCCESS,
-    username: username
+    user: user
   };
 };
 export const leavePage = () => {

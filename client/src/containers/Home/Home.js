@@ -22,13 +22,10 @@ class Home extends Component {
               </p>
               <hr className="my-4" />
               <p>Note: PlayStory is currently in early stages of development</p>
-              <p>Take PlayStory for a spin:
-                <ul>
-                  <li>Make an account, go to 'My Games' and add some games</li>
-                  <li>Input the years you played those games; the more games you add the better!</li>
-                  <li>Check out the infographic of your gaming career over at Timeline!</li>
-                </ul>
-              </p>
+              <p>Take PlayStory for a spin:</p>
+              <li>Make an account, go to 'My Games' and add some games</li>
+              <li>Input the years you played those games; the more games you add the better!</li>
+              <li>Check out the infographic of your gaming career over at Timeline!</li>
             </div>
           </div>
           {/* <div className="col-6">

@@ -22,11 +22,11 @@ const game = ({ index, game, onGameClick }) => {
       </td>
       <td className="align-middle small">{release}</td>
       <td className="align-middle small">{genres}</td>
-      <td>{game.enjoyment}</td>
-      <td>{game.playData.map((yearData, i) => <div key={i} className="small">
+      <td className="align-middle">{game.enjoyment}</td>
+      <td className="align-middle">{game.playData.map((yearData, i) => <div key={i} className="small">
         {yearData.year} [{yearData.amount}]
       </div>)}</td>
-      <td>0</td>
+      <td className="align-middle">0</td>
     </tr>
   );
 };

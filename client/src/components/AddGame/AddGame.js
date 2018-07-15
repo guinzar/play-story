@@ -8,7 +8,7 @@ import DetailsForm from './DetailsForm/DetailsForm';
 
 const addGame = ({ modalId, token, username, addGameForm, submit }) => {
   return (
-    <div className="modal fade" id={modalId} tabIndex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div className="modal fade" id={modalId} tabIndex="-1" role="dialog">
       <div className="modal-dialog" role="document">
         <div className="modal-content">
           <div className="modal-header">

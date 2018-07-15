@@ -5,7 +5,10 @@ exports.getHome = (req, res) => {
     if (err) return res.end();
     if (globalUser) {
       res.json({
-        username: req.user ? req.user.username : null,
+        user: req.user ? {
+          username: req.user.username,
+          birthday: req.user.birthday
+        } : null,
         stories: globalUser.toObject().stories
       });
     } else {
@@ -19,7 +22,10 @@ exports.getUser = (req, res) => {
     if (err) return res.end();
     if (user) {
       res.json({
-        username: req.user ? req.user.username : null,
+        user: req.user ? {
+          username: req.user.username,
+          birthday: req.user.birthday
+        } : null,
         stories: user.toObject().stories
       });
     } else {
@@ -34,7 +40,10 @@ exports.getGames = (req, res) => {
     if (user) {
       const games = user.games.toObject();
       res.json({
-        username: req.user ? req.user.username : null,
+        user: req.user ? {
+          username: req.user.username,
+          birthday: req.user.birthday
+        } : null,
         games: games
       });
     } else {

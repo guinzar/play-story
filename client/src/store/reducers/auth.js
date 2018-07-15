@@ -2,12 +2,14 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
   token: localStorage.getItem('token'),
-  username: localStorage.getItem('username')
+  username: localStorage.getItem('username'),
+  birthday: null
 };
 const tokenAuthSuccess = ( state, action ) => {
   return {
     ...state,
-    username: action.username
+    username: action.user.username,
+    birthday: action.user.birthday
   };
 };
 const logInSuccess = ( state, action ) => {
@@ -22,7 +24,8 @@ const logOut = ( state, action ) => {
   return {
     ...state,
     token: null,
-    username: null
+    username: null,
+    birthday: null 
   }
 };
 const reducer = ( state = initialState, action ) => {

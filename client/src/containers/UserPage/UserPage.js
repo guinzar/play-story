@@ -16,7 +16,7 @@ class UserPage extends Component {
     this.props.getUserPage(this.props.token, path[1], 'user');
   }
   render() {
-    console.log(this.props.user)
+    // console.log(this.props.user)
     return (
       <div className="row">
         <h1>{this.props.user}'s Stories:</h1>

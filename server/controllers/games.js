@@ -3,7 +3,7 @@ const config = require('../config');
 
 exports.searchGames = (req, res) => {
   let params = [
-    `search=${encodeURIComponent(req.query.search)}`,
+    `search=${encodeURIComponent(req.query.search)}`, 
     'fields=name,summary,genres,first_release_date,platforms,cover,websites',
     'filter[first_release_date][gt]=0',
     'filter[platforms][gt]=0',

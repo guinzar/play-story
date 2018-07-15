@@ -12,22 +12,34 @@ const playTimeStrings = [
   'extreme (months) (672+ hours)'
 ];
 
-const playedYear = ({ index, yearData, yearsNotPlayed, onRemovePlayedYear, onChangePlayedYearYear, onChangePlayedYearAmount }) => {
+const playedYear = ({ index, yearData, birthday, yearsNotPlayed, onRemovePlayedYear, onChangePlayedYearYear, onChangePlayedYearAmount }) => {
   yearsNotPlayed = [...yearsNotPlayed, yearData.year].sort();
+  if (birthday) birthday = birthday.substr(0, 4);
   return (
     <div className="d-flex align-items-center justify-content-between mb-2">
-      <div>
-        <select value={yearData.year} onChange={(e) => onChangePlayedYearYear(index, +e.target.value)} className="form-control mt-1" id="asdf">
-          {yearsNotPlayed.map((year, i) => <option key={i} value={year}>{year}</option>)}
-        </select>
-      </div>
-      <div className="small">
-        Amount:
-      </div>
-      <div>
-        <select value={yearData.amount} onChange={(e) => onChangePlayedYearAmount(index, +e.target.value)} className="form-control mt-1" id="asdf">
-          {playTimeStrings.map((amount, i) => <option key={i} value={i}>{amount}</option>)}
-        </select>
+      <div className="d-flex flex-column w-100 mr-2">
+        <div className="d-flex align-items-center justify-content-between">
+          <div>
+            Year:
+          </div>
+          <div>
+            <select value={yearData.year} onChange={(e) => onChangePlayedYearYear(index, +e.target.value)} className="form-control mt-1" id="asdf">
+              {yearsNotPlayed.map((year, i) => <option key={i} value={year}>
+                {year}{birthday ? ` (age ${year - birthday - 1}-${year - birthday})`: null}
+              </option>)}
+            </select>
+          </div>
+        </div>
+        <div className="d-flex align-items-center justify-content-between">
+          <div>
+            Amount:
+          </div>
+          <div>
+            <select value={yearData.amount} onChange={(e) => onChangePlayedYearAmount(index, +e.target.value)} className="form-control mt-1" id="asdf">
+              {playTimeStrings.map((amount, i) => <option key={i} value={i}>{amount}</option>)}
+            </select>
+          </div>
+        </div>
       </div>
       <div>
         <button onClick={() => onRemovePlayedYear(index)} type="button" className="btn btn-secondary btn-sm">X</button>
@@ -37,6 +49,7 @@ const playedYear = ({ index, yearData, yearsNotPlayed, onRemovePlayedYear, onCha
 };
 const mapStateToProps = state => {
   return {
+    birthday: state.auth.birthday,
     yearsNotPlayed: state.addGame.yearsNotPlayed
   };
 };

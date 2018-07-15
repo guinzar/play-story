@@ -62,8 +62,13 @@ const detailsForm = ({ release, platforms, platform, genres, enjoyment, comment,
       </div>
       <div className="form-row mb-2">
         <label htmlFor="formComments" className="col-2 col-form-label">Comment:</label>
-        <div className="col-10">
-          <textarea onChange={(e) => onCommentInputChange(e.target.value)} value={comment} className="form-control" id="formComments" rows="2" />
+        <div className="col-10 d-flex align-items-center justify-content-between">
+          <div className="w-100 mr-2">
+            <textarea onChange={(e) => onCommentInputChange(e.target.value)} value={comment} className="form-control" id="formComments" rows="2" />
+          </div>
+          <div>
+            <button type="button" className="btn btn-secondary btn-sm">X</button>
+          </div>
         </div>
       </div>
       <div className="form-row">
