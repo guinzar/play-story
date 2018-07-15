@@ -28,7 +28,6 @@ class Games extends Component {
     this.props.getUserPage(this.props.token, path[1], path[2]);
   }
   render() {
-    // console.log(this.props.username, this.props.user);
     const addGameButton = this.props.username === this.props.user ? (
       <button onClick={() => this.props.onAddGameClick()} data-toggle="modal" data-target={`#${ADD_GAME_MODAL}`} className="btn btn-primary mt-2" type="button">
         +Add Game
@@ -54,10 +53,9 @@ class Games extends Component {
                 <thead className="thead-light">
                   <tr>
                     {headers.map((header, i) => (
-                      <th key={i} scope="col">
+                      <th key={i} scope="col" className={header[0] === 'Genres' ? 'w-25' : null}>
                         {header[1] ? <NavLink
                           onClick={header[1] ? () => this.props.onHeaderClick(header[0]) : null}
-                          className=""
                           to={`?sort=${header[0].toLowerCase()}_${this.props.sortBy === header[0] ? this.props.sortAscending ? 'desc' : 'asc' : 'desc'}`}
                           exact
                           activeClassName="active">

@@ -36,6 +36,9 @@ export default function* (action) {
         }
         break;
       case 'timeline':
+        if (response.data.games) {
+          yield put(showUserGames(response.data.games));
+        }
         break;
     }
   } catch (error) {

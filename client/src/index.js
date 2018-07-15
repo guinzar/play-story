@@ -19,6 +19,7 @@ import homeReducer from './store/reducers/home';
 import userReducer from './store/reducers/user';
 import gamesReducer from './store/reducers/games';
 import addGameReducer from './store/reducers/addGame';
+import timelineReducer from './store/reducers/timeline';
 import { watchSearchGames } from "./store/sagas";
 
 const composeEnhancers =
@@ -33,6 +34,7 @@ const rootReducer = combineReducers({
   user: userReducer,
   games: gamesReducer,
   addGame: addGameReducer,
+  timeline: timelineReducer
 });
 
 const sagaMiddleware = createSagaMiddleware();

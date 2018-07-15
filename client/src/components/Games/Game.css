@@ -1,3 +1,7 @@
 .game-entry:hover {
   cursor: pointer
 }
+.game-entry img {
+  height: 3rem;
+  width: 3rem;
+}

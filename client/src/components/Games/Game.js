@@ -12,12 +12,20 @@ const game = ({ index, game, onGameClick }) => {
   return (
     <tr onClick={onGameClick ? onGameClick : null} className="game-entry">
       <th scope="row">{index}</th>
-      <td className="w-25">
-        <div>
-          {game.name}
-        </div>
-        <div className="small">
-          {platformsList[game.platform]}
+      <td>
+        <div className="media">
+          <img src={game.thumb ? `https://images.igdb.com/igdb/image/upload/t_thumb/${game.thumb}.jpg` : 'https://images.igdb.com/igdb/image/upload/t_micro/nocover_qhhlj6.jpg'}
+            className='mr-2 rounded' 
+            alt=''
+          />
+          <div className="media-body">
+            <div>
+              {game.name}
+            </div>
+            <div className="small">
+              {platformsList[game.platform]}
+            </div>
+          </div>
         </div>
       </td>
       <td className="align-middle small">{release}</td>

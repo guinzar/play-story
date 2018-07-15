@@ -57,3 +57,6 @@ export const EDIT_GAME = 'EDIT_GAME';
 export const EDIT_GAME_SUCCESS = 'EDIT_GAME_SUCCESS';
 export const REMOVE_GAME = 'REMOVE_GAME';
 export const REMOVE_GAME_SUCCESS = 'REMOVE_GAME_SUCCESS';
+
+// Timeline actions
+export const SET_USER_AND_SORT_TIMELINE = 'SET_USER_AND_SORT_TIMELINE';
