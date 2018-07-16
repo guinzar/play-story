@@ -7,7 +7,7 @@ import Input from '../../components/Form/Input';
 
 const SignUp = ({ fields, formValid, onInputChange, onInputDeselect, onSubmitLogIn, token }) => {
   return (
-    <React.Fragment>
+    <div className="container">
       {token ? <Redirect to='/' /> : null}
       <div className="row justify-content-center">
         <div className="col-6">
@@ -39,7 +39,7 @@ const SignUp = ({ fields, formValid, onInputChange, onInputDeselect, onSubmitLog
           </form>
         </div>
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 const mapStateToProps = state => {

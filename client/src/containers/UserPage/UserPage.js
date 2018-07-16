@@ -18,9 +18,11 @@ class UserPage extends Component {
   render() {
     // console.log(this.props.user)
     return (
-      <div className="row">
-        <h1>{this.props.user}'s Stories:</h1>
-        {this.props.stories.map((story, i) => <div key={i}></div>)}
+      <div className="container">
+        <div className="row">
+          <h1>{this.props.user}'s Stories:</h1>
+          {this.props.stories.map((story, i) => <div key={i}></div>)}
+        </div>
       </div>
     );
   }

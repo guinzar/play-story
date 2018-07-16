@@ -29,9 +29,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <Navbar />
-        <div className="container">
-          {routes}
-        </div>
+        {routes}
       </React.Fragment>
     );
   }

@@ -10,7 +10,7 @@ class Home extends Component {
   }
   render() {
     return (
-      <React.Fragment>
+      <div className="container">
         <div className="row">
           <div className="col">
             <div className="jumbotron">
@@ -32,7 +32,7 @@ class Home extends Component {
             {this.props.stories.map((story, i) => <div key={i}>{story}</div>)}
           </div> */}
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 }

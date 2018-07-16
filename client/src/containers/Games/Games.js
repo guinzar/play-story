@@ -36,7 +36,7 @@ class Games extends Component {
     const headers = [['#', false], ['Name', true], ['Release', true],
       ['Genres', false], ['Enjoyment', true], ['Played', false], ['Stories', false]];
     return (
-      <React.Fragment>
+      <div className="container">
         <AddGame modalId={ADD_GAME_MODAL} />
         <div className="row">
           <div className="col-9">
@@ -77,7 +77,7 @@ class Games extends Component {
             </div>
           </div>
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 }

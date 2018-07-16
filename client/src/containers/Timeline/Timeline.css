@@ -1,15 +1,85 @@
-.chartWrapper {
-  position: relative;
-}
-
-.chartWrapper > canvas {
-  position: absolute;
-  left: 0;
-  top: 0;
-  pointer-events: none;
-}
-
-.chartAreaWrapper {
-  width: 600px;
+.timeline {
   overflow-x: scroll;
+  white-space: nowrap;
+  min-height: 36rem;
+  width: 100%;
+  /* background: lightpink; */
+  padding-bottom: .3rem;
+  /* border-bottom: 3px solid black; */
+}
+.timeline-yaxis {
+  /* background: blue; */
+  /* width: 10rem; */
+  max-height: 35.2rem;
+  overflow-y: hidden;
+  padding-left: 3.8rem;
+  margin-bottom: 1.8rem;
+  padding-bottom: 3px;
+  border-right: 3px solid black;
+}
+.timeline-yaxis-segment {
+  position: relative;
+  min-height: 7rem;
+  min-width: .5rem;
+  /* background: teal; */
+  border-top: 3px solid black;
+}
+.timeline-yaxis-string {
+  text-align: right;
+  position: absolute;
+  width: 4rem;
+  /* background: lightblue; */
+  top: 1.5rem;
+  right: .3rem;
+}
+.timeline-yaxis-string-descrip {
+  font-size: .7rem
+}
+.timeline-year {
+  /* background: lightpink; */
+}
+.timeline-year-content {
+  /* width: 100%; */
+  /* background: lightpink; */
+  padding-right: .3rem;
+  /* height: 35.2rem; */
+  border-bottom: 3px solid black;
+}
+.timeline-year-label {
+  /* background: lightgreen; */
+  min-width: 4rem;
+  text-align: center;
+}
+.timeline-year-segment {
+  font-size: .6rem;
+  /* padding: .2rem; */
+  overflow-x: hidden;
+  /* border-bottom: 3px solid lightpink; */
+  /* background: yellow; */
+  width: 10rem;
+  min-height: 7rem;
+}
+.timeline-year-segment img {
+  height: 1rem;
+  width: 1rem;
+}
+.timeline-year-color-1 {
+  border: .2rem solid #ffb3ba;
+  background: #ffb3ba;
+}
+.timeline-year-color-2 {
+  border: .2rem solid #ffd2b3;
+  background: #ffd2b3;
+}
+.timeline-year-color-3 {
+  border: .2rem solid #fff8b3;
+  background: #fff8b3;
+}
+.timeline-year-color-4 {
+  border: .2rem solid #baffb3;
+  background:	#baffb3;
+}
+.timeline-year-color-5 {
+  border: .2rem solid #bae1ff;
+  background: #bae1ff;
 }

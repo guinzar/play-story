@@ -1,13 +1,10 @@
 {
-  "name": "client",
+  "name": "PlayStory client",
   "version": "1.0.0",
   "description": "PlayStory client",
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.1.1",
-    "chart.js": "^2.7.2",
-    "chartjs-plugin-datalabels": "^0.3.0",
-    "d3": "^5.5.0",
     "jquery": "^3.3.1",
     "moment": "^2.22.2",
     "popper.js": "^1.14.3",
@@ -18,8 +15,7 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
     "redux": "^4.0.0",
-    "redux-saga": "^0.16.0",
-    "underscore": "^1.9.1"
+    "redux-saga": "^0.16.0"
   },
   "scripts": {
     "start": "react-scripts start",
