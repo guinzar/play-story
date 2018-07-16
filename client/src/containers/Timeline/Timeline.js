@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Bar } from 'react-chartjs-2';
+import Chart from 'chart.js';
 import { getUserContent } from '../../store/actions/auth';
 import { setUserAndSortTimeline } from '../../store/actions/timeline';
 import PropTypes from 'prop-types';
+import './Timeline.css';
 
 class Timeline extends Component {
   constructor(props) {
@@ -22,8 +23,7 @@ class Timeline extends Component {
     const path = this.props.location.pathname.split('/');
     this.props.getUserPage(this.props.token, path[1], path[2]);
   }
-  render() {
-    let timeline = null;
+  componentDidUpdate() {
     if (this.props.games.length) {
       let years = [{}, {}, {}, {}, {}, {}];
       const games = {};
@@ -42,35 +42,14 @@ class Timeline extends Component {
           years[yearData.amount][yearData.year].push(game.id);
         });
       });
-      console.log(games);
-      // const yearData = Array(6).fill().map((e, amount) => Array(endYear - startYear + 1).fill().map((e, i) => years[i + startYear]);
-      console.log(years);
+      years = Array(6).fill().map((e, amount) => Array(endYear - startYear + 1).fill().map((e, i) => years[amount][i + startYear])).reverse();
+      const ctx = document.getElementById("myChart");
       const data = {
-        // labels: years.map((e, i) => i + startYear),
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        },{
-          label: '# of Votes',
-          data: [13, 19, 3, 5, 2, 3],
+        labels: Array(endYear - startYear + 1).fill().map((e, i) => i + startYear),
+        // labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        datasets: years.map((amountData, amount) => ({
+          label: 'poop',
+          data: amountData.map(year => year ? (5 - amount) : null),
           backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
               'rgba(54, 162, 235, 0.2)',
@@ -88,27 +67,31 @@ class Timeline extends Component {
               'rgba(255, 159, 64, 1)'
           ],
           borderWidth: 1
-        }]
+        })),
       };
       const options = {
         plugins: {
-					datalabels: {
+          datalabels: {
+            align: 'end',
+            anchor: 'end',
             color: 'black',
-						display: (context)=> {
-              console.log('asdf')
-              // console.log(context)
-              // return false;
-              return true;
-							// return context.dataset.data[context.dataIndex] > 2;
-						},
-						// font: {
-						// 	weight: 'bold'
-						// },
-						// formatter: function(value, context) {
-            //   return context.chart.data.labels[context.dataIndex];
-            // }
-					}
-				},
+            display: (context)=> {
+              // return true;
+              return context.dataset.data[context.dataIndex] > 0;
+            },
+            font: {
+              weight: 'bold'
+            },
+            formatter: function(amount, context) {
+              // console.log(amount);
+              return years[5 - amount][context.dataIndex].map(id => games[id].name);
+              // return [context.dataIndex];
+            }
+          }
+        },
+        legend: {
+          display: false
+        },
         scales: {
           xAxes: [{
               stacked: false
@@ -116,13 +99,23 @@ class Timeline extends Component {
           yAxes: [{
               // stacked: true,
               ticks: {
-                beginAtZero:true
+                beginAtZero: true,
+                max: 5,
               }
           }]
-        }
+          
+        },
+        responsive: true,
+        maintainAspectRatio: false
       };
-      timeline = <Bar data={data} options={options} />;
+      var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: data,
+        options: options
+      });
     }
+  }
+  render() {
     return (
       <React.Fragment>
         <div className="row">
@@ -132,7 +125,7 @@ class Timeline extends Component {
         </div>
         <div className="row">
           <div className="col">
-            {timeline}
+            <canvas id="myChart" height="400" width="2000"></canvas>
           </div>
         </div>
       </React.Fragment>
