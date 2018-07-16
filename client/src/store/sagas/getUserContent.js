@@ -5,6 +5,7 @@ import { tokenAuthSuccess, logOut } from "../actions/auth";
 import { showHomeStories } from "../actions/home";
 import { showUserStories } from "../actions/user";
 import { showUserGames } from "../actions/games";
+import { showUserTimeline } from "../actions/timeline";
 
 export default function* (action) {
   try {
@@ -37,7 +38,7 @@ export default function* (action) {
         break;
       case 'timeline':
         if (response.data.games) {
-          yield put(showUserGames(response.data.games));
+          yield put(showUserTimeline(response.data.games));
         }
         break;
     }

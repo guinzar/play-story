@@ -37,7 +37,7 @@ const showGames = ( state, action ) => {
 const reducer = ( state = initialState, action ) => {
   switch ( action.type ) {
     case actionTypes.SET_USER_AND_SORT_TIMELINE: return setUserAndSort( state, action );
-    case actionTypes.SHOW_USER_GAMES: return showGames( state, action );
+    case actionTypes.SHOW_USER_TIMELINE: return showGames( state, action );
     default: return state;
   }
 };

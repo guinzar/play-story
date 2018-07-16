@@ -7,3 +7,9 @@ export const setUserAndSortTimeline = (user, sort) => {
     sort: sort
   };
 };
+export const showUserTimeline = (games) => {
+  return {
+    type: actionTypes.SHOW_USER_TIMELINE,
+    games: games
+  };
+};
