@@ -67,7 +67,7 @@ class Games extends Component {
                 </thead>
                 <tbody>
                   {this.props.games.map((game, i) => <Game
-                    key={i}
+                    key={game.id}
                     index={i + 1}
                     game={game}
                     onGameClick={this.props.username === this.props.user ? () => this.props.onGameClick(game) : null}

@@ -24,7 +24,7 @@ const gameSchema = new Schema({
     required: true
   },
   release: {
-    type: Date,
+    type: Number,
     required: true
   },
   thumb: {

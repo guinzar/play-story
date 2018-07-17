@@ -2,7 +2,7 @@ const User = require('../models/user');
 
 exports.postStory = (req, res) => {
   if (req.user) {
-    console.log(req.body);
+    // console.log(req.body);
     const gameIndex = req.user.games.findIndex(game => game.id === req.body.game.id);
     let game = req.user.games[gameIndex];
     let isEdit = false;
@@ -17,7 +17,7 @@ exports.postStory = (req, res) => {
       if (game) {
         isEdit = true;
         game.name = req.body.game.name,
-        game.release = new Date(req.body.game.release),
+        game.release = req.body.game.release,
         game.thumb = req.body.game.thumb,
         game.platforms = req.body.game.platforms,
         game.platform = req.body.game.platform,
@@ -31,7 +31,7 @@ exports.postStory = (req, res) => {
           game: {
             id: req.body.game.id,
             name: req.body.game.name,
-            release: new Date(req.body.game.release),
+            release: req.body.game.release,
             thumb: req.body.game.thumb,
             platform: req.body.game.platform,
           }
