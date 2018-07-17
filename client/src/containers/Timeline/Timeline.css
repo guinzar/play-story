@@ -1,7 +1,7 @@
 .timeline {
   overflow-x: scroll;
   white-space: nowrap;
-  min-height: 36rem;
+  /* min-height: 36rem; */
   width: 100%;
   /* background: lightpink; */
   padding-bottom: .3rem;
@@ -10,10 +10,10 @@
 .timeline-yaxis {
   /* background: blue; */
   /* width: 10rem; */
-  max-height: 35.2rem;
+  /* max-height: 35.2rem; */
   overflow-y: hidden;
   padding-left: 3.8rem;
-  margin-bottom: 1.8rem;
+  margin-bottom: 3.3rem;
   padding-bottom: 3px;
   border-right: 3px solid black;
 }
@@ -47,6 +47,7 @@
 }
 .timeline-year-label {
   /* background: lightgreen; */
+  height: 3rem;
   min-width: 4rem;
   text-align: center;
 }

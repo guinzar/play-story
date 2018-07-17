@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { platformsList, genresList } from '../../config'
 
-const year = ({ year, yearData, games }) => {
+const year = ({ year, yearData, birthday, games }) => {
   // console.log(year);
   let maxAmount = 0;
   if (yearData) {
@@ -15,6 +15,7 @@ const year = ({ year, yearData, games }) => {
       }
     }
   }
+  if (birthday) birthday = `age: ${year - birthday.substr(0, 4) - 1}-${year - birthday.substr(0, 4)}`;
   return (
     <div className="d-flex flex-column justify-content-end timeline-year">
       <div className="timeline-year-content">
@@ -33,13 +34,19 @@ const year = ({ year, yearData, games }) => {
         </div>) : null}
       </div>
       <div className="timeline-year-label">
-        {year}
+        <div>
+          {year}
+        </div>
+        <div className="small">
+          {yearData ? birthday : null}
+        </div>
       </div>
     </div>
   );
 };
 const mapStateToProps = state => {
   return {
+    birthday: state.auth.birthday,
     games: state.timeline.games,
   };
 };

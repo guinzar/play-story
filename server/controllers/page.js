@@ -53,3 +53,23 @@ exports.getGames = (req, res) => {
     }
   });
 };
+exports.getTimeline = (req, res) => {
+  const user = req.params.user;
+  User.findOne({ username: user}, (err, user) => {
+    if (err) return res.end();
+    if (user) {
+      const games = user.games.toObject();
+      res.json({
+        user: req.user ? {
+          username: req.user.username,
+          birthday: req.user.birthday
+        } : null,
+        games: games.filter(game => game.playData.length)
+      });
+    } else {
+      res.json({
+        username: req.user ? req.user.username : null
+      });
+    }
+  });
+};

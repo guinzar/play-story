@@ -18,7 +18,7 @@ module.exports = app => {
   app.get('/user/:user', requireAuth, Page.getUser);
   app.post('/user/:user', requireAuth, User.postStory);
   app.get('/user/:user/games', requireAuth, Page.getGames);
-  // app.get('/user/:user/timeline', requireAuth, Page.getTimeline);
+  app.get('/user/:user/timeline', requireAuth, Page.getTimeline);
   app.get('/games/search', Games.searchGames);
   app.post('/login', requireLogin, Authentication.login);
   app.post('/signup', Authentication.signUp);
