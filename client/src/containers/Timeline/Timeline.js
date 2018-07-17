@@ -9,11 +9,11 @@ import Year from '../../components/Timeline/Year';
 import AddGame from '../../components/AddGame/AddGame';
 const ADD_GAME_MODAL = 'addGameModal';
 const playTimeStrings = [
-  ['minimal', '(1 to 60 minutes)'],
-  ['light', '(1 to 24 hours)'],
-  ['moderate', '(24 to 168 hours)'],
-  ['heavy', '(168 to 672 hours)'],
-  ['extreme', '(672+ hours)']
+  ['minimal', '(1 to 24 hours)'],
+  ['light', '(24 to 50 hours)'],
+  ['moderate', '(50 to 100 hours)'],
+  ['heavy', '(100 to 300 hours)'],
+  ['uber', '(300+ hours)']
 ];
 
 class Timeline extends Component {

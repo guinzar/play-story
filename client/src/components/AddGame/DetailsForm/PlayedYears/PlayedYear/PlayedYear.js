@@ -5,11 +5,11 @@ import PropTypes from 'prop-types';
 
 const playTimeStrings = [
   'none (have game but didn\'t play)',
-  'minimal (minutes) (1 to 60 minutes)',
-  'light (hours) (1 to 24 hours)',
-  'moderate (days) (24 to 168 hours)',
-  'heavy (weeks) (168 to 672 hours)',
-  'extreme (months) (672+ hours)'
+  'minimal (1 to 24 hours)',
+  'light (24 to 50 hours)',
+  'moderate (50 to 100 hours)',
+  'heavy (100 to 300 hours)',
+  'uber (300+ hours)'
 ];
 
 const playedYear = ({ index, yearData, birthday, yearsNotPlayed, onRemovePlayedYear, onChangePlayedYearYear, onChangePlayedYearAmount }) => {

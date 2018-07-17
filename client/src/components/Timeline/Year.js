@@ -35,7 +35,7 @@ const year = ({ year, yearData, birthday, games }) => {
       </div>
       <div className="timeline-year-label">
         <div>
-          {year}
+          <strong>{year}</strong>
         </div>
         <div className="small">
           {yearData ? birthday : null}
