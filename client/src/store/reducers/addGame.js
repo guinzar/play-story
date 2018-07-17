@@ -23,6 +23,29 @@ const initialState = {
 const openAndResetForm = ( state, action ) => {
   return initialState
 };
+const changeRelease = ( state, action) => {
+  const inputYear = action.input.split('-')[0];
+  const newRelease = inputYear > 1900 + +(new Date().getYear()) ? new Date().toISOString().substr(0, 10) : action.input;
+  return {
+    ...state,
+    release: newRelease
+  }
+};
+const deselectRelease = ( state, action ) => {
+  const inputYear = +state.release.split('-')[0];
+  const newRelease = inputYear < 1970 ? `1970${state.release.substr(4)}` : state.release;
+  const newReleaseYear = +newRelease.split('-')[0];
+  const yearSpan = new Date().getYear() + 1901 - newReleaseYear;
+  const newPlayData = state.playData.filter(playedYear => playedYear.year >= newReleaseYear);
+  const newPlayedYears = newPlayData.map(playedYear => playedYear.year);
+  const newYearsNotPlayed = Array(yearSpan).fill(newReleaseYear).map((e, i) => e + i).filter(year => !newPlayedYears.includes(year));
+  return {
+    ...state,
+    release: newRelease,
+    yearsNotPlayed: newYearsNotPlayed,
+    playData: newPlayData
+  };
+};
 const changeSearchInput = ( state, action) => {
   return {
     ...state,
@@ -36,8 +59,9 @@ const updateSearchResults = ( state, action ) => {
   }
 };
 const selectGame = ( state, action ) => {
-  const releaseYear = new Date(action.game.first_release_date).getYear();
-  const yearSpan = new Date().getYear() + 1 - releaseYear;
+  const release = new Date(action.game.first_release_date).toISOString().substr(0, 10);
+  const releaseYear = +release.substr(0, 4);
+  const yearSpan = new Date().getYear() + 1901 - releaseYear;
   let thumb = null;
   if (action.game.cover) {
     // potential error
@@ -45,20 +69,18 @@ const selectGame = ( state, action ) => {
     thumb = thumb[thumb.length - 1];
     thumb = thumb.substr(0, thumb.length - 4);
   }
-  // const platforms = action.game.platforms ? action.game.platforms : Object.keys(platformsList);
-  // const yearsNotPlayed = 
   return {
     ...initialState,
     searchInput: action.game.name,
     searchResults: [],
     id: action.game.id,
     name: action.game.name,
-    release: action.game.first_release_date,
+    release: release,
     thumb: thumb,
     platforms: action.game.platforms,
     platform: action.game.platforms[0],
     genres: action.game.genres ? action.game.genres : [],
-    yearsNotPlayed: Array(yearSpan).fill(1900 + releaseYear).map((e, i) => e + i)
+    yearsNotPlayed: Array(yearSpan).fill(releaseYear).map((e, i) => e + i)
   };
 };
 const removeSelectedGame = ( state, action ) => {
@@ -152,6 +174,8 @@ const editGame = ( state, action ) => {
 const reducer = ( state = initialState, action ) => {
   switch ( action.type ) {
     case actionTypes.CLICK_ADD_GAME: return openAndResetForm( state, action);
+    case actionTypes.CHANGE_RELEASE_INPUT: return changeRelease( state, action );
+    case actionTypes.DESELECT_RELEASE_INPUT: return deselectRelease( state, action );
     case actionTypes.CHANGE_SEARCH_INPUT: return changeSearchInput( state, action );
     case actionTypes.UPDATE_SEARCH_RESULTS: return updateSearchResults( state, action );
     case actionTypes.SELECT_GAME: return selectGame( state, action );

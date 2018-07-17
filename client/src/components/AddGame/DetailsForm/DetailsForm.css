@@ -1,7 +1,16 @@
+.detail-form input {
+  font-size: 80%;
+}
 .detail-form select {
   font-size: 80%;
   font-weight: 400;
 }
 .detail-form button:focus {
   box-shadow: none !important;
+}
+.detail-form-year-label {
+  width: 10rem;
+}
+.detail-form-year-select {
+  width: 100%;
 }

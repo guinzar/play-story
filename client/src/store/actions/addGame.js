@@ -1,5 +1,16 @@
 import * as actionTypes from './actionTypes';
 
+export const changeReleaseInput = ( input ) => {
+  return {
+    type: actionTypes.CHANGE_RELEASE_INPUT,
+    input: input
+  };
+};
+export const deselectReleaseInput = () => {
+  return {
+    type: actionTypes.DESELECT_RELEASE_INPUT
+  };
+};
 export const changeSearchInput = ( input ) => {
   return {
     type: actionTypes.CHANGE_SEARCH_INPUT,

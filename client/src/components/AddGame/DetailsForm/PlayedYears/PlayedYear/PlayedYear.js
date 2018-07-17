@@ -4,7 +4,6 @@ import * as actions from '../../../../../store/actions/addGame';
 import PropTypes from 'prop-types';
 
 const playTimeStrings = [
-  'none (have game but didn\'t play)',
   'minimal (1 to 24 hours)',
   'light (24 to 50 hours)',
   'moderate (50 to 100 hours)',
@@ -18,11 +17,11 @@ const playedYear = ({ index, yearData, birthday, yearsNotPlayed, onRemovePlayedY
   return (
     <div className="d-flex align-items-center justify-content-between mb-2">
       <div className="d-flex flex-column w-100 mr-2">
-        <div className="d-flex align-items-center justify-content-between">
-          <div>
+        <div className="d-flex align-items-center">
+          <div className="detail-form-year-label">
             Year:
           </div>
-          <div>
+          <div className="detail-form-year-select">
             <select value={yearData.year} onChange={(e) => onChangePlayedYearYear(index, +e.target.value)} className="form-control mt-1" id="asdf">
               {yearsNotPlayed.map((year, i) => <option key={i} value={year}>
                 {year}{birthday ? ` (age ${year - birthday - 1}-${year - birthday})`: null}
@@ -30,11 +29,11 @@ const playedYear = ({ index, yearData, birthday, yearsNotPlayed, onRemovePlayedY
             </select>
           </div>
         </div>
-        <div className="d-flex align-items-center justify-content-between">
-          <div>
+        <div className="d-flex align-items-center">
+          <div className="detail-form-year-label">
             Amount:
           </div>
-          <div>
+          <div className="detail-form-year-select">
             <select value={yearData.amount} onChange={(e) => onChangePlayedYearAmount(index, +e.target.value)} className="form-control mt-1" id="asdf">
               {playTimeStrings.map((amount, i) => <option key={i} value={i}>{amount}</option>)}
             </select>

@@ -20,22 +20,21 @@ const enjoymentStrings = [
   'The most fun I\'ve ever had was while playing this game',
   'How much fun did you have playing this game?'
 ];
-const detailsForm = ({ release, platforms, platform, genres, enjoyment, comment, onPlatformChange, onEnjoymentClick, onCommentInputChange }) => {
+const detailsForm = ({ release, platforms, platform, genres, enjoyment, comment, onReleaseInputChange, onReleaseInputDeselect, onPlatformChange, onEnjoymentClick, onCommentInputChange }) => {
   genres = genres.map((genreId, i) => genresList[genreId]).join(', ');
-  const releaseDate = new Date(release).toDateString().substr(4);
   const enjoymentButtons = [0,1,2,3,4,5,6,7,8,9,10].map(num =>
     <button key={num} type="button" onClick={()=>onEnjoymentClick(num)} className={`btn btn-secondary${num === enjoyment ? ' active' : ''}`}>{num}</button>);
   return (
     <form className="needs-validation detail-form" noValidate>
       <div className="form-row">
-        <label htmlFor="formReleaseDate" className="col-3 col-form-label">Release Date:</label>
-        <div className="col-2 d-flex align-items-end">
-          <div className="form-control-plaintext small" id="formReleaseDate">
-            {releaseDate}
-          </div>
+        <label htmlFor="formReleaseDate" className="col-4 col-form-label">Release:</label>
+        <div className="col-8 d-flex align-items-end">
+          <input onChange={(e) => onReleaseInputChange(e.target.value)} onBlur={() => onReleaseInputDeselect()} type="date" value={release} className="form-control" id="formReleaseDate" />
         </div>
-        <label htmlFor="formPlatform" className="col-2 col-form-label">Platform:</label>
-        <div className="col-5">
+      </div>
+      <div className="form-row">
+        <label htmlFor="formPlatform" className="col-4 col-form-label">Platform:</label>
+        <div className="col-8">
           <select value={platform} onChange={(e) => onPlatformChange(+e.target.value)} className="form-control mt-1" id="formPlatform">
             {platforms.map((platformId, i) => <option key={i} value={platformId}>{platformsList[platformId]}</option>)}
           </select>
@@ -94,6 +93,8 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
+    onReleaseInputChange: (value) => dispatch(actions.changeReleaseInput(value)),
+    onReleaseInputDeselect: () => dispatch(actions.deselectReleaseInput()),
     onPlatformChange: (value) => dispatch(actions.changePlatform(value)),
     onEnjoymentClick: (value) => dispatch(actions.changeEnjoyment(value)),
     onCommentInputChange: (input) => dispatch(actions.changeCommentInput(input))

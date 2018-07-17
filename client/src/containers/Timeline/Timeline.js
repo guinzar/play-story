@@ -47,7 +47,7 @@ class Timeline extends Component {
             <h1>{this.props.user}'s Gaming Timeline:</h1>
           </div>
           <div className="col-3 text-right">
-            {addGameButton}
+            {/* {addGameButton} */}
           </div>
         </div>
         <div className="row">

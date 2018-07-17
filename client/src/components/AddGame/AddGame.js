@@ -28,7 +28,7 @@ const addGame = ({ modalId, token, username, addGameForm, submit }) => {
             <button onClick={() => submit(token, username, {
               id: addGameForm.id,
               name: addGameForm.name,
-              release: addGameForm.release,
+              release: new Date(addGameForm.release).getTime(),
               thumb: addGameForm.thumb,
               platforms: addGameForm.platforms,
               platform: addGameForm.platform,

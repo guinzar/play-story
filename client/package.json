@@ -1,5 +1,5 @@
 {
-  "name": "PlayStory client",
+  "name": "client",
   "version": "1.0.0",
   "description": "PlayStory client",
   "dependencies": {

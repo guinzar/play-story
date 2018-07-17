@@ -19,10 +19,10 @@ const year = ({ year, yearData, birthday, games }) => {
   return (
     <div className="d-flex flex-column justify-content-end timeline-year">
       <div className="timeline-year-content">
-        {yearData ? Array(5).fill().map((e, i) => <div key={i} className={`timeline-year-segment${5 - i <= maxAmount ? ` timeline-year-color-${5 - i}` : ''}`}>
-          {yearData[5 - i] ? yearData[5 - i].map(id => games[id]).map((game, n) => <div key={n} className="media">
+        {yearData ? Array(5).fill().map((e, i) => <div key={i} className={`timeline-year-segment${4 - i <= maxAmount ? ` timeline-year-color-${4 - i}` : ''}${4 - i === maxAmount ? ` timeline-year-top-rounded` : ''}`}>
+          {yearData[4 - i] ? yearData[4 - i].map(id => games[id]).map((game, n) => <div key={n} className="media">
               <img src={game.thumb ? `https://images.igdb.com/igdb/image/upload/t_thumb/${game.thumb}.jpg` : 'https://images.igdb.com/igdb/image/upload/t_micro/nocover_qhhlj6.jpg'}
-                className='mr-1 rounded'
+                className='rounded'
                 alt=''
               />
               <div className="media-body">
