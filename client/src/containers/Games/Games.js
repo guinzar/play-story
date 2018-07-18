@@ -4,11 +4,13 @@ import { withRouter, NavLink } from 'react-router-dom';
 import { getUserContent } from '../../store/actions/auth';
 import { setUserAndSort, changeSort, clickAddGame, editGame } from '../../store/actions/games';
 import PropTypes from 'prop-types';
-
+import Loading from '../../components/Loading/Loading';
 import EditGame from '../../components/EditGame/EditGame';
 import Game from '../../components/Games/Game';
 import './Games.css';
 const ADD_GAME_MODAL = 'addGameModal';
+const headers = [['#', false], ['Name', true], ['Release', true],
+  ['Genres', false], ['Enjoyment', true], ['Played', false], ['Comment', false]];
 
 class Games extends Component {
   constructor(props) {
@@ -30,15 +32,13 @@ class Games extends Component {
   render() {
     const addGameButton = this.props.username === this.props.user ? (
       <button onClick={() => this.props.onAddGameClick()} data-toggle="modal" data-target={`#${ADD_GAME_MODAL}`} className="btn btn-primary mt-1" type="button">
-        +Add Game
+        <strong>Add Game</strong>
       </button>
     ) : null;
-    const headers = [['#', false], ['Name', true], ['Release', true],
-      ['Genres', false], ['Enjoyment', true], ['Played', false], ['Comment', false]];
     return (
       <div className="container-fluid">
         <EditGame modalId={ADD_GAME_MODAL} />
-        <div className="row">
+        <div className="row header">
           <div className="col-4">
             <h2>{this.props.user}</h2>
           </div>
@@ -69,12 +69,12 @@ class Games extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                  {this.props.games.map((game, i) => <Game
+                  {this.props.games.length ? this.props.games.map((game, i) => <Game
                     key={game.id}
                     index={i + 1}
                     game={game}
                     onGameClick={this.props.username === this.props.user ? () => this.props.onGameClick(game) : null}
-                  />)}
+                  />) : <tr><td colSpan="7"><Loading /></td></tr>}
                 </tbody>
               </table>
             </div>

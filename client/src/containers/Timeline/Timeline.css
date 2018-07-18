@@ -4,25 +4,26 @@
   /* min-height: 36rem; */
   width: 100%;
   /* background: lightpink; */
-  padding-bottom: .3rem;
+  padding-bottom: .4rem;
   /* border-bottom: 3px solid black; */
 }
 .timeline-yaxis {
   /* background: blue; */
   /* width: 10rem; */
   /* max-height: 35.2rem; */
+  color: lightsteelblue;
   overflow-y: hidden;
-  padding-left: 3.8rem;
-  margin-bottom: 3.3rem;
-  padding-bottom: 3px;
-  border-right: 3px solid black;
+  padding-left: 3.6rem;
+  margin-bottom: 3.2rem;
+  padding-bottom: 4px;
+  border-right: 4px solid white;
 }
 .timeline-yaxis-segment {
   position: relative;
   min-height: 7.4rem;
   min-width: .5rem;
   /* background: teal; */
-  border-top: 3px solid black;
+  border-top: 3px solid white;
 }
 .timeline-yaxis-string {
   text-align: right;
@@ -40,23 +41,26 @@
 }
 .timeline-year-content {
   /* width: 100%; */
-  /* background: lightpink; */
+  /* background: white; */
   padding-right: .3rem;
-  /* height: 35.2rem; */
-  border-bottom: 3px solid black;
+  border-bottom: 4px solid white;
 }
 .timeline-year-label {
-  /* background: lightgreen; */
-  height: 3rem;
+  /* background: blue; */
+  padding-top: .2rem;
+  /* padding-bottom: .3rem; */
+  color: #F5F5F5;
+  height: 2.8rem;
   min-width: 4rem;
   text-align: center;
 }
+.timeline-year-label-sub {
+  font-size: .7rem;
+  color: #D3D3D3;
+}
 .timeline-year-segment {
   font-size: .6rem;
-  /* padding: .2rem; */
   overflow-x: hidden;
-  /* border-bottom: 3px solid lightpink; */
-  /* background: yellow; */
   width: 10rem;
   min-height: 7.4rem;
 }
@@ -69,6 +73,21 @@
 .timeline-year-top-rounded {
   border-top-right-radius: .5rem;
   border-top-left-radius: .5rem;
+}
+.timeline-yaxis-color-0 {
+  color: #ffb3ba;
+}
+.timeline-yaxis-color-1 {
+  color: #ffd2b3;
+}
+.timeline-yaxis-color-2 {
+  color: #fff8b3;
+}
+.timeline-yaxis-color-3 {
+  color: #baffb3;
+}
+.timeline-yaxis-color-4 {
+  color: #bae1ff;
 }
 .timeline-year-color-0 {
   border: .2rem solid #ffb3ba;

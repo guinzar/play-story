@@ -13,7 +13,7 @@ const setUser = ( state, action ) => {
 const showUserStories = ( state, action ) => {
   return {
     ...state,
-    stories: action.stories
+    stories: action.stories ? action.stories : []
   };
 };
 const reducer = ( state = initialState, action ) => {

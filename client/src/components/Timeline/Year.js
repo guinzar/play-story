@@ -34,10 +34,10 @@ const year = ({ year, yearData, birthday, games }) => {
         </div>) : null}
       </div>
       <div className="timeline-year-label">
-        <div>
+        <div className="small">
           <strong>{year}</strong>
         </div>
-        <div className="small">
+        <div className="small timeline-year-label-sub">
           {yearData ? birthday : null}
         </div>
       </div>

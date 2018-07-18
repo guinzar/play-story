@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter, NavLink } from 'react-router-dom';
 import * as actions from '../../store/actions/auth';
 import PropTypes from 'prop-types';
-
+import './Navbar.css';
 const navbar = ({ username, leavePage, logOut }) => {
   const navItems = username ? (
     <React.Fragment>
@@ -62,7 +62,7 @@ const navbar = ({ username, leavePage, logOut }) => {
     </React.Fragment>
   );
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-sm navbar-dark">
       <NavLink
         onClick={leavePage}
         className="navbar-brand"

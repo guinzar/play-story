@@ -5,6 +5,7 @@ import { setUserAndSortTimeline } from '../../store/actions/timeline';
 import { clickAddGame } from '../../store/actions/games';
 import PropTypes from 'prop-types';
 import './Timeline.css';
+import Loading from '../../components/Loading/Loading';
 import Year from '../../components/Timeline/Year';
 import EditGame from '../../components/EditGame/EditGame';
 const ADD_GAME_MODAL = 'addGameModal';
@@ -42,7 +43,7 @@ class Timeline extends Component {
     return (
       <div className="container-fluid">
         <EditGame modalId={ADD_GAME_MODAL} />
-        <div className="row">
+        <div className="row header">
           <div className="col-4">
             <h2>{this.props.user}</h2>
           </div>
@@ -54,9 +55,9 @@ class Timeline extends Component {
           </div>
         </div>
         <div className="row">
-          <div className="col d-flex align-items-end">
+          {this.props.years.length ? <div className="col d-flex align-items-end">
             <div className="d-flex flex-column timeline-yaxis justify-content-end">
-              {Array(5).fill().map((e, i) => <div key={i} className="d-flex flex-column justify-content-end timeline-yaxis-segment small">
+              {Array(5).fill().map((e, i) => <div key={i} className={`d-flex flex-column justify-content-end timeline-yaxis-segment small ${`timeline-yaxis-color-${4 - i}`}`}>
                 <div className="timeline-yaxis-string">
                   <div>
                     <strong>{playTimeStrings[4 - i][0]}</strong>
@@ -70,7 +71,7 @@ class Timeline extends Component {
             <div className="timeline d-flex flex-nowrap align-items-end">
               {this.props.years.map((year, i) => <Year key={i} year={year[0]} yearData={year[1]} />)}
             </div>
-          </div>
+          </div> : <div className="col"><div className="loader-background rounded p-1"><Loading /></div></div>}
         </div>
       </div>
     );

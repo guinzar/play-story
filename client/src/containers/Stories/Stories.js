@@ -4,6 +4,9 @@ import { withRouter } from 'react-router-dom';
 import { getUserContent } from '../../store/actions/auth';
 import { setUser } from '../../store/actions/user';
 import PropTypes from 'prop-types';
+import './Stories.css';
+
+import Loading from '../../components/Loading/Loading';
 import { platformsList } from '../../config';
 
 class Stories extends Component {
@@ -19,7 +22,7 @@ class Stories extends Component {
   render() {
     return (
       <div className="container-fluid">
-        <div className="row">
+        <div className="row header">
           <div className="col-4">
             <h2>{this.props.user}</h2>
           </div>
@@ -30,17 +33,18 @@ class Stories extends Component {
             
           </div>
         </div>
-        <div className="row">
-          <div className="col lead">
-            The Stories feature is in dev / coming soon. Here's just a raw text feed of your added game activity for now:
-          </div>
-        </div>
         <div className="row mt-3">
           <div className="col">
-            {this.props.stories ? this.props.stories.map((story, i) => <div key={i}>
-              {new Date(story.date).toDateString()}:
-              Added: {story.name} ({new Date(story.release).toISOString().substr(0, 10)}) ({platformsList[story.platform]}) to games library.
-            </div>) : null}
+            <div className="stories rounded p-2">
+              <div className="lead">
+                The Stories feature is in dev / coming soon. Here's just a raw text feed of your added game activity for now:
+              </div>
+              <div>
+                {this.props.stories.length ? this.props.stories.map((story, i) => <div key={i}>
+                  {new Date(story.date).toDateString()}: {this.props.user} added: {story.name} ({new Date(story.release).toISOString().substr(0, 10)}) ({platformsList[story.platform]}) to games library.
+                </div>) : <Loading />}
+              </div>
+            </div>
           </div>
         </div>
       </div>

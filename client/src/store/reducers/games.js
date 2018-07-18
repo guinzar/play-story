@@ -42,10 +42,10 @@ const setUserAndSort = ( state, action ) => {
 const showGames = ( state, action ) => {
   return {
     ...state,
-    games: action.games.map(game => ({
+    games: action.games ? action.games.map(game => ({
       ...game,
       release: unixTimestampToISO(game.release)
-    })).sort((g1, g2) => sort(g1, g2, state.sortBy, state.sortAscending))
+    })).sort((g1, g2) => sort(g1, g2, state.sortBy, state.sortAscending)) : []
   };
 };
 const changeSort = ( state, action ) => {

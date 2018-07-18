@@ -4,6 +4,8 @@ import { withRouter, NavLink } from 'react-router-dom';
 import * as actions from '../../store/actions/auth';
 import './Home.css';
 import PropTypes from 'prop-types';
+
+import Loading from '../../components/Loading/Loading';
 import { platformsList } from '../../config';
 
 const formatDate = str => {
@@ -53,10 +55,10 @@ class Home extends Component {
           </div>
           <div className="col-5 pl-0">
             <div className="home-feed p-2 rounded">
-              <div className="align-center">
-                <h3>Global Activity Feed:</h3>
+              <div className="text-center">
+                <h3>Global Activity Feed</h3>
               </div>
-              <div className="small">
+              {this.props.stories.length > 0 ? <div className="small">
                 {this.props.stories.map((story, i) => <div key={i}>
                   {formatDate(story.date)}: <NavLink
                     to={`/${story.username}/games`}
@@ -64,7 +66,7 @@ class Home extends Component {
                     {story.username}
                   </NavLink> added: {story.name} ({platformsList[story.platform]}) to games library.
                 </div>)}
-              </div>
+              </div> : <Loading />}
             </div>
           </div>
         </div>
