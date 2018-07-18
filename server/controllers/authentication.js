@@ -26,10 +26,7 @@ exports.signUp = (req, res, next) => {
   
   User.findOne({ username: username }, (err, existingUser) => {
     if (err) return next(err);
-    if (existingUser) {
-      console.log('existing user');
-      return res.status(422).send({ error: 'Username is taken', field: 'username' });
-    }
+    if (existingUser) return res.status(422).send({ error: 'Username is taken', field: 'username' });
     const user = new User({
       email: email,
       username: username,

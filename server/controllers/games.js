@@ -20,7 +20,6 @@ exports.searchGames = (req, res) => {
   ).then(response => {
     res.json(response.data);
   }).catch(error => {
-    console.log(error);
-    res.end();
+    res.status(500).end();
   });
 };

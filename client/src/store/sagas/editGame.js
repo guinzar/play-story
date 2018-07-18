@@ -10,7 +10,7 @@ export function* searchGamesSaga(action) {
   try {
     yield call(delay, 500);
     if (action.input.length) {
-      const response = yield axios.get('http://localhost:3090/games/search',
+      const response = yield axios.get('http://localhost:3090/games',
         {
           headers: {
             'Accept': 'application/json'
