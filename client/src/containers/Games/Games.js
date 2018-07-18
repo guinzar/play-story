@@ -34,15 +34,18 @@ class Games extends Component {
       </button>
     ) : null;
     const headers = [['#', false], ['Name', true], ['Release', true],
-      ['Genres', false], ['Enjoyment', true], ['Played', false], ['Stories', false]];
+      ['Genres', false], ['Enjoyment', true], ['Played', false], ['Comment', false]];
     return (
-      <div className="container">
+      <div className="container-fluid">
         <EditGame modalId={ADD_GAME_MODAL} />
         <div className="row">
-          <div className="col-9">
-            <h2>{this.props.user}'s Games:</h2>
+          <div className="col-4">
+            <h2>{this.props.user}</h2>
           </div>
-          <div className="col-3 text-right">
+          <div className="col-4 text-center">
+            <h2>games</h2>
+          </div>
+          <div className="col-4 text-right">
             {addGameButton}
           </div>
         </div>

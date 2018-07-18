@@ -1,11 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter, NavLink, Redirect } from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
 import * as actions from '../../store/actions/auth';
 import PropTypes from 'prop-types';
 
 const navbar = ({ username, leavePage, logOut }) => {
-  // console.log(props.location.pathname);
   const navItems = username ? (
     <React.Fragment>
       <li className="nav-item">

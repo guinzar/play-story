@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter, NavLink } from 'react-router-dom';
 import * as actions from '../../store/actions/auth';
 import './Home.css';
 import PropTypes from 'prop-types';
@@ -11,7 +12,7 @@ class Home extends Component {
   }
   render() {
     return (
-      <div className="container">
+      <div className="container-fluid">
         <div className="row mt-2">
           <div className="col-7">
             <div className="jumbotron">
@@ -29,14 +30,20 @@ class Home extends Component {
               <li>Check out the infographic of your gaming career over at Timeline!</li>
             </div>
           </div>
-          <div className="col-5 home-feed rounded pt-2">
-            <div className="align-center">
-              <h3>Global Feed:</h3>
-            </div>
-            <div className="small">
-              {this.props.stories.map((story, i) => <div key={i}>
-                {new Date(story.date).toLocaleString().split(',')[0]}: {story.username} added: {story.name} ({platformsList[story.platform]}) to games library.
-              </div>)}
+          <div className="col-5 pl-0">
+            <div className="home-feed p-2 rounded">
+              <div className="align-center">
+                <h3>Global Feed:</h3>
+              </div>
+              <div className="small">
+                {this.props.stories.map((story, i) => <div key={i}>
+                  {new Date(story.date).toLocaleString().split(',')[0]}: <NavLink
+                    to={`/${story.username}/games`}
+                    exact>
+                    {story.username}
+                  </NavLink> added: {story.name} ({platformsList[story.platform]}) to games library.
+                </div>)}
+              </div>
             </div>
           </div>
         </div>
@@ -62,4 +69,4 @@ const mapDispatchToProps = dispatch => {
 //   selectedGame: PropTypes.object
 // };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Home));

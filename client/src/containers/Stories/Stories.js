@@ -18,18 +18,30 @@ class Stories extends Component {
   }
   render() {
     return (
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
-          <h2>{this.props.user}'s Stories</h2>
+          <div className="col-4">
+            <h2>{this.props.user}</h2>
+          </div>
+          <div className="col-4 text-center">
+            <h2>stories</h2>
+          </div>
+          <div className="col-4">
+            
+          </div>
         </div>
         <div className="row">
-          The Stories feature is in dev / coming soon. Here's just a raw text feed of your added game activity:
+          <div className="col lead">
+            The Stories feature is in dev / coming soon. Here's just a raw text feed of your added game activity:
+          </div>
         </div>
         <div className="row mt-3">
-          {this.props.stories ? this.props.stories.map((story, i) => <div key={i}>
-            {new Date(story.date).toDateString()}:
-            Added: {story.name} ({new Date(story.release).toISOString().substr(0, 10)}) ({platformsList[story.platform]}) to games library.
-          </div>) : null}
+          <div className="col">
+            {this.props.stories ? this.props.stories.map((story, i) => <div key={i}>
+              {new Date(story.date).toDateString()}:
+              Added: {story.name} ({new Date(story.release).toISOString().substr(0, 10)}) ({platformsList[story.platform]}) to games library.
+            </div>) : null}
+          </div>
         </div>
       </div>
     );

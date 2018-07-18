@@ -43,8 +43,14 @@ class Timeline extends Component {
       <div className="container-fluid">
         <EditGame modalId={ADD_GAME_MODAL} />
         <div className="row">
-          <div className="col text-center">
-            <h2>{this.props.user}'s Gaming Timeline</h2>
+          <div className="col-4">
+            <h2>{this.props.user}</h2>
+          </div>
+          <div className="col-4 text-center">
+            <h2>timeline</h2>
+          </div>
+          <div className="col-4">
+            
           </div>
         </div>
         <div className="row">
