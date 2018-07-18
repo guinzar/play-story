@@ -34,7 +34,9 @@ const game = ({ index, game, onGameClick }) => {
       <td className="align-middle">{game.playData.map((yearData, i) => <div key={i} className="small">
         {yearData.year} [{yearData.amount}]
       </div>)}</td>
-      <td className="small">{game.comment}</td>
+      <td className="align-middle small">
+        {game.comment}
+      </td>
     </tr>
   );
 };

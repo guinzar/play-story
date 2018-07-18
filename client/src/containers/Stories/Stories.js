@@ -32,7 +32,7 @@ class Stories extends Component {
         </div>
         <div className="row">
           <div className="col lead">
-            The Stories feature is in dev / coming soon. Here's just a raw text feed of your added game activity:
+            The Stories feature is in dev / coming soon. Here's just a raw text feed of your added game activity for now:
           </div>
         </div>
         <div className="row mt-3">

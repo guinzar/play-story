@@ -8,15 +8,16 @@ const initialState = {
 };
 const sort = (g1, g2, sortBy, sortAscending) => {
   if (sortBy === 'Release') {
-    if (sortAscending) return g1.release > g2.release;
-    return g2.release > g1.release;
+    if (g1.release > g2.release) return sortAscending ? 1 : -1;
+    if (g2.release > g1.release) return sortAscending ? -1 : 1;
   } else if (sortBy === 'Name') {
-    if (sortAscending) return g1.name > g2.name;
-    return g2.name > g1.name;
+    if (g1.name > g2.name) return sortAscending ? 1 : -1;
+    if (g2.name > g1.name) return sortAscending ? -1 : 1;
   } else if (sortBy === 'Enjoyment') {
-    if (sortAscending) return g1.enjoyment > g2.enjoyment;
-    return g2.enjoyment > g1.enjoyment;
+    if (sortAscending) return g1.enjoyment - g2.enjoyment;
+    return g2.enjoyment - g1.enjoyment;
   }
+  return 0;
 };
 const unixTimestampToISO = (unixTimestamp) =>{
   return new Date(unixTimestamp).toISOString().substr(0, 10)

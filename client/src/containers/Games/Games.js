@@ -56,7 +56,7 @@ class Games extends Component {
                 <thead className="thead-light">
                   <tr>
                     {headers.map((header, i) => (
-                      <th key={i} scope="col" className={header[0] === 'Genres' ? 'w-25' : null}>
+                      <th key={i} scope="col" className={['Name', 'Genres', 'Comment'].includes(header[0]) ? 'w-25' : null}>
                         {header[1] ? <NavLink
                           onClick={header[1] ? () => this.props.onHeaderClick(header[0]) : null}
                           to={`?sort=${header[0].toLowerCase()}_${this.props.sortBy === header[0] ? this.props.sortAscending ? 'desc' : 'asc' : 'desc'}`}

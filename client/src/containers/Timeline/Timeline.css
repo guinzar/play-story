@@ -19,7 +19,7 @@
 }
 .timeline-yaxis-segment {
   position: relative;
-  min-height: 7rem;
+  min-height: 7.4rem;
   min-width: .5rem;
   /* background: teal; */
   border-top: 3px solid black;
@@ -58,7 +58,7 @@
   /* border-bottom: 3px solid lightpink; */
   /* background: yellow; */
   width: 10rem;
-  min-height: 7rem;
+  min-height: 7.4rem;
 }
 .timeline-year-segment img {
   height: 1rem;
