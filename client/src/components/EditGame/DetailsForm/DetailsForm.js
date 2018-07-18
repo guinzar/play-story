@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../../../store/actions/addGame';
+import * as actions from '../../../store/actions/editGame';
 import PropTypes from 'prop-types';
 import './DetailsForm.css'
 import { platformsList, genresList } from '../../../config';
@@ -82,13 +82,13 @@ const detailsForm = ({ release, platforms, platform, genres, enjoyment, comment,
 
 const mapStateToProps = state => {
   return {
-    release: state.addGame.release,
-    platforms: state.addGame.platforms,
-    platform: state.addGame.platform,
-    genres: state.addGame.genres,
-    enjoyment: state.addGame.enjoyment,
-    comment: state.addGame.comment,
-    playData: state.addGame.playData
+    release: state.editGame.release,
+    platforms: state.editGame.platforms,
+    platform: state.editGame.platform,
+    genres: state.editGame.genres,
+    enjoyment: state.editGame.enjoyment,
+    comment: state.editGame.comment,
+    playData: state.editGame.playData
   };
 };
 const mapDispatchToProps = dispatch => {

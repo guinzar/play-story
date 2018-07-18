@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../../../../.././store/actions/addGame';
+import * as actions from '../../../../.././store/actions/editGame';
 import PropTypes from 'prop-types';
 
 const selectGameButton = ({game, onSelectGame}) => {

@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../../store/actions/addGame';
+import * as actions from '../../store/actions/editGame';
 import PropTypes from 'prop-types';
-import './AddGame.css'
+import './EditGame.css'
 import GameSelect from './GameSelect/GameSelect';
 import DetailsForm from './DetailsForm/DetailsForm';
 
-const addGame = ({ modalId, token, username, addGameForm, submit }) => {
+const editGame = ({ modalId, token, username, editGameForm, submit }) => {
   return (
     <div className="modal fade" id={modalId} tabIndex="-1" role="dialog">
       <div className="modal-dialog" role="document">
@@ -20,23 +20,23 @@ const addGame = ({ modalId, token, username, addGameForm, submit }) => {
           <div className="modal-body">
             <div className="container-fluid px-0">
               <GameSelect />
-              {addGameForm.id ? <DetailsForm /> : null}
+              {editGameForm.id ? <DetailsForm /> : null}
             </div>
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
             <button onClick={() => submit(token, username, {
-              id: addGameForm.id,
-              name: addGameForm.name,
-              release: new Date(addGameForm.release).getTime(),
-              thumb: addGameForm.thumb,
-              platforms: addGameForm.platforms,
-              platform: addGameForm.platform,
-              genres: addGameForm.genres,
-              enjoyment: addGameForm.enjoyment,
-              comment: addGameForm.comment,
-              playData: addGameForm.playData
-            })} type="button" className="btn btn-primary" disabled={addGameForm.id === null}>Save</button>
+              id: editGameForm.id,
+              name: editGameForm.name,
+              release: new Date(editGameForm.release).getTime(),
+              thumb: editGameForm.thumb,
+              platforms: editGameForm.platforms,
+              platform: editGameForm.platform,
+              genres: editGameForm.genres,
+              enjoyment: editGameForm.enjoyment,
+              comment: editGameForm.comment,
+              playData: editGameForm.playData
+            })} type="button" className="btn btn-primary" disabled={editGameForm.id === null}>Save</button>
           </div>
         </div>
       </div>
@@ -48,7 +48,7 @@ const mapStateToProps = state => {
   return {
     token: state.auth.token,
     username: state.auth.username,
-    addGameForm: state.addGame
+    editGameForm: state.editGame
   };
 };
 
@@ -58,9 +58,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-addGame.propTypes = {
+editGame.propTypes = {
   modalId: PropTypes.string.isRequired,
   // selectedGame: PropTypes.object
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(addGame);
+export default connect(mapStateToProps, mapDispatchToProps)(editGame);

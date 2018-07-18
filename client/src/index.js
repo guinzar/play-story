@@ -16,9 +16,9 @@ import authReducer from './store/reducers/auth';
 import logInReducer from './store/reducers/logIn';
 import signUpReducer from './store/reducers/signUp';
 import homeReducer from './store/reducers/home';
-import userReducer from './store/reducers/user';
+import storiesReducer from './store/reducers/stories';
 import gamesReducer from './store/reducers/games';
-import addGameReducer from './store/reducers/addGame';
+import editGameReducer from './store/reducers/editGame';
 import timelineReducer from './store/reducers/timeline';
 import { watchSearchGames } from "./store/sagas";
 
@@ -30,9 +30,9 @@ const rootReducer = combineReducers({
   logIn: logInReducer,
   signUp: signUpReducer,
   home: homeReducer,
-  user: userReducer,
+  stories: storiesReducer,
   games: gamesReducer,
-  addGame: addGameReducer,
+  editGame: editGameReducer,
   timeline: timelineReducer
 });
 

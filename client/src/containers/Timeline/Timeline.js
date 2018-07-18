@@ -6,7 +6,7 @@ import { clickAddGame } from '../../store/actions/games';
 import PropTypes from 'prop-types';
 import './Timeline.css';
 import Year from '../../components/Timeline/Year';
-import AddGame from '../../components/AddGame/AddGame';
+import EditGame from '../../components/EditGame/EditGame';
 const ADD_GAME_MODAL = 'addGameModal';
 const playTimeStrings = [
   ['minimal', '(1 to 24 hours)'],
@@ -41,13 +41,10 @@ class Timeline extends Component {
     ) : null;
     return (
       <div className="container-fluid">
-        <AddGame modalId={ADD_GAME_MODAL} />
+        <EditGame modalId={ADD_GAME_MODAL} />
         <div className="row">
-          <div className="col-9">
-            <h1>{this.props.user}'s Gaming Timeline:</h1>
-          </div>
-          <div className="col-3 text-right">
-            {/* {addGameButton} */}
+          <div className="col text-center">
+            <h2>{this.props.user}'s Gaming Timeline</h2>
           </div>
         </div>
         <div className="row">

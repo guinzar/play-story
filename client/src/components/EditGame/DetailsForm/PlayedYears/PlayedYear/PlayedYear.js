@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../../../../../store/actions/addGame';
+import * as actions from '../../../../../store/actions/editGame';
 import PropTypes from 'prop-types';
 
 const playTimeStrings = [
@@ -49,7 +49,7 @@ const playedYear = ({ index, yearData, birthday, yearsNotPlayed, onRemovePlayedY
 const mapStateToProps = state => {
   return {
     birthday: state.auth.birthday,
-    yearsNotPlayed: state.addGame.yearsNotPlayed
+    yearsNotPlayed: state.editGame.yearsNotPlayed
   };
 };
 const mapDispatchToProps = dispatch => {

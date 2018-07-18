@@ -8,7 +8,7 @@ import Navbar from './components/Navbar/Navbar';
 import Home from './containers/Home/Home';
 import SignUp from './containers/SignUp/SignUp';
 import LogIn from './containers/LogIn/LogIn';
-import UserPage from './containers/UserPage/UserPage';
+import Stories from './containers/Stories/Stories';
 import Games from './containers/Games/Games';
 import Timeline from './containers/Timeline/Timeline';
 
@@ -22,7 +22,7 @@ class App extends Component {
         <Route path="/" exact component={Home} />
         <Route path="/:user/games" exact component={Games} />
         <Route path="/:user/timeline" exact component={Timeline} />
-        <Route path="/:user" exact component={UserPage} />
+        <Route path="/:user" exact component={Stories} />
         <Redirect to="/" />
       </Switch>
     );

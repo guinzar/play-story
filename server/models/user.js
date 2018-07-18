@@ -29,20 +29,34 @@ const gameSchema = new Schema({
   },
   thumb: {
     type: String,
+    required: false
   },
-  platforms: [Number],
+  platforms: {
+    type: [Number],
+    required: true
+  },
   platform: {
     type: Number,
     required: true
   },
-  genres: [Number],
+  genres: {
+    type: [Number],
+    required: false
+  },
   enjoyment: {
     type: Number,
     min: 0,
-    max: 10
+    max: 10,
+    required: false
   },
-  comment: String,
-  playData: [playData]
+  comment: {
+    type: String,
+    required: false
+  },
+  playData: {
+    type: [playData],
+    required: false
+  }
 });
 const storySchema = new Schema({
   type: { // game, story, 
@@ -53,7 +67,30 @@ const storySchema = new Schema({
     type: Date,
     default: Date.now
   },
-  game: gameSchema,
+  username: {
+    type: String,
+    required: false
+  },
+  id: {
+    type: Number,
+    required: true
+  },
+  name: {
+    type: String,
+    required: true
+  },
+  release: {
+    type: Number,
+    required: true
+  },
+  thumb: {
+    type: String,
+    required: false
+  },
+  platform: {
+    type: Number,
+    required: true
+  },
   storyInfo: {
     comment: String,
   }

@@ -15,7 +15,7 @@ const searchDropdown = ({searchResults}) => {
 
 const mapStateToProps = state => {
   return {
-    searchResults: state.addGame.searchResults
+    searchResults: state.editGame.searchResults
   };
 };
 

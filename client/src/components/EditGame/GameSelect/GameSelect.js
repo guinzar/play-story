@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../../../store/actions/addGame';
+import * as actions from '../../../store/actions/editGame';
 import PropTypes from 'prop-types';
 import './GameSelect.css'
 import SearchDropdown from './SearchDropdown/SearchDropdown';
@@ -41,11 +41,11 @@ const mapStateToProps = state => {
   return {
     token: state.auth.token,
     username: state.auth.username,
-    searchInput: state.addGame.searchInput,
-    isEdit: state.addGame.isEdit,
-    id: state.addGame.id,
-    name: state.addGame.name,
-    thumb: state.addGame.thumb
+    searchInput: state.editGame.searchInput,
+    isEdit: state.editGame.isEdit,
+    id: state.editGame.id,
+    name: state.editGame.name,
+    thumb: state.editGame.thumb
   };
 };
 

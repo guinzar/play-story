@@ -1,7 +1,7 @@
 import { put, call } from 'redux-saga/effects';
 
 import axios from 'axios';
-import { updateSearchResults, updateSearchResultsFailed } from "../actions/addGame";
+import { updateSearchResults, updateSearchResultsFailed } from "../actions/editGame";
 import { addGameSuccess, editGameSuccess, removeGameSuccess } from "../actions/games";
 
 const delay = (ms) => new Promise(res => setTimeout(res, ms));

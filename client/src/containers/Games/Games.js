@@ -5,7 +5,7 @@ import { getUserContent } from '../../store/actions/auth';
 import { setUserAndSort, changeSort, clickAddGame, editGame } from '../../store/actions/games';
 import PropTypes from 'prop-types';
 
-import AddGame from '../../components/AddGame/AddGame';
+import EditGame from '../../components/EditGame/EditGame';
 import Game from '../../components/Games/Game';
 import './Games.css';
 const ADD_GAME_MODAL = 'addGameModal';
@@ -29,7 +29,7 @@ class Games extends Component {
   }
   render() {
     const addGameButton = this.props.username === this.props.user ? (
-      <button onClick={() => this.props.onAddGameClick()} data-toggle="modal" data-target={`#${ADD_GAME_MODAL}`} className="btn btn-primary mt-2" type="button">
+      <button onClick={() => this.props.onAddGameClick()} data-toggle="modal" data-target={`#${ADD_GAME_MODAL}`} className="btn btn-primary mt-1" type="button">
         +Add Game
       </button>
     ) : null;
@@ -37,10 +37,10 @@ class Games extends Component {
       ['Genres', false], ['Enjoyment', true], ['Played', false], ['Stories', false]];
     return (
       <div className="container">
-        <AddGame modalId={ADD_GAME_MODAL} />
+        <EditGame modalId={ADD_GAME_MODAL} />
         <div className="row">
           <div className="col-9">
-            <h1>{this.props.user}'s Games:</h1>
+            <h2>{this.props.user}'s Games:</h2>
           </div>
           <div className="col-3 text-right">
             {addGameButton}

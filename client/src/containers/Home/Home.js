@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../store/actions/auth';
 import './Home.css';
 import PropTypes from 'prop-types';
+import { platformsList } from '../../config';
 
 class Home extends Component {
   componentDidMount() {
@@ -11,8 +12,8 @@ class Home extends Component {
   render() {
     return (
       <div className="container">
-        <div className="row">
-          <div className="col">
+        <div className="row mt-2">
+          <div className="col-7">
             <div className="jumbotron">
               <h1 className="display-4">Welcome to PlayStory!</h1>
               <p className="lead">This is an app made for gamers by a long-time gamer</p>
@@ -20,7 +21,7 @@ class Home extends Component {
               <p className="lead">
                 Built from the ground up with the MERN (Mongo, Express, React/Redux, Node) stack by <a href="https://www.linkedin.com/guinzar">@guinzar</a>
               </p>
-              <hr className="my-4" />
+              <hr className="my-3" />
               <p>Note: PlayStory is currently in early stages of development</p>
               <p>Take PlayStory for a spin:</p>
               <li>Make an account, go to 'My Games' and add some games</li>
@@ -28,9 +29,16 @@ class Home extends Component {
               <li>Check out the infographic of your gaming career over at Timeline!</li>
             </div>
           </div>
-          {/* <div className="col-6">
-            {this.props.stories.map((story, i) => <div key={i}>{story}</div>)}
-          </div> */}
+          <div className="col-5 home-feed rounded pt-2">
+            <div className="align-center">
+              <h3>Global Feed:</h3>
+            </div>
+            <div className="small">
+              {this.props.stories.map((story, i) => <div key={i}>
+                {new Date(story.date).toLocaleString().split(',')[0]}: {story.username} added: {story.name} ({platformsList[story.platform]}) to games library.
+              </div>)}
+            </div>
+          </div>
         </div>
       </div>
     );
