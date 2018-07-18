@@ -4,7 +4,7 @@ import * as actions from '../../../store/actions/editGame';
 import PropTypes from 'prop-types';
 import './DetailsForm.css'
 import { platformsList, genresList } from '../../../config';
-import PlayedYears from './PlayedYears/PlayedYears';
+import PlayedYears from './PlayedYears';
 
 const enjoymentStrings = [
   'This was the worst gaming experience I\'ve ever had in my life',
@@ -102,11 +102,18 @@ const mapDispatchToProps = dispatch => {
 };
 
 detailsForm.propTypes = {
-  // selectedGame: PropTypes.object.isRequired,
-  // enjoyment: PropTypes.number,
-  // comment: PropTypes.string.isRequired,
-  onEnjoymentClick: PropTypes.func,
-  onCommentInputChange: PropTypes.func
+  release: PropTypes.string.isRequired,
+  platforms: PropTypes.array.isRequired,
+  platform: PropTypes.number.isRequired,
+  genres: PropTypes.array.isRequired,
+  enjoyment: PropTypes.number,
+  comment: PropTypes.string,
+  playData: PropTypes.array.isRequired,
+  onReleaseInputChange: PropTypes.func.isRequired,
+  onReleaseInputDeselect: PropTypes.func.isRequired,
+  onPlatformChange: PropTypes.func.isRequired,
+  onEnjoymentClick: PropTypes.func.isRequired,
+  onCommentInputChange: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(detailsForm);

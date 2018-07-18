@@ -60,7 +60,10 @@ const mapDispatchToProps = dispatch => {
 
 editGame.propTypes = {
   modalId: PropTypes.string.isRequired,
-  // selectedGame: PropTypes.object
+  token: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
+  editGameForm: PropTypes.object.isRequired,
+  submit: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(editGame);

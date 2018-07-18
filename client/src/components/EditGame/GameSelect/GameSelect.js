@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../../store/actions/editGame';
 import PropTypes from 'prop-types';
 import './GameSelect.css'
-import SearchDropdown from './SearchDropdown/SearchDropdown';
+import SearchDropdown from './SearchDropdown';
 
 const gameSelect = ({ searchInput, token, username, isEdit, id, name, thumb, onSearchInputChange, onSelectedGameClick, onRemoveGameClick }) => {
   const content =  id ?
@@ -59,8 +59,15 @@ const mapDispatchToProps = dispatch => {
 
 gameSelect.propTypes = {
   searchInput: PropTypes.string.isRequired,
+  token: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
+  isEdit: PropTypes.bool.isRequired,
+  id: PropTypes.number,
+  name: PropTypes.string,
+  thumb: PropTypes.string,
   onSearchInputChange: PropTypes.func.isRequired,
-  onSelectedGameClick: PropTypes.func.isRequired
+  onSelectedGameClick: PropTypes.func.isRequired,
+  onRemoveGameClick: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(gameSelect);

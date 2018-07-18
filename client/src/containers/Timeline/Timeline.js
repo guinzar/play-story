@@ -2,13 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getUserContent } from '../../store/actions/auth';
 import { setUserAndSortTimeline } from '../../store/actions/timeline';
-import { clickAddGame } from '../../store/actions/games';
 import PropTypes from 'prop-types';
 import './Timeline.css';
 import Loading from '../../components/Loading/Loading';
 import Year from '../../components/Timeline/Year';
-import EditGame from '../../components/EditGame/EditGame';
-const ADD_GAME_MODAL = 'addGameModal';
 const playTimeStrings = [
   ['minimal', '(1 to 24 hours)'],
   ['light', '(24 to 50 hours)'],
@@ -35,20 +32,20 @@ class Timeline extends Component {
     this.props.getUserPage(this.props.token, path[1], path[2]);
   }
   render() {
-    const addGameButton = this.props.username === this.props.user ? (
-      <button onClick={() => this.props.onAddGameClick()} data-toggle="modal" data-target={`#${ADD_GAME_MODAL}`} className="btn btn-primary mt-2" type="button">
-        +Add Game
-      </button>
-    ) : null;
     return (
       <div className="container-fluid">
-        <EditGame modalId={ADD_GAME_MODAL} />
         <div className="row header">
           <div className="col-4">
             <h2>{this.props.user}</h2>
           </div>
           <div className="col-4 text-center">
-            <h2>timeline</h2>
+            <h2>
+              {'timeline'.split('').map((char, i) => <span
+                key={i}
+                className={`timeline-header-color-${i < 5 ? i + 1 : i + 1 - 2 * (i - 4)}`}>
+                {char}
+              </span>)}
+            </h2>
           </div>
           <div className="col-4">
             
@@ -83,22 +80,23 @@ const mapStateToProps = state => {
     username: state.auth.username,
     user: state.timeline.user,
     years: state.timeline.years,
-    // sortBy: state.games.sortBy,
-    // sortAscending: state.games.sortAscending,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     setUserAndSortTimeline: (user, sort) => dispatch(setUserAndSortTimeline(user, sort)),
-    getUserPage: (token, user, page) => dispatch(getUserContent(token, user, page)),
-    onAddGameClick: () => dispatch(clickAddGame())
+    getUserPage: (token, user, page) => dispatch(getUserContent(token, user, page))
   };
 };
 
-// addGame.propTypes = {
-//   modalId: PropTypes.string.isRequired,
-//   selectedGame: PropTypes.object
-// };
+Timeline.propTypes = {
+  token: PropTypes.string,
+  username: PropTypes.string,
+  user: PropTypes.string,
+  years: PropTypes.array.isRequired,
+  setUserAndSortTimeline: PropTypes.func.isRequired,
+  getUserPage: PropTypes.func.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Timeline);

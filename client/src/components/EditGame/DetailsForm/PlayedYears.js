@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../../../../store/actions/editGame';
+import * as actions from '../../../store/actions/editGame';
 import PropTypes from 'prop-types';
-import PlayedYear from './PlayedYear/PlayedYear';
+import PlayedYear from './PlayedYear';
 
 const playedYears = ({ yearsNotPlayed, playData, onAddPlayedYear }) => {
   const content = (

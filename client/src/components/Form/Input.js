@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const input = ({ id, type, label, value, onChange, onDeselect, descrip, touched, required, valid, validityMsg }) => {
   const validityClass = touched ? valid ? ' is-valid' : ' is-invalid' : '';
@@ -16,5 +17,18 @@ const input = ({ id, type, label, value, onChange, onDeselect, descrip, touched,
     </div>
   );
 }
+input.propTypes = {
+  id: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onDeselect: PropTypes.func.isRequired,
+  descrip: PropTypes.string,
+  touched: PropTypes.bool.isRequired,
+  // required: PropTypes.bool.isRequired,
+  valid: PropTypes.bool.isRequired,
+  validityMsg: PropTypes.string.isRequired,
+};
 
 export default input;

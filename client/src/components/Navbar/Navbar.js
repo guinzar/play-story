@@ -4,6 +4,7 @@ import { withRouter, NavLink } from 'react-router-dom';
 import * as actions from '../../store/actions/auth';
 import PropTypes from 'prop-types';
 import './Navbar.css';
+
 const navbar = ({ username, leavePage, logOut }) => {
   const navItems = username ? (
     <React.Fragment>
@@ -98,9 +99,10 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-// addGame.propTypes = {
-//   modalId: PropTypes.string.isRequired,
-//   selectedGame: PropTypes.object
-// };
+navbar.propTypes = {
+  username: PropTypes.string,
+  leavePage: PropTypes.func.isRequired,
+  logOut: PropTypes.func.isRequired,
+};
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(navbar));

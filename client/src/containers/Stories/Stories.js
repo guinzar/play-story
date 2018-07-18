@@ -26,17 +26,17 @@ class Stories extends Component {
           <div className="col-4">
             <h2>{this.props.user}</h2>
           </div>
-          <div className="col-4 text-center">
+          <div className="col-4 stories-header text-center">
             <h2>stories</h2>
           </div>
           <div className="col-4">
             
           </div>
         </div>
-        <div className="row mt-3">
+        <div className="row">
           <div className="col">
             <div className="stories rounded p-2">
-              <div className="lead">
+              <div className="stories-highlight lead">
                 The Stories feature is in dev / coming soon. Here's just a raw text feed of your added game activity for now:
               </div>
               <div>
@@ -54,6 +54,7 @@ class Stories extends Component {
 const mapStateToProps = state => {
   return {
     token: state.auth.token,
+    username: state.auth.username,
     user: state.stories.user,
     stories: state.stories.stories
   };
@@ -66,9 +67,13 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-// addGame.propTypes = {
-//   modalId: PropTypes.string.isRequired,
-//   selectedGame: PropTypes.object
-// };
+Stories.propTypes = {
+  token: PropTypes.string,
+  username: PropTypes.string,
+  user: PropTypes.string,
+  stories: PropTypes.array.isRequired,
+  setUser: PropTypes.func.isRequired,
+  getUserPage: PropTypes.func.isRequired,
+};
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Stories));

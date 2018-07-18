@@ -10,7 +10,6 @@
 .timeline-yaxis {
   /* background: blue; */
   /* width: 10rem; */
-  /* max-height: 35.2rem; */
   color: lightsteelblue;
   overflow-y: hidden;
   padding-left: 3.6rem;
@@ -108,4 +107,19 @@
 .timeline-year-color-4 {
   border: .2rem solid #bae1ff;
   background: #bae1ff;
+}
+.timeline-header-color-1 {
+  color: #ff7f7f;
+}
+.timeline-header-color-2 {
+  color: #ffb481;
+}
+.timeline-header-color-3 {
+  color: #fffa8b;
+}
+.timeline-header-color-4 {
+  color: #9cff86;
+}
+.timeline-header-color-5 {
+  color: #89d8ff;
 }

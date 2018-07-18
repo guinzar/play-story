@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../../../../.././store/actions/editGame';
+import * as actions from '../../../store/actions/editGame';
 import PropTypes from 'prop-types';
 
-const selectGameButton = ({game, onSelectGame}) => {
+const selectGameButton = ({ game, onSelectGame }) => {
   return (
     <button onClick={() => onSelectGame(game)} className="list-group-item list-group-item-action">
       <div className="media">
@@ -26,7 +26,8 @@ const mapDispatchToProps = dispatch => {
 };
 
 selectGameButton.propTypes = {
-  game: PropTypes.object
+  game: PropTypes.object.isRequired,
+  onSelectGame: PropTypes.func.isRequired,
 };
 
 export default connect(null, mapDispatchToProps)(selectGameButton);

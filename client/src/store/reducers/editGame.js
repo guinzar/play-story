@@ -150,11 +150,11 @@ const changePlayedYearAmount = ( state, action ) => {
   };
 };
 const resetForm = ( state, action ) => {
-  $('#addGameModal').modal('hide');
+  $('#editGameModal').modal('hide');
   return initialState
 };
 const editGame = ( state, action ) => {
-  $('#addGameModal').modal('show');
+  $('#editGameModal').modal('show');
   const releaseYear = new Date(action.game.release).getYear();
   const yearSpan = new Date().getYear() + 1 - releaseYear;
   const playedYears = action.game.playData.reduce((acc, year) => {

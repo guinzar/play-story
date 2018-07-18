@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './SearchDropdown.css'
-import SelectGameButton from './SelectGameButton/SelectGameButton';
+import SelectGameButton from './SelectGameButton';
 
-const searchDropdown = ({searchResults}) => {
+const searchDropdown = ({ searchResults }) => {
   return searchResults.length ? 
     (<div className="list-group search-results w-100 mt-1">
       {searchResults.map((game, i) =>
@@ -20,7 +20,7 @@ const mapStateToProps = state => {
 };
 
 searchDropdown.propTypes = {
-  searchResults: PropTypes.array
+  searchResults: PropTypes.array.isRequired,
 };
 
 export default connect(mapStateToProps)(searchDropdown);

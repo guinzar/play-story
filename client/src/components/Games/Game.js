@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import * as actions from '../../store/actions/games';
 import PropTypes from 'prop-types';
 import { platformsList, genresList } from '../../config'
 import './Game.css';
@@ -40,14 +38,9 @@ const game = ({ index, game, onGameClick }) => {
     </tr>
   );
 };
-const mapStateToProps = state => {
-  return {
-
-  };
+game.propTypes = {
+  index: PropTypes.number.isRequired,
+  game: PropTypes.object.isRequired,
+  onGameClick: PropTypes.func.isRequired,
 };
-const mapDispatchToProps = dispatch => {
-  return {
-    
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(game);
+export default game;

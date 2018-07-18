@@ -1,3 +1,9 @@
 .stories {
   background-color: white;
 }
+.stories-header {
+  color: #4da3ff;
+}
+.stories-highlight {
+  color: #007BFF;
+}

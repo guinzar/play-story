@@ -8,7 +8,7 @@ import Loading from '../../components/Loading/Loading';
 import EditGame from '../../components/EditGame/EditGame';
 import Game from '../../components/Games/Game';
 import './Games.css';
-const ADD_GAME_MODAL = 'addGameModal';
+const EDIT_GAME_MODAL = 'editGameModal';
 const headers = [['#', false], ['Name', true], ['Release', true],
   ['Genres', false], ['Enjoyment', true], ['Played', false], ['Comment', false]];
 
@@ -31,18 +31,18 @@ class Games extends Component {
   }
   render() {
     const addGameButton = this.props.username === this.props.user ? (
-      <button onClick={() => this.props.onAddGameClick()} data-toggle="modal" data-target={`#${ADD_GAME_MODAL}`} className="btn btn-primary mt-1" type="button">
+      <button onClick={() => this.props.onAddGameClick()} data-toggle="modal" data-target={`#${EDIT_GAME_MODAL}`} className="btn btn-success mt-1" type="button">
         <strong>Add Game</strong>
       </button>
     ) : null;
     return (
       <div className="container-fluid">
-        <EditGame modalId={ADD_GAME_MODAL} />
+        <EditGame modalId={EDIT_GAME_MODAL} />
         <div className="row header">
           <div className="col-4">
             <h2>{this.props.user}</h2>
           </div>
-          <div className="col-4 text-center">
+          <div className="col-4 games-header text-center">
             <h2>games</h2>
           </div>
           <div className="col-4 text-right">
@@ -59,6 +59,7 @@ class Games extends Component {
                       <th key={i} scope="col" className={['Name', 'Genres', 'Comment'].includes(header[0]) ? 'w-25' : null}>
                         {header[1] ? <NavLink
                           onClick={header[1] ? () => this.props.onHeaderClick(header[0]) : null}
+                          className="games-nav-link"
                           to={`?sort=${header[0].toLowerCase()}_${this.props.sortBy === header[0] ? this.props.sortAscending ? 'desc' : 'asc' : 'desc'}`}
                           exact
                           activeClassName="active">
@@ -106,9 +107,18 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-// addGame.propTypes = {
-//   modalId: PropTypes.string.isRequired,
-//   selectedGame: PropTypes.object
-// };
+Games.propTypes = {
+  token: PropTypes.string,
+  username: PropTypes.string,
+  user: PropTypes.string,
+  games: PropTypes.array.isRequired,
+  sortBy: PropTypes.string.isRequired,
+  sortAscending: PropTypes.bool.isRequired,
+  setUserAndSort: PropTypes.func.isRequired,
+  getUserPage: PropTypes.func.isRequired,
+  onAddGameClick: PropTypes.func.isRequired,
+  onHeaderClick: PropTypes.func.isRequired,
+  onGameClick: PropTypes.func.isRequired,
+};
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Games));

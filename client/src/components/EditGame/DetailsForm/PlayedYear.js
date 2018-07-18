@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../../../../../store/actions/editGame';
+import * as actions from '../../../store/actions/editGame';
 import PropTypes from 'prop-types';
-
 const playTimeStrings = [
   'minimal (1 to 24 hours)',
   'light (24 to 50 hours)',
@@ -63,6 +62,8 @@ const mapDispatchToProps = dispatch => {
 playedYear.propTypes = {
   index: PropTypes.number.isRequired,
   yearData: PropTypes.object.isRequired,
+  birthday: PropTypes.string,
+  yearsNotPlayed: PropTypes.array.isRequired,
   onRemovePlayedYear: PropTypes.func.isRequired,
   onChangePlayedYearYear: PropTypes.func.isRequired,
   onChangePlayedYearAmount: PropTypes.func.isRequired,

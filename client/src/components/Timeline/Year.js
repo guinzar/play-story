@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { platformsList, genresList } from '../../config'
 
 const year = ({ year, yearData, birthday, games }) => {
-  // console.log(year);
   let maxAmount = 0;
   if (yearData) {
     for (let i = 5; i >= 0; i--) {
@@ -54,5 +53,9 @@ const mapDispatchToProps = dispatch => {
   return {
     
   };
+};
+year.propTypes = {
+  birthday: PropTypes.string,
+  games: PropTypes.object.isRequired,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(year);

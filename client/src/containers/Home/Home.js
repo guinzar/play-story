@@ -87,9 +87,10 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-// addGame.propTypes = {
-//   modalId: PropTypes.string.isRequired,
-//   selectedGame: PropTypes.object
-// };
+Home.propTypes = {
+  token: PropTypes.string,
+  stories: PropTypes.array.isRequired,
+  getHome: PropTypes.func.isRequired,
+};
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Home));
