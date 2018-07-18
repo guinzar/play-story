@@ -3,7 +3,7 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
   user: null,
   games: [],
-  sortBy: 'Release',
+  sortBy: 'Enjoyment',
   sortAscending: false,
 };
 const sort = (g1, g2, sortBy, sortAscending) => {

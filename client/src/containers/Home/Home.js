@@ -6,6 +6,13 @@ import './Home.css';
 import PropTypes from 'prop-types';
 import { platformsList } from '../../config';
 
+const formatDate = str => {
+  let date = new Date(str);
+  let date1 = date.toLocaleDateString().split('/');
+  let date2 = date.toLocaleTimeString();
+  return `${date1[0]}/${date1[1]} ${date2.substr(0, 5)} ${date2.substr(-2)}`;
+};
+
 class Home extends Component {
   componentDidMount() {
     this.props.getHome(this.props.token);
@@ -51,7 +58,7 @@ class Home extends Component {
               </div>
               <div className="small">
                 {this.props.stories.map((story, i) => <div key={i}>
-                  {new Date(story.date).toLocaleString().split(',')[0]}: <NavLink
+                  {formatDate(story.date)}: <NavLink
                     to={`/${story.username}/games`}
                     exact>
                     {story.username}
