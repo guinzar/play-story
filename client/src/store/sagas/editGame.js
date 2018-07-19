@@ -1,8 +1,8 @@
 import { put, call } from 'redux-saga/effects';
-
 import axios from 'axios';
-import { updateSearchResults, updateSearchResultsFailed, editGameFailed } from "../actions/editGame";
-import { addGameSuccess, editGameSuccess, removeGameSuccess } from "../actions/games";
+import { updateSearchResults, updateSearchResultsFailed, editGameFailed } from '../actions/editGame';
+import { addGameSuccess, editGameSuccess, removeGameSuccess } from '../actions/games';
+import { SERVER_URL } from '../../config';
 
 const delay = (ms) => new Promise(res => setTimeout(res, ms));
 
@@ -10,7 +10,7 @@ export function* searchGamesSaga(action) {
   try {
     yield call(delay, 500);
     if (action.input.length) {
-      const response = yield axios.get('http://localhost:3090/games',
+      const response = yield axios.get(`${SERVER_URL}/games`,
         {
           headers: {
             'Accept': 'application/json'
@@ -30,7 +30,7 @@ export function* searchGamesSaga(action) {
 };
 export function* editGameSaga(action) {
   try {
-    const response = yield axios.post(`http://localhost:3090/user/${action.username}`,
+    const response = yield axios.post(`${SERVER_URL}/user/${action.username}`,
       {
         type: 'game',
         remove: action.remove,

@@ -1,16 +1,16 @@
 import { put } from 'redux-saga/effects';
-
 import axios from 'axios';
-import { tokenAuthSuccess, logOut } from "../actions/auth";
-import { showHomeStories } from "../actions/home";
-import { showUserStories } from "../actions/user";
-import { showUserGames } from "../actions/games";
-import { showUserTimeline } from "../actions/timeline";
+import { tokenAuthSuccess, logOut } from '../actions/auth';
+import { showHomeStories } from '../actions/home';
+import { showUserStories } from '../actions/user';
+import { showUserGames } from '../actions/games';
+import { showUserTimeline } from '../actions/timeline';
+import { SERVER_URL } from '../../config';
 
 export default function* (action) {
   try {
     const url = action.page === 'home' ? 'home' : `user/${action.user}${action.page === 'user' ? '' : `/${action.page}`}`;
-    const response = yield axios.get(`http://localhost:3090/${url}`, {
+    const response = yield axios.get(`${SERVER_URL}/${url}`, {
       headers: {
         'authorization': action.token
       }
