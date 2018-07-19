@@ -90,6 +90,7 @@ const reducer = ( state = initialState, action ) => {
     case actionTypes.LOGIN_SUBMIT: return loginSubmit( state, action );
     case actionTypes.LOGIN_FAILED: return loginFailed( state, action );
     case actionTypes.LEAVE_PAGE: return resetForm( state, action );
+    case actionTypes.LOGOUT: return resetForm( state, action );
     default: return state;
   }
 };

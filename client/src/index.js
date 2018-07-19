@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import $ from 'jquery';
-import Popper from 'popper.js';
+// import $ from 'jquery';
+// import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -19,7 +19,7 @@ import storiesReducer from './store/reducers/stories';
 import gamesReducer from './store/reducers/games';
 import editGameReducer from './store/reducers/editGame';
 import timelineReducer from './store/reducers/timeline';
-import { watchSearchGames } from "./store/sagas";
+import { watchAuth, watchEditGame } from "./store/sagas";
 
 const composeEnhancers =
   process.env.NODE_ENV === "development" ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
@@ -42,7 +42,8 @@ const store = createStore(
   composeEnhancers(applyMiddleware(sagaMiddleware))
 );
 
-sagaMiddleware.run(watchSearchGames);
+sagaMiddleware.run(watchAuth);
+sagaMiddleware.run(watchEditGame);
 
 const app = (
   <Provider store={store}>

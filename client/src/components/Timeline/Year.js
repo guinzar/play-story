@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 // import * as actions from '../../store/actions/games';
 import PropTypes from 'prop-types';
-import { platformsList, genresList } from '../../config'
+// import { platformsList, genresList } from '../../config'
 
 const year = ({ year, yearData, birthday, games }) => {
   let maxAmount = 0;

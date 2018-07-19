@@ -135,6 +135,7 @@ const reducer = ( state = initialState, action ) => {
     case actionTypes.SIGNUP_SUBMIT: return submitSignUp( state, action );
     case actionTypes.SIGNUP_FAILED: return signUpFailed( state, action );
     case actionTypes.LEAVE_PAGE: return resetForm( state, action );
+    case actionTypes.LOGOUT: return resetForm( state, action );
     default: return state;
   }
 };

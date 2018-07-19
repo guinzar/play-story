@@ -34,7 +34,6 @@ const navbar = ({ username, leavePage, logOut }) => {
       </li>
       <li className="nav-item">
         <NavLink
-          onClick={leavePage}
           onClick={() => logOut()}
           className = "nav-link"
           to="/logout"

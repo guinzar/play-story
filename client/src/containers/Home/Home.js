@@ -30,7 +30,7 @@ class Home extends Component {
               <NavLink
                 to={`/sample/timeline`}
                 exact>
-                <img className="home-sample-img rounded my-1" src="https://i.imgur.com/wZXHPei.jpg" />
+                <img className="home-sample-img rounded my-1" src="https://i.imgur.com/wZXHPei.jpg" alt="playstory sample" />
               </NavLink>
               <p className="lead my-1">Record the games you've played, generate cool timelines, and share gaming moments you've had throughout your lifetime</p>
               <p className="lead mb-1">

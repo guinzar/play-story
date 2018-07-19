@@ -30,17 +30,15 @@ export default function* (action) {
         yield put(showUserStories(response.data.stories));
         break;
       case 'games':
-        if (response.data.games) {
-          yield put(showUserGames(response.data.games));
-        }
+        yield put(showUserGames(response.data.games));
         break;
       case 'timeline':
-        if (response.data.games) {
-          yield put(showUserTimeline(response.data.games));
-        }
+        yield put(showUserTimeline(response.data.games));
         break;
+      default:
+        // no page
     }
   } catch (error) {
-    // yield put(logInFailed());
+    // yield get content failed;
   }
 };

@@ -1,17 +1,22 @@
-import { takeEvery, all, takeLatest } from 'redux-saga/effects';
+import { all, takeLatest } from 'redux-saga/effects';
 import * as actionTypes from '../actions/actionTypes';
 import { searchGamesSaga, editGameSaga } from './editGame';
 import logInSaga from './logIn';
 import signUpSaga from './signUp';
 import getUserContentSaga from './getUserContent';
 
-export function* watchSearchGames() {
-  // Auth
-  yield takeLatest(actionTypes.LOGIN_SUBMIT, logInSaga);
-  yield takeLatest(actionTypes.SIGNUP_SUBMIT, signUpSaga);
-  yield takeLatest(actionTypes.GET_USER_CONTENT, getUserContentSaga);
-  // EditGame
-  yield takeLatest(actionTypes.CHANGE_SEARCH_INPUT, searchGamesSaga);
-  yield takeEvery(actionTypes.REMOVE_SELECTED_GAME, searchGamesSaga);
-  yield takeLatest(actionTypes.EDIT_GAME_SUBMIT, editGameSaga);
+export function* watchAuth() {
+  yield all([
+    takeLatest(actionTypes.LOGIN_SUBMIT, logInSaga),
+    takeLatest(actionTypes.SIGNUP_SUBMIT, signUpSaga),
+    takeLatest(actionTypes.GET_USER_CONTENT, getUserContentSaga)
+  ]);
+};
+
+export function* watchEditGame() {
+  yield all([
+    takeLatest(actionTypes.CHANGE_SEARCH_INPUT, searchGamesSaga),
+    takeLatest(actionTypes.REMOVE_SELECTED_GAME, searchGamesSaga),
+    takeLatest(actionTypes.EDIT_GAME_SUBMIT, editGameSaga)
+  ]);
 };

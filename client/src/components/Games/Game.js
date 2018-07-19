@@ -41,6 +41,6 @@ const game = ({ index, game, onGameClick }) => {
 game.propTypes = {
   index: PropTypes.number.isRequired,
   game: PropTypes.object.isRequired,
-  onGameClick: PropTypes.func.isRequired,
+  onGameClick: PropTypes.func,
 };
 export default game;

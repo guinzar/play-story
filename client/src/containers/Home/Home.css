@@ -3,7 +3,12 @@
   margin-bottom: 0px;
 }
 .home-sample-img {
+  border: 3px solid black;
   width: 100%;
+}
+.home-sample-img:hover {
+  /* border: none; */
+  border: 3px solid #007bff;
 }
 .home-feed {
   background-color: #bae1ff;
