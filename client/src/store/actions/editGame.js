@@ -92,6 +92,11 @@ export const editGameSubmit = ( token, username, remove, gameData ) => {
     gameData: gameData
   };
 };
+export const editGameFailed = () => {
+  return {
+    type: actionTypes.EDIT_GAME_FAILED
+  };
+};
 export const addGameSuccess = () => {
   return {
     type: actionTypes.ADD_GAME_SUCCESS

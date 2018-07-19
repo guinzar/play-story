@@ -26,7 +26,7 @@ export const logInSuccess = ( token ) => {
     type: actionTypes.LOGIN_SUCCESS,
     token: token
   };
-}
+};
 export const logInFailed = () => {
   return {
     type: actionTypes.LOGIN_FAILED

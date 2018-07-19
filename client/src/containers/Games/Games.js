@@ -4,7 +4,7 @@ import { withRouter, NavLink } from 'react-router-dom';
 import { getUserContent } from '../../store/actions/auth';
 import { setUserAndSort, changeSort, clickAddGame, editGame } from '../../store/actions/games';
 import PropTypes from 'prop-types';
-import Loading from '../../components/Loading/Loading';
+import Loader from '../../components/Loader/Loader';
 import EditGame from '../../components/EditGame/EditGame';
 import Game from '../../components/Games/Game';
 import './Games.css';
@@ -75,7 +75,7 @@ class Games extends Component {
                     index={i + 1}
                     game={game}
                     onGameClick={this.props.username === this.props.user ? () => this.props.onGameClick(game) : null}
-                  />) : <tr><td colSpan="7"><Loading /></td></tr>}
+                  />) : <tr><td colSpan="7"><Loader /></td></tr>}
                 </tbody>
               </table>
             </div>

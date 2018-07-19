@@ -1,7 +1,7 @@
 import { put, call } from 'redux-saga/effects';
 
 import axios from 'axios';
-import { updateSearchResults, updateSearchResultsFailed } from "../actions/editGame";
+import { updateSearchResults, updateSearchResultsFailed, editGameFailed } from "../actions/editGame";
 import { addGameSuccess, editGameSuccess, removeGameSuccess } from "../actions/games";
 
 const delay = (ms) => new Promise(res => setTimeout(res, ms));
@@ -51,9 +51,9 @@ export function* editGameSaga(action) {
         yield put(addGameSuccess(response.data.game));
       }
     } else {
-      //fail
+      yield put(editGameFailed());
     }
   } catch (error) {
-    // yield put(updateSearchResultsFailed());
+    yield put(editGameFailed());
   }
 };

@@ -10,13 +10,11 @@ import { showUserTimeline } from "../actions/timeline";
 export default function* (action) {
   try {
     const url = action.page === 'home' ? 'home' : `user/${action.user}${action.page === 'user' ? '' : `/${action.page}`}`;
-    // console.log(url);
     const response = yield axios.get(`http://localhost:3090/${url}`, {
       headers: {
         'authorization': action.token
       }
     });
-    // console.log(response.data);
     const user = response.data.user;
     if (user) {
       localStorage.setItem('username', user.username);

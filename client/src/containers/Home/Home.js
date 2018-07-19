@@ -5,7 +5,7 @@ import * as actions from '../../store/actions/auth';
 import './Home.css';
 import PropTypes from 'prop-types';
 
-import Loading from '../../components/Loading/Loading';
+import Loader from '../../components/Loader/Loader';
 import { platformsList } from '../../config';
 
 const formatDate = str => {
@@ -26,24 +26,29 @@ class Home extends Component {
           <div className="col-7">
             <div className="jumbotron h-100">
               <h1 className="display-4">Welcome to PlayStory!</h1>
-              <p className="lead">This is an app made for gamers by a long-time gamer</p>
-              <p className="lead">Record the games you've played, generate cool timelines, and share gaming moments you've had throughout your lifetime</p>
-              <p className="lead">
+              <p className="lead mb-1">This is an app made for gamers by a long-time gamer</p>
+              <NavLink
+                to={`/sample/timeline`}
+                exact>
+                <img className="home-sample-img rounded my-1" src="https://i.imgur.com/wZXHPei.jpg" />
+              </NavLink>
+              <p className="lead my-1">Record the games you've played, generate cool timelines, and share gaming moments you've had throughout your lifetime</p>
+              <p className="lead mb-1">
                 Built from the ground up with the MERN (Mongo, Express, React/Redux, Node) stack by <a href="https://www.linkedin.com/guinzar">@guinzar</a>
               </p>
-              <hr className="my-3" />
-              <p>Note: PlayStory is currently in early stages of development</p>
-              <div className="mt-1">
+              <hr className="my-2" />
+              <p className="mb-2">Note: PlayStory is currently in early stages of development</p>
+              <div className="mb-0">
                 <strong>Take PlayStory for a spin:</strong>
-                <ul className="mt-2">
+                <ul className="my-1">
                   <li>Make an account, go to 'My Games' and add some games</li>
                   <li>Input the years you played those games; the more games you add the better!</li>
                   <li>Check out the infographic of your gaming career over at Timeline!</li>
                 </ul>
               </div>
-              <div className="mt-1">
+              <div>
                 <strong>Current Tech / System Design Features:</strong>
-                <ul className="mt-2 mb-0">
+                <ul className="my-1">
                   <li>Custom JWT Authentication with Passport/MongoDB</li>
                   <li>All data accessible from server with fully RESTful API</li>
                   <li>Optimized Global AND User activity feeds</li>
@@ -54,7 +59,7 @@ class Home extends Component {
             </div>
           </div>
           <div className="col-5 pl-0">
-            <div className="home-feed p-2 rounded">
+            <div className="home-feed p-2 rounded h-100">
               <div className="text-center">
                 <h3>Global Activity Feed</h3>
               </div>
@@ -66,7 +71,7 @@ class Home extends Component {
                     {story.username}
                   </NavLink> added: {story.name} ({platformsList[story.platform]}) to games library.
                 </div>)}
-              </div> : <Loading />}
+              </div> : <Loader />}
             </div>
           </div>
         </div>

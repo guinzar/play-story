@@ -67,9 +67,6 @@ const loginSubmit = ( state, action ) => {
     })
   };
 };
-// const logInSuccess = ( state, action ) => {
-//   return initialState;
-// };
 const loginFailed = ( state, action ) => {
   return {
     ...state,
@@ -91,7 +88,6 @@ const reducer = ( state = initialState, action ) => {
     case actionTypes.LOGIN_CHANGE_INPUT: return changeInput( state, action );
     case actionTypes.LOGIN_DESELECT_INPUT: return deselectInput( state, action );
     case actionTypes.LOGIN_SUBMIT: return loginSubmit( state, action );
-    // case actionTypes.LOGIN_SUCCESS: return logInSuccess( state, action );
     case actionTypes.LOGIN_FAILED: return loginFailed( state, action );
     case actionTypes.LEAVE_PAGE: return resetForm( state, action );
     default: return state;

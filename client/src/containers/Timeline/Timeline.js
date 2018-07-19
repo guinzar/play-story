@@ -4,7 +4,7 @@ import { getUserContent } from '../../store/actions/auth';
 import { setUserAndSortTimeline } from '../../store/actions/timeline';
 import PropTypes from 'prop-types';
 import './Timeline.css';
-import Loading from '../../components/Loading/Loading';
+import Loader from '../../components/Loader/Loader';
 import Year from '../../components/Timeline/Year';
 const playTimeStrings = [
   ['minimal', '(1 to 24 hours)'],
@@ -68,7 +68,7 @@ class Timeline extends Component {
             <div className="timeline d-flex flex-nowrap align-items-end">
               {this.props.years.map((year, i) => <Year key={i} year={year[0]} yearData={year[1]} />)}
             </div>
-          </div> : <div className="col"><div className="loader-background rounded p-1"><Loading /></div></div>}
+          </div> : <div className="col"><div className="loader-background rounded p-1"><Loader /></div></div>}
         </div>
       </div>
     );

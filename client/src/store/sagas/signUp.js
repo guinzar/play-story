@@ -6,7 +6,6 @@ import { signUpFailed } from "../actions/signUp";
 
 export default function* (action) {
   try {
-    console.log('submitting form: ', action.formValid);
     if (action.formValid) {
       const response = yield axios.post("http://localhost:3090/signup",
         {
@@ -21,7 +20,7 @@ export default function* (action) {
       localStorage.setItem('username', action.fields.username);
       yield put(logInSuccess(response.data.token));
     } else {
-      
+      // yield put(signUpFailed());
     }
   } catch (error) {
     if (error.response.data.field) {

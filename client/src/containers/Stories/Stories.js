@@ -6,7 +6,7 @@ import { setUser } from '../../store/actions/user';
 import PropTypes from 'prop-types';
 import './Stories.css';
 
-import Loading from '../../components/Loading/Loading';
+import Loader from '../../components/Loader/Loader';
 import { platformsList } from '../../config';
 
 class Stories extends Component {
@@ -42,7 +42,7 @@ class Stories extends Component {
               <div>
                 {this.props.stories.length ? this.props.stories.map((story, i) => <div key={i}>
                   {new Date(story.date).toDateString()}: {this.props.user} added: {story.name} ({new Date(story.release).toISOString().substr(0, 10)}) ({platformsList[story.platform]}) to games library.
-                </div>) : <Loading />}
+                </div>) : <Loader />}
               </div>
             </div>
           </div>

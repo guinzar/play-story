@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
 
 import './App.css';
 
@@ -35,16 +34,4 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    
-  };
-};
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+export default withRouter(App);

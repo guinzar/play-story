@@ -1,6 +1,7 @@
 import React from 'react';
+import './Loader.css';
 
-const loading = () => {
+const loader = () => {
   return (
     <div className="text-center">
       <div className="loader-anim"><div></div><div></div><div></div></div>
@@ -9,4 +10,4 @@ const loading = () => {
   );
 };
 
-export default loading;
+export default loader;

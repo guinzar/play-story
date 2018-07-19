@@ -170,6 +170,12 @@ const editGame = ( state, action ) => {
     yearsNotPlayed: yearsNotPlayed
   }
 };
+const editGameFailed = ( state, action) => {
+  // write error handling here
+  // write error handling here
+  // write error handling here
+  return state;
+}
 const reducer = ( state = initialState, action ) => {
   switch ( action.type ) {
     case actionTypes.CLICK_ADD_GAME: return openAndResetForm( state, action);
@@ -189,6 +195,7 @@ const reducer = ( state = initialState, action ) => {
     case actionTypes.ADD_GAME_SUCCESS: return resetForm( state, action );
     case actionTypes.EDIT_GAME_SUCCESS: return resetForm( state, action );
     case actionTypes.EDIT_GAME: return editGame( state, action );
+    case actionTypes.EDIT_GAME_FAILED: return editGameFailed( state, action );
     case actionTypes.REMOVE_GAME_SUCCESS: return resetForm( state, action );
     default: return state;
   }
