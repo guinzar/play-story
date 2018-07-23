@@ -30,7 +30,7 @@ class Home extends Component {
               <NavLink
                 to={`/sample/timeline`}
                 exact>
-                <img className="home-sample-img rounded my-1" src="https://i.imgur.com/wZXHPei.jpg" alt="playstory sample" />
+                <img className="home-sample-img rounded my-1" src="playstory-timeline.jpg" alt="playstory sample" />
               </NavLink>
               <p className="lead my-1">Record the games you've played, generate cool timelines, and share gaming moments you've had throughout your lifetime</p>
               <p className="lead mb-1">
@@ -49,11 +49,13 @@ class Home extends Component {
               <div>
                 <strong>Current Tech / System Design Features:</strong>
                 <ul className="my-1">
-                  <li>Custom JWT Authentication with Passport/MongoDB</li>
-                  <li>All data accessible from server with fully RESTful API</li>
+                  <li>Responsive Bootstrap React frontend using Redux/React Router</li>
+                  <li>Custom JWT Authentication with Passport/MongoDB over SSL</li>
+                  <li>Backend user data accessible from fully RESTful public API</li>
                   <li>Optimized Global AND User activity feeds</li>
                   <li>DB Data Normalization/Redundancy prioritizing fast read times</li>
                   <li>Custom-built CSS bar-charting timeline display</li>
+                  <li>Blazing fast page-load with S3/Cloudfront and Elastic Load Balancer</li>
                 </ul>
               </div>
             </div>

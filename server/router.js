@@ -22,4 +22,7 @@ module.exports = app => {
   app.get('/games', Games.searchGames);
   app.post('/login', requireLogin, Authentication.login);
   app.post('/signup', Authentication.signUp);
+  app.get('/', (req, res) => {
+    res.send('API is live. Use a correct route.');
+  });
 };
