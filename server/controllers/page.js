@@ -9,7 +9,7 @@ exports.getHome = (req, res) => {
         birthday: req.user.birthday
       } : null
     };
-    if (globalUser) resData.stories = globalUser.toObject().stories.slice(-20);
+    if (globalUser) resData.stories = globalUser.toObject().stories.slice(-40);
     else res.status(404);
     res.json(resData);
   });
